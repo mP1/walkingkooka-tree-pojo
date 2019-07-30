@@ -27,10 +27,11 @@ import java.util.Objects;
  */
 final class ReflectionReadOnlyPojoProperty extends ReflectionPojoProperty {
 
-    /**
-     * Ctor only called by {@link ReflectionPojoNodeContext}
-     */
-    ReflectionReadOnlyPojoProperty(final PojoName name, final Method getter) {
+    static ReflectionReadOnlyPojoProperty with(final PojoName name, final Method getter) {
+        return new ReflectionReadOnlyPojoProperty(name, getter);
+    }
+
+    private ReflectionReadOnlyPojoProperty(final PojoName name, final Method getter) {
         super(name, getter);
     }
 

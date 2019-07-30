@@ -60,7 +60,7 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
         final Set<Object> set = set(ELEMENT0, ELEMENT1);
         final TestMutableParent parent = new TestMutableParent(set);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(SET, set);
         final PojoNode childNode2 = childNode.setChildren(Lists.of(parentNode.createNode(PojoName.index(0), ELEMENT2)));
         assertNotSame(childNode, childNode2);
@@ -79,7 +79,7 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
                 new TestImmutableLeaf(STRING0),
                 new TestImmutableLeaf(STRING1));
         final TestImmutableParent parent = new TestImmutableParent(parentSet);
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // set
 
@@ -105,7 +105,7 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
                 new TestMutableLeaf(STRING0),
                 new TestMutableLeaf(STRING1));
         final TestMutableParent parent = new TestMutableParent(parentSet);
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // set
 
@@ -133,7 +133,7 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
                 new TestImmutableLeaf(STRING0),
                 new TestImmutableLeaf(STRING1));
         final TestImmutableParent parent = new TestImmutableParent(parentSet);
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // set
 
@@ -159,7 +159,7 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
                 new TestMutableLeaf(STRING0),
                 new TestMutableLeaf(STRING1));
         final TestMutableParent parent = new TestMutableParent(parentSet);
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // set
 
@@ -186,7 +186,7 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
         final Set<Object> set = set(ELEMENT0, ELEMENT1);
         final TestMutableParent parent = new TestMutableParent(set);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(SET, set);
         final PojoNode childNode2 = childNode.setValue(set(ELEMENT2));
         assertNotSame(childNode, childNode2);
@@ -222,7 +222,7 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
     private PojoSetNode createPojoNode(final Set<Object> set) {
         return Cast.to(PojoNode.wrap(SET,
                 set,
-                new ReflectionPojoNodeContext()));
+                ReflectionPojoNodeContext.with()));
     }
 
     @Override

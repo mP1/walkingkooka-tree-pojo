@@ -60,7 +60,7 @@ public final class ReflectionReadOnlyPojoPropertyTest implements ClassTesting2<R
     @Override
     public ReflectionReadOnlyPojoProperty createPojoProperty() {
         try {
-            return new ReflectionReadOnlyPojoProperty(X, TestBean.class.getMethod("getX"));
+            return ReflectionReadOnlyPojoProperty.with(X, TestBean.class.getMethod("getX"));
         } catch (final Exception rethrow) {
             throw new Error(rethrow);
         }

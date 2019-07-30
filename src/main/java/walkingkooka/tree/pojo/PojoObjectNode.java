@@ -28,10 +28,17 @@ import java.util.Map;
  */
 final class PojoObjectNode extends PojoNode2 {
 
-    PojoObjectNode(final PojoName name,
-                   final Object value,
-                   final int index,
-                   final PojoNodeContext context) {
+    static PojoObjectNode with(final PojoName name,
+                               final Object value,
+                               final int index,
+                               final PojoNodeContext context) {
+        return new PojoObjectNode(name, value, index, context);
+    }
+
+    private PojoObjectNode(final PojoName name,
+                           final Object value,
+                           final int index,
+                           final PojoNodeContext context) {
         super(name, value, index, context);
     }
 

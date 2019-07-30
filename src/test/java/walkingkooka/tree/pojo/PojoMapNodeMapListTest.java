@@ -50,7 +50,7 @@ public final class PojoMapNodeMapListTest extends PojoNodeListTestCase<PojoMapNo
             final Entry<Object, Object> entry = Cast.to(value);
             map.put(entry.getKey(), entry.getValue());
         }
-        return new PojoMapNodeMapList(map);
+        return PojoMapNodeMapList.with(map);
     }
 
     @Override

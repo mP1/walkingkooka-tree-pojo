@@ -27,10 +27,17 @@ import java.util.List;
  */
 final class PojoCharArrayNode extends PojoArrayNode {
 
-    PojoCharArrayNode(final PojoName name,
-                      final char[] value,
-                      final int index,
-                      final PojoNodeContext context) {
+    static PojoCharArrayNode with(final PojoName name,
+                                  final char[] value,
+                                  final int index,
+                                  final PojoNodeContext context) {
+        return new PojoCharArrayNode(name, value, index, context);
+    }
+
+    private PojoCharArrayNode(final PojoName name,
+                              final char[] value,
+                              final int index,
+                              final PojoNodeContext context) {
         super(name, value, index, context);
     }
 

@@ -27,7 +27,7 @@ public final class PojoObjectNodeChildrenValueListTest extends PojoNodeListTestC
     List<Object> createList(final List<Object> components) {
         return PojoNode.wrap(PojoName.property("root"),
                 new TestBean((String) components.get(0), (String) components.get(1)),
-                new ReflectionPojoNodeContext())
+                ReflectionPojoNodeContext.with())
                 .childrenValues();
     }
 

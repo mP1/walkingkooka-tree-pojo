@@ -54,7 +54,7 @@ public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObj
         final String[] array = new String[]{ELEMENT0, ELEMENT1};
         final TestMutableParent parent = new TestMutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -79,7 +79,7 @@ public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObj
         final String[] array = new String[]{ELEMENT0, ELEMENT1};
         final TestImmutableParent parent = new TestImmutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -106,7 +106,7 @@ public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObj
         final String[] array = new String[]{ELEMENT0, ELEMENT1};
         final TestImmutableParent parent = new TestImmutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -154,7 +154,7 @@ public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObj
     private PojoObjectArrayNode createPojoNode(final String[] values) {
         return Cast.to(PojoNode.wrap(ARRAY,
                 values,
-                new ReflectionPojoNodeContext()));
+                ReflectionPojoNodeContext.with()));
     }
 
     @Override

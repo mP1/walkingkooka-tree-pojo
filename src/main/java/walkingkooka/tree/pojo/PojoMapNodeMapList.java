@@ -35,7 +35,11 @@ final class PojoMapNodeMapList extends AbstractList<Object> {
         Lists.registerImmutableType(PojoMapNodeMapList.class);
     }
 
-    PojoMapNodeMapList(final Map<Object, Object> map) {
+    static PojoMapNodeMapList with(final Map<Object, Object> map) {
+        return new PojoMapNodeMapList(map);
+    }
+
+    private PojoMapNodeMapList(final Map<Object, Object> map) {
         this.map = map;
         this.list = Lists.array();
     }

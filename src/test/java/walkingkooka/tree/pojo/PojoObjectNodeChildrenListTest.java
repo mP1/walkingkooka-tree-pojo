@@ -46,7 +46,7 @@ public final class PojoObjectNodeChildrenListTest extends PojoNodeListTestCase<P
     private List<PojoNode> list0(final String component0, final String component1) {
         return PojoNode.wrap(PojoName.property("root"),
                 new PojoObjectNodeChildrenListTest.TestBean(component0, component1),
-                new ReflectionPojoNodeContext())
+                ReflectionPojoNodeContext.with())
                 .children();
     }
 

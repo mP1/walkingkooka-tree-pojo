@@ -28,8 +28,8 @@ abstract class ReflectionWritablePojoProperty extends ReflectionPojoProperty {
 
     static ReflectionWritablePojoProperty with(final PojoName name, final Method getter, final Method setter) {
         return isMutable(setter) ?
-                new ReflectionMutableWritablePojoProperty(name, getter, setter) :
-                new ReflectionImmutableWritablePojoProperty(name, getter, setter);
+                ReflectionMutableWritablePojoProperty.with(name, getter, setter) :
+                ReflectionImmutableWritablePojoProperty.with(name, getter, setter);
     }
 
     /**

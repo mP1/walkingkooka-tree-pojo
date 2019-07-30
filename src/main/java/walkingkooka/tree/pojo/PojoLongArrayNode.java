@@ -27,10 +27,17 @@ import java.util.List;
  */
 final class PojoLongArrayNode extends PojoArrayNode {
 
-    PojoLongArrayNode(final PojoName name,
-                      final long[] value,
-                      final int index,
-                      final PojoNodeContext context) {
+    static PojoLongArrayNode with(final PojoName name,
+                                  final long[] value,
+                                  final int index,
+                                  final PojoNodeContext context) {
+        return new PojoLongArrayNode(name, value, index, context);
+    }
+
+    private PojoLongArrayNode(final PojoName name,
+                              final long[] value,
+                              final int index,
+                              final PojoNodeContext context) {
         super(name, value, index, context);
     }
 

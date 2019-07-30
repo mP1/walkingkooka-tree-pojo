@@ -71,58 +71,58 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
         PojoNode wrapped;
         for (; ; ) {
             if (PojoBasicNode.isBasic(value)) {
-                wrapped = new PojoBasicNode(name, value, index, context);
+                wrapped = PojoBasicNode.with(name, value, index, context);
                 break;
             }
             if (value instanceof boolean[]) {
-                wrapped = new PojoBooleanArrayNode(name, Cast.to(value), index, context);
+                wrapped = PojoBooleanArrayNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof byte[]) {
-                wrapped = new PojoByteArrayNode(name, Cast.to(value), index, context);
+                wrapped = PojoByteArrayNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof char[]) {
-                wrapped = new PojoCharArrayNode(name, Cast.to(value), index, context);
+                wrapped = PojoCharArrayNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof double[]) {
-                wrapped = new PojoDoubleArrayNode(name, Cast.to(value), index, context);
+                wrapped = PojoDoubleArrayNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof float[]) {
-                wrapped = new PojoFloatArrayNode(name, Cast.to(value), index, context);
+                wrapped = PojoFloatArrayNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof int[]) {
-                wrapped = new PojoIntArrayNode(name, Cast.to(value), index, context);
+                wrapped = PojoIntArrayNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof List) {
-                wrapped = new PojoListNode(name, Cast.to(value), index, context);
+                wrapped = PojoListNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof long[]) {
-                wrapped = new PojoLongArrayNode(name, Cast.to(value), index, context);
+                wrapped = PojoLongArrayNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof Map) {
-                wrapped = new PojoMapNode(name, Cast.to(value), index, context);
+                wrapped = PojoMapNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof Object[]) {
-                wrapped = new PojoObjectArrayNode(name, Cast.to(value), index, context);
+                wrapped = PojoObjectArrayNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof Set) {
-                wrapped = new PojoSetNode(name, Cast.to(value), index, context);
+                wrapped = PojoSetNode.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof short[]) {
-                wrapped = new PojoShortArrayNode(name, Cast.to(value), index, context);
+                wrapped = PojoShortArrayNode.with(name, Cast.to(value), index, context);
                 break;
             }
-            wrapped = new PojoObjectNode(name, value, index, context);
+            wrapped = PojoObjectNode.with(name, value, index, context);
             break;
         }
 

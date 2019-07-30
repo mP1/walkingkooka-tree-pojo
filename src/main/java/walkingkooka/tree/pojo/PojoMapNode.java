@@ -29,10 +29,17 @@ import java.util.Map.Entry;
  */
 final class PojoMapNode extends PojoCollectionNode {
 
-    PojoMapNode(final PojoName name,
-                final Map<Object, Object> value,
-                final int index,
-                final PojoNodeContext context) {
+    static PojoMapNode with(final PojoName name,
+                            final Map<Object, Object> value,
+                            final int index,
+                            final PojoNodeContext context) {
+        return new PojoMapNode(name, value, index, context);
+    }
+
+    private PojoMapNode(final PojoName name,
+                        final Map<Object, Object> value,
+                        final int index,
+                        final PojoNodeContext context) {
         super(name, value, index, context);
     }
 
@@ -45,7 +52,7 @@ final class PojoMapNode extends PojoCollectionNode {
     @Override
     List<Object> valueAsList() {
         if (null == this.list) {
-            this.list = new PojoMapNodeMapList(this.valueAsMap());
+            this.list = PojoMapNodeMapList.with(this.valueAsMap());
         }
         return this.list;
     }

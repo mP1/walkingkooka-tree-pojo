@@ -109,7 +109,7 @@ public final class PojoBasicNodeTest extends PojoNodeTestCase<PojoBasicNode, Int
     private PojoBasicNode createPojoNode(final Object value) {
         return Cast.to(PojoNode.wrap(PojoName.property("root"),
                 value,
-                new ReflectionPojoNodeContext()));
+                ReflectionPojoNodeContext.with()));
     }
 
     @Override
