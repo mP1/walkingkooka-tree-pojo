@@ -284,7 +284,7 @@ public final class ReflectionPojoNodeContextTest implements ClassTesting2<Reflec
 
     @Override
     public ReflectionPojoNodeContext createContext() {
-        return new ReflectionPojoNodeContext();
+        return ReflectionPojoNodeContext.with();
     }
 
     @Override

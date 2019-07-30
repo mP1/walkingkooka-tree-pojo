@@ -43,7 +43,7 @@ public final class PojoArrayOrCollectionNodeChildrenListTest extends PojoNodeLis
     private List<PojoNode> list0(final String component0, final String component1) {
         return PojoNode.wrap(PojoName.property("root"),
                 Lists.of(component0, component1),
-                new ReflectionPojoNodeContext())
+                ReflectionPojoNodeContext.with())
                 .children();
     }
 

@@ -17,10 +17,24 @@
 
 package walkingkooka.tree.pojo;
 
-import walkingkooka.test.ClassTesting2;
+import walkingkooka.test.StandardThrowableTesting;
 import walkingkooka.type.JavaVisibility;
 
-public final class ReflectionPojoExceptionTest implements ClassTesting2<ReflectionPojoException> {
+public final class ReflectionPojoExceptionTest implements StandardThrowableTesting<ReflectionPojoException> {
+
+    @Override
+    public void testIfClassIsFinalIfAllConstructorsArePrivate() {
+    }
+
+    @Override
+    public ReflectionPojoException createThrowable(final String message) {
+        return new ReflectionPojoException(message);
+    }
+
+    @Override
+    public ReflectionPojoException createThrowable(final String message, final Throwable cause) {
+        return new ReflectionPojoException(message, cause);
+    }
 
     @Override
     public Class<ReflectionPojoException> type() {

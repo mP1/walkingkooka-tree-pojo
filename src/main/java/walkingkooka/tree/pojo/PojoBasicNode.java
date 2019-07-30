@@ -40,10 +40,17 @@ final class PojoBasicNode extends PojoNode {
                 Classes.wrapper(type).isPresent();
     }
 
-    PojoBasicNode(final PojoName name,
-                  final Object value,
-                  final int index,
-                  final PojoNodeContext context) {
+    static PojoBasicNode with(final PojoName name,
+                              final Object value,
+                              final int index,
+                              final PojoNodeContext context) {
+        return new PojoBasicNode(name, value, index, context);
+    }
+
+    private PojoBasicNode(final PojoName name,
+                          final Object value,
+                          final int index,
+                          final PojoNodeContext context) {
         super(name, value, index, context);
     }
 

@@ -54,7 +54,7 @@ public final class PojoBooleanArrayNodeTest extends PojoArrayNodeTestCase<PojoBo
         final boolean[] array = new boolean[]{ELEMENT0, ELEMENT1};
         final TestMutableParent parent = new TestMutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -79,7 +79,7 @@ public final class PojoBooleanArrayNodeTest extends PojoArrayNodeTestCase<PojoBo
         final boolean[] array = new boolean[]{ELEMENT0, ELEMENT1};
         final TestImmutableParent parent = new TestImmutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -104,7 +104,7 @@ public final class PojoBooleanArrayNodeTest extends PojoArrayNodeTestCase<PojoBo
         final boolean[] array = new boolean[]{ELEMENT0, ELEMENT1};
         final TestImmutableParent parent = new TestImmutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, new ReflectionPojoNodeContext());
+        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -152,7 +152,7 @@ public final class PojoBooleanArrayNodeTest extends PojoArrayNodeTestCase<PojoBo
     private PojoBooleanArrayNode createPojoNode(final boolean[] values) {
         return Cast.to(PojoNode.wrap(ARRAY,
                 values,
-                new ReflectionPojoNodeContext()));
+                ReflectionPojoNodeContext.with()));
     }
 
     @Override

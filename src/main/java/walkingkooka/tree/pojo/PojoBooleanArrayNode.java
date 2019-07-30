@@ -27,10 +27,17 @@ import java.util.List;
  */
 final class PojoBooleanArrayNode extends PojoArrayNode {
 
-    PojoBooleanArrayNode(final PojoName name,
-                         final boolean[] value,
-                         final int index,
-                         final PojoNodeContext context) {
+    static PojoBooleanArrayNode with(final PojoName name,
+                                     final boolean[] value,
+                                     final int index,
+                                     final PojoNodeContext context) {
+        return new PojoBooleanArrayNode(name, value, index, context);
+    }
+
+    private PojoBooleanArrayNode(final PojoName name,
+                                 final boolean[] value,
+                                 final int index,
+                                 final PojoNodeContext context) {
         super(name, value, index, context);
     }
 

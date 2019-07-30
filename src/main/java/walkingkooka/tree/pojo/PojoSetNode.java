@@ -29,10 +29,17 @@ import java.util.stream.Collectors;
  */
 final class PojoSetNode extends PojoCollectionNode {
 
-    PojoSetNode(final PojoName name,
-                final Set<Object> value,
-                final int index,
-                final PojoNodeContext context) {
+    static PojoSetNode with(final PojoName name,
+                            final Set<Object> value,
+                            final int index,
+                            final PojoNodeContext context) {
+        return new PojoSetNode(name, value, index, context);
+    }
+
+    private PojoSetNode(final PojoName name,
+                        final Set<Object> value,
+                        final int index,
+                        final PojoNodeContext context) {
         super(name, value, index, context);
     }
 

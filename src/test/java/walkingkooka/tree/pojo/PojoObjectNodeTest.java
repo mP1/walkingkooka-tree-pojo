@@ -214,7 +214,7 @@ public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, 
     private PojoObjectNode createPojoNode(final Object value) {
         return Cast.to(PojoNode.wrap(PojoName.property("root"),
                 value,
-                new ReflectionPojoNodeContext()));
+                ReflectionPojoNodeContext.with()));
     }
 
     @Override

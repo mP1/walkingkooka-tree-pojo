@@ -58,7 +58,7 @@ public final class ReflectionImmutableWritablePojoPropertyTest implements ClassT
     @Override
     public ReflectionImmutableWritablePojoProperty createPojoProperty() {
         try {
-            return new ReflectionImmutableWritablePojoProperty(X,
+            return ReflectionImmutableWritablePojoProperty.with(X,
                     TestBean.class.getMethod("getX"),
                     TestBean.class.getMethod("setX", String.class));
         } catch (final Exception rethrow) {

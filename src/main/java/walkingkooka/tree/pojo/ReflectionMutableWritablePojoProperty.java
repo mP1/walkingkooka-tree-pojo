@@ -25,10 +25,11 @@ import java.lang.reflect.Method;
  */
 final class ReflectionMutableWritablePojoProperty extends ReflectionWritablePojoProperty {
 
-    /**
-     * Ctor only called by {@link ReflectionPojoNodeContext}
-     */
-    ReflectionMutableWritablePojoProperty(final PojoName name, final Method getter, final Method setter) {
+    static ReflectionMutableWritablePojoProperty with(final PojoName name, final Method getter, final Method setter) {
+        return new ReflectionMutableWritablePojoProperty(name, getter, setter);
+    }
+
+    private ReflectionMutableWritablePojoProperty(final PojoName name, final Method getter, final Method setter) {
         super(name, getter, setter);
     }
 

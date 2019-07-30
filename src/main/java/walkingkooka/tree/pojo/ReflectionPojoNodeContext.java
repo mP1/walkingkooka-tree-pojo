@@ -35,6 +35,14 @@ import java.util.Set;
  */
 final class ReflectionPojoNodeContext implements PojoNodeContext {
 
+    static ReflectionPojoNodeContext with() {
+        return new ReflectionPojoNodeContext();
+    }
+
+    private ReflectionPojoNodeContext() {
+        super();
+    }
+
     // properties....
 
     @Override

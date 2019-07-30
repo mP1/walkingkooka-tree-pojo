@@ -28,10 +28,17 @@ import java.util.stream.Collectors;
  */
 final class PojoListNode extends PojoCollectionNode {
 
-    PojoListNode(final PojoName name,
-                 final List<Object> value,
-                 final int index,
-                 final PojoNodeContext context) {
+    static PojoListNode with(final PojoName name,
+                             final List<Object> value,
+                             final int index,
+                             final PojoNodeContext context) {
+        return new PojoListNode(name, value, index, context);
+    }
+
+    private PojoListNode(final PojoName name,
+                         final List<Object> value,
+                         final int index,
+                         final PojoNodeContext context) {
         super(name, value, index, context);
     }
 

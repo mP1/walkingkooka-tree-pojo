@@ -27,10 +27,17 @@ import java.util.List;
  */
 final class PojoFloatArrayNode extends PojoArrayNode {
 
-    PojoFloatArrayNode(final PojoName name,
-                       final float[] value,
-                       final int index,
-                       final PojoNodeContext context) {
+    static PojoFloatArrayNode with(final PojoName name,
+                                   final float[] value,
+                                   final int index,
+                                   final PojoNodeContext context) {
+        return new PojoFloatArrayNode(name, value, index, context);
+    }
+
+    private PojoFloatArrayNode(final PojoName name,
+                               final float[] value,
+                               final int index,
+                               final PojoNodeContext context) {
         super(name, value, index, context);
     }
 

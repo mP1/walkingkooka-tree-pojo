@@ -43,7 +43,7 @@ public final class PojoNodeTest implements ClassTesting2<PojoNode>,
 
         final PojoNode node = PojoNode.wrap(PojoName.property("TestBean"),
                 bean,
-                new ReflectionPojoNodeContext());
+                ReflectionPojoNodeContext.with());
         final List<PojoNode> selected = this.selectorApplyAndCollect(node, selector);
         assertEquals(Sets.of("1", "2", "3"),
                 selected.stream()
@@ -55,7 +55,7 @@ public final class PojoNodeTest implements ClassTesting2<PojoNode>,
     public PojoNode createNode() {
         return PojoNode.wrap(PojoName.property("TestBean"),
                 new TestBean("1", "2", 99, "3"),
-                new ReflectionPojoNodeContext());
+                ReflectionPojoNodeContext.with());
     }
 
     @Override
