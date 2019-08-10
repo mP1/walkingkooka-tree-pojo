@@ -41,7 +41,7 @@ public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, 
 
     @Test
     public void testParent() {
-        this.checkWithoutParent(this.createPojoNode());
+        this.parentMissingCheck(this.createPojoNode());
     }
 
     @Test

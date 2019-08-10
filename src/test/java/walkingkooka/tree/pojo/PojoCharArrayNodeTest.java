@@ -44,7 +44,7 @@ public final class PojoCharArrayNodeTest extends PojoArrayNodeTestCase<PojoCharA
 
         this.childrenAndCheckNames(node2, INDEX0);
         this.childrenValuesCheck(node2, ELEMENT0);
-        this.checkWithoutParent(node);
+        this.parentMissingCheck(node);
 
         this.childrenAndCheckNames(node, INDEX0, INDEX1);
         this.childrenValuesCheck(node, ELEMENT0, ELEMENT1);
@@ -67,7 +67,7 @@ public final class PojoCharArrayNodeTest extends PojoArrayNodeTestCase<PojoCharA
 
         this.childrenAndCheckNames(childNode2, INDEX0, INDEX1, INDEX2);
         this.childrenValuesCheck(childNode2, ELEMENT0, ELEMENT1, ELEMENT2);
-        this.checkWithParent(childNode2);
+        this.parentPresentCheck(childNode2);
 
         assertSame(parentNode, childNode2.parentOrFail());
 
@@ -92,7 +92,7 @@ public final class PojoCharArrayNodeTest extends PojoArrayNodeTestCase<PojoCharA
 
         this.childrenAndCheckNames(childNode2, INDEX0, INDEX1, INDEX2);
         this.childrenValuesCheck(childNode2, ELEMENT0, ELEMENT1, ELEMENT2);
-        this.checkWithParent(childNode2);
+        this.parentPresentCheck(childNode2);
 
         assertNotSame(parentNode, childNode2.parentOrFail());
 
@@ -117,7 +117,7 @@ public final class PojoCharArrayNodeTest extends PojoArrayNodeTestCase<PojoCharA
 
         this.childrenAndCheckNames(childNode2, INDEX0, INDEX1, INDEX2);
         this.childrenValuesCheck(childNode2, ELEMENT0, ELEMENT1, ELEMENT2);
-        this.checkWithParent(childNode2);
+        this.parentPresentCheck(childNode2);
 
         assertNotSame(parentNode, childNode2.parentOrFail());
 
