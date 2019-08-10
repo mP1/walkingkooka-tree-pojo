@@ -58,7 +58,7 @@ public final class PojoMapNodeTest extends PojoCollectionNodeTestCase<PojoMapNod
 
         this.childrenAndCheckNames(node2, INDEX0);
         this.childrenValuesCheck(node2, ENTRY0);
-        this.checkWithoutParent(node);
+        this.parentMissingCheck(node);
 
         this.childrenAndCheckNames(node, INDEX0, INDEX1);
         this.childrenValuesCheck(node, ENTRY0, ENTRY1);
@@ -76,7 +76,7 @@ public final class PojoMapNodeTest extends PojoCollectionNodeTestCase<PojoMapNod
 
         this.childrenAndCheckNames(childNode2, INDEX0);
         this.childrenValuesCheck(childNode2, ENTRY0);
-        this.checkWithoutParent(childNode);
+        this.parentMissingCheck(childNode);
 
         this.childrenAndCheckNames(childNode, INDEX0, INDEX1);
         this.childrenValuesCheck(childNode, ENTRY0, ENTRY1);
@@ -234,7 +234,7 @@ public final class PojoMapNodeTest extends PojoCollectionNodeTestCase<PojoMapNod
 
         this.childrenAndCheckNames(childNode2, INDEX0);
         this.childrenValuesCheck(childNode2, ENTRY0);
-        this.checkWithoutParent(childNode);
+        this.parentMissingCheck(childNode);
 
         this.childrenAndCheckNames(childNode, INDEX0, INDEX1);
         this.childrenValuesCheck(childNode, ENTRY0, ENTRY1);
