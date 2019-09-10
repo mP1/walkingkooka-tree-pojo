@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 
-public abstract class PojoArrayOrCollectionNodeTestCase<N extends PojoArrayOrCollectionNode, V> extends PojoNodeTestCase2<N, V> {
+public abstract class PojoNodeArrayOrCollectionTestCase<N extends PojoNodeArrayOrCollection, V> extends PojoNodeTestCase2<N, V> {
 
     final static PojoName PARENT = PojoName.property("parent");
 

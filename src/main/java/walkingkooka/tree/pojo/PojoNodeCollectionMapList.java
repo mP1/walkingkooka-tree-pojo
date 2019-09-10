@@ -29,17 +29,17 @@ import java.util.Map.Entry;
 /**
  * A read only {@link List} view of a {@link Map}
  */
-final class PojoMapNodeMapList extends AbstractList<Object> {
+final class PojoNodeCollectionMapList extends AbstractList<Object> {
 
     static {
-        Lists.registerImmutableType(PojoMapNodeMapList.class);
+        Lists.registerImmutableType(PojoNodeCollectionMapList.class);
     }
 
-    static PojoMapNodeMapList with(final Map<Object, Object> map) {
-        return new PojoMapNodeMapList(map);
+    static PojoNodeCollectionMapList with(final Map<Object, Object> map) {
+        return new PojoNodeCollectionMapList(map);
     }
 
-    private PojoMapNodeMapList(final Map<Object, Object> map) {
+    private PojoNodeCollectionMapList(final Map<Object, Object> map) {
         this.map = map;
         this.list = Lists.array();
     }

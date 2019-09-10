@@ -25,7 +25,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public abstract class PojoCollectionNodeTestCase<N extends PojoArrayOrCollectionNode, V> extends PojoArrayOrCollectionNodeTestCase<N, V> {
+public abstract class PojoNodeCollectionTestCase<N extends PojoNodeArrayOrCollection, V> extends PojoNodeArrayOrCollectionTestCase<N, V> {
 
     final static String STRING0 = "a0";
     final static String STRING1 = "b1";

@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public abstract class PojoNodeArrayTestCase<N extends PojoNodeArray, V> extends PojoArrayOrCollectionNodeTestCase<N, V> {
+public abstract class PojoNodeArrayTestCase<N extends PojoNodeArray, V> extends PojoNodeArrayOrCollectionTestCase<N, V> {
 
     final static PojoName ARRAY = PojoName.property("array");
 

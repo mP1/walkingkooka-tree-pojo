@@ -22,9 +22,9 @@ import java.util.List;
 /**
  * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link java.util.Collection}.
  */
-abstract class PojoArrayOrCollectionNode extends PojoNode2 {
+abstract class PojoNodeArrayOrCollection extends PojoNode2 {
 
-    PojoArrayOrCollectionNode(final PojoName name,
+    PojoNodeArrayOrCollection(final PojoName name,
                               final Object value,
                               final int index,
                               final PojoNodeContext context) {
@@ -34,8 +34,8 @@ abstract class PojoArrayOrCollectionNode extends PojoNode2 {
     // children ..................................................................................
 
     @Override
-    final PojoArrayOrCollectionNodeChildrenList createChildrenList() {
-        return PojoArrayOrCollectionNodeChildrenList.with(this);
+    final PojoNodeArrayOrCollectionChildrenList createChildrenList() {
+        return PojoNodeArrayOrCollectionChildrenList.with(this);
     }
 
     /**

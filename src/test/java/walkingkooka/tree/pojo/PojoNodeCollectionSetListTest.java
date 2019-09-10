@@ -23,7 +23,7 @@ import walkingkooka.collect.set.Sets;
 import java.util.List;
 import java.util.Set;
 
-public final class PojoSetNodeSetListTest extends PojoNodeListTestCase<PojoSetNodeSetList, Object> {
+public final class PojoNodeCollectionSetListTest extends PojoNodeListTestCase<PojoNodeCollectionSetList, Object> {
 
     @Override
     List<Object> components() {
@@ -39,11 +39,11 @@ public final class PojoSetNodeSetListTest extends PojoNodeListTestCase<PojoSetNo
     List<Object> createList(final List<Object> components) {
         final Set<Object> set = Sets.ordered();
         set.addAll(components);
-        return PojoSetNodeSetList.with(set);
+        return PojoNodeCollectionSetList.with(set);
     }
 
     @Override
-    public Class<PojoSetNodeSetList> type() {
-        return PojoSetNodeSetList.class;
+    public Class<PojoNodeCollectionSetList> type() {
+        return PojoNodeCollectionSetList.class;
     }
 }

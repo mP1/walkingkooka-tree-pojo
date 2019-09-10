@@ -28,17 +28,17 @@ import java.util.Set;
 /**
  * A read only {@link List} view of a {@link Set}
  */
-final class PojoSetNodeSetList extends AbstractList<Object> {
+final class PojoNodeCollectionSetList extends AbstractList<Object> {
 
     static {
-        Lists.registerImmutableType(PojoSetNodeSetList.class);
+        Lists.registerImmutableType(PojoNodeCollectionSetList.class);
     }
 
-    static PojoSetNodeSetList with(final Set<Object> set) {
-        return new PojoSetNodeSetList(set);
+    static PojoNodeCollectionSetList with(final Set<Object> set) {
+        return new PojoNodeCollectionSetList(set);
     }
 
-    private PojoSetNodeSetList(final Set<Object> set) {
+    private PojoNodeCollectionSetList(final Set<Object> set) {
         this.set = set;
         this.list = Lists.array();
     }

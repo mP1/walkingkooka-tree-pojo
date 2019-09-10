@@ -26,19 +26,19 @@ import java.util.stream.Collectors;
 /**
  * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link List}.
  */
-final class PojoListNode extends PojoCollectionNode {
+final class PojoNodeCollectionList extends PojoNodeCollection {
 
-    static PojoListNode with(final PojoName name,
-                             final List<Object> value,
-                             final int index,
-                             final PojoNodeContext context) {
-        return new PojoListNode(name, value, index, context);
+    static PojoNodeCollectionList with(final PojoName name,
+                                       final List<Object> value,
+                                       final int index,
+                                       final PojoNodeContext context) {
+        return new PojoNodeCollectionList(name, value, index, context);
     }
 
-    private PojoListNode(final PojoName name,
-                         final List<Object> value,
-                         final int index,
-                         final PojoNodeContext context) {
+    private PojoNodeCollectionList(final PojoName name,
+                                   final List<Object> value,
+                                   final int index,
+                                   final PojoNodeContext context) {
         super(name, value, index, context);
     }
 
@@ -99,7 +99,7 @@ final class PojoListNode extends PojoCollectionNode {
     }
 
     private PojoNode replace(final List<Object> values) {
-        return new PojoListNode(this.name(),
+        return new PojoNodeCollectionList(this.name(),
                 values,
                 this.index(),
                 this.context)

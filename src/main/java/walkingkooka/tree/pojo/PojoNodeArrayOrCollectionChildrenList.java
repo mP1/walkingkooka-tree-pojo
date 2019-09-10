@@ -23,13 +23,13 @@ import java.util.List;
 /**
  * The {@link List} for all collections. Items are lazily wrapped upon the first fetch.
  */
-final class PojoArrayOrCollectionNodeChildrenList<P extends PojoArrayOrCollectionNode> extends PojoNodeChildrenList<P> {
+final class PojoNodeArrayOrCollectionChildrenList<P extends PojoNodeArrayOrCollection> extends PojoNodeChildrenList<P> {
 
-    static <P extends PojoArrayOrCollectionNode> PojoArrayOrCollectionNodeChildrenList<P> with(final P parent) {
-        return new PojoArrayOrCollectionNodeChildrenList<P>(parent);
+    static <P extends PojoNodeArrayOrCollection> PojoNodeArrayOrCollectionChildrenList<P> with(final P parent) {
+        return new PojoNodeArrayOrCollectionChildrenList<P>(parent);
     }
 
-    private PojoArrayOrCollectionNodeChildrenList(final P parent) {
+    private PojoNodeArrayOrCollectionChildrenList(final P parent) {
         super(parent);
         this.nodes = new ArrayList<>();
     }
@@ -77,6 +77,6 @@ final class PojoArrayOrCollectionNodeChildrenList<P extends PojoArrayOrCollectio
 
     @Override
     boolean isSameType(final Object other) {
-        return other instanceof PojoArrayOrCollectionNodeChildrenList;
+        return other instanceof PojoNodeArrayOrCollectionChildrenList;
     }
 }

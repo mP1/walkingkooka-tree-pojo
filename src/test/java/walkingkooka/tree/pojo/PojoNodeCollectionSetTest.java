@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNode, Set<Object>> {
+public final class PojoNodeCollectionSetTest extends PojoNodeCollectionTestCase<PojoNodeCollectionSet, Set<Object>> {
 
     private final static PojoName SET = PojoName.property("set");
     private final static PojoName X = PojoName.property("x");
@@ -43,7 +43,7 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
 
     @Test
     public void testSetChildrenIncorrectIndiciesIgnored() {
-        final PojoSetNode node = this.createPojoNode();
+        final PojoNodeCollectionSet node = this.createPojoNode();
         final PojoNode node2 = node.setChildren(Lists.of(node.createNode(PojoName.index(99), ELEMENT0)));
         assertNotSame(node, node2);
 
@@ -200,12 +200,12 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
     }
 
     @Override
-    PojoSetNode createEmptyPojoNode() {
+    PojoNodeCollectionSet createEmptyPojoNode() {
         return this.createPojoNode(Sets.empty());
     }
 
     @Override
-    PojoSetNode createPojoNode() {
+    PojoNodeCollectionSet createPojoNode() {
         return this.createPojoNode(this.value());
     }
 
@@ -219,24 +219,24 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
         return set(ELEMENT2);
     }
 
-    private PojoSetNode createPojoNode(final Set<Object> set) {
+    private PojoNodeCollectionSet createPojoNode(final Set<Object> set) {
         return Cast.to(PojoNode.wrap(SET,
                 set,
                 ReflectionPojoNodeContext.with()));
     }
 
     @Override
-    List<PojoNode> children(final PojoSetNode firstNode) {
+    List<PojoNode> children(final PojoNodeCollectionSet firstNode) {
         return this.children0(firstNode, ELEMENT0, ELEMENT1);
     }
 
     @Override
-    List<PojoNode> differentChildren(final PojoSetNode firstNode) {
+    List<PojoNode> differentChildren(final PojoNodeCollectionSet firstNode) {
         return this.children0(firstNode, ELEMENT0);
     }
 
     @SafeVarargs
-    private final List<PojoNode> children0(final PojoSetNode firstNode, final Object... values) {
+    private final List<PojoNode> children0(final PojoNodeCollectionSet firstNode, final Object... values) {
         final List<PojoNode> children = Lists.array();
         int i = 0;
         for (Object value : values) {
@@ -260,8 +260,8 @@ public final class PojoSetNodeTest extends PojoCollectionNodeTestCase<PojoSetNod
     }
 
     @Override
-    Class<PojoSetNode> pojoNodeType() {
-        return PojoSetNode.class;
+    Class<PojoNodeCollectionSet> pojoNodeType() {
+        return PojoNodeCollectionSet.class;
     }
 
     static class TestMutableParent {

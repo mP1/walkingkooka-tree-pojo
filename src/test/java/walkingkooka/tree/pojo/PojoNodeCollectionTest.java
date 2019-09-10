@@ -20,10 +20,10 @@ package walkingkooka.tree.pojo;
 import walkingkooka.test.ClassTesting2;
 import walkingkooka.type.JavaVisibility;
 
-public final class PojoCollectionNodeTest implements ClassTesting2<PojoCollectionNode> {
+public final class PojoNodeCollectionTest implements ClassTesting2<PojoNodeCollection> {
     @Override
-    public Class<PojoCollectionNode> type() {
-        return PojoCollectionNode.class;
+    public Class<PojoNodeCollection> type() {
+        return PojoNodeCollection.class;
     }
 
     @Override

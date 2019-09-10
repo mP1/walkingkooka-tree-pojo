@@ -25,21 +25,21 @@ import java.util.stream.Collectors;
 
 /**
  * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link Set}.
- * Almost an identical copy of {@link PojoListNode} but uses the adapter {@link PojoSetNodeSetList}.
+ * Almost an identical copy of {@link PojoNodeCollectionList} but uses the adapter {@link PojoNodeCollectionSetList}.
  */
-final class PojoSetNode extends PojoCollectionNode {
+final class PojoNodeCollectionSet extends PojoNodeCollection {
 
-    static PojoSetNode with(final PojoName name,
-                            final Set<Object> value,
-                            final int index,
-                            final PojoNodeContext context) {
-        return new PojoSetNode(name, value, index, context);
+    static PojoNodeCollectionSet with(final PojoName name,
+                                      final Set<Object> value,
+                                      final int index,
+                                      final PojoNodeContext context) {
+        return new PojoNodeCollectionSet(name, value, index, context);
     }
 
-    private PojoSetNode(final PojoName name,
-                        final Set<Object> value,
-                        final int index,
-                        final PojoNodeContext context) {
+    private PojoNodeCollectionSet(final PojoName name,
+                                  final Set<Object> value,
+                                  final int index,
+                                  final PojoNodeContext context) {
         super(name, value, index, context);
     }
 
@@ -52,12 +52,12 @@ final class PojoSetNode extends PojoCollectionNode {
     @Override
     List<Object> valueAsList() {
         if (null == this.list) {
-            this.list = PojoSetNodeSetList.with(this.valueAsSet());
+            this.list = PojoNodeCollectionSetList.with(this.valueAsSet());
         }
         return this.list;
     }
 
-    private PojoSetNodeSetList list;
+    private PojoNodeCollectionSetList list;
 
     /**
      * Makes a copy of the values in the list {@link List} and creates a new wrapper, and ask its parent to update itself.
@@ -105,7 +105,7 @@ final class PojoSetNode extends PojoCollectionNode {
     }
 
     private PojoNode replace(final Set<Object> values) {
-        return new PojoSetNode(this.name(),
+        return new PojoNodeCollectionSet(this.name(),
                 values,
                 this.index(),
                 this.context)

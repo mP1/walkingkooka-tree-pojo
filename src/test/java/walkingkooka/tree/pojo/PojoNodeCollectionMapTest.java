@@ -31,7 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class PojoMapNodeTest extends PojoCollectionNodeTestCase<PojoMapNode, Map<Object, Object>> {
+public final class PojoNodeCollectionMapTest extends PojoNodeCollectionTestCase<PojoNodeCollectionMap, Map<Object, Object>> {
 
     private final static PojoName MAP = PojoName.property("map");
     private final static PojoName X = PojoName.property("x");
@@ -52,7 +52,7 @@ public final class PojoMapNodeTest extends PojoCollectionNodeTestCase<PojoMapNod
 
     @Test
     public void testSetChildrenIncorrectIndiciesIgnored() {
-        final PojoMapNode node = this.createPojoNode();
+        final PojoNodeCollectionMap node = this.createPojoNode();
         final PojoNode node2 = node.setChildren(Lists.of(node.createNode(PojoName.index(99), ENTRY0)));
         assertNotSame(node, node2);
 
@@ -255,12 +255,12 @@ public final class PojoMapNodeTest extends PojoCollectionNodeTestCase<PojoMapNod
     }
 
     @Override
-    PojoMapNode createEmptyPojoNode() {
+    PojoNodeCollectionMap createEmptyPojoNode() {
         return this.createPojoNode(Maps.empty());
     }
 
     @Override
-    PojoMapNode createPojoNode() {
+    PojoNodeCollectionMap createPojoNode() {
         return this.createPojoNode(this.value());
     }
 
@@ -277,23 +277,23 @@ public final class PojoMapNodeTest extends PojoCollectionNodeTestCase<PojoMapNod
         return Collections.singletonMap(ENTRY2.getKey(), ENTRY2.getValue());
     }
 
-    private PojoMapNode createPojoNode(final Map<Object, Object> map) {
+    private PojoNodeCollectionMap createPojoNode(final Map<Object, Object> map) {
         return Cast.to(PojoNode.wrap(MAP,
                 map,
                 ReflectionPojoNodeContext.with()));
     }
 
     @Override
-    List<PojoNode> children(final PojoMapNode firstNode) {
+    List<PojoNode> children(final PojoNodeCollectionMap firstNode) {
         return this.children0(firstNode, ENTRY0, ENTRY1);
     }
 
     @Override
-    List<PojoNode> differentChildren(final PojoMapNode firstNode) {
+    List<PojoNode> differentChildren(final PojoNodeCollectionMap firstNode) {
         return this.children0(firstNode, Maps.<Object, Object>entry("different-key", "different-value"));
     }
 
-    private List<PojoNode> children0(final PojoMapNode firstNode, final Object... values) {
+    private List<PojoNode> children0(final PojoNodeCollectionMap firstNode, final Object... values) {
         final List<PojoNode> children = Lists.array();
         int i = 0;
         for (Object value : values) {
@@ -304,8 +304,8 @@ public final class PojoMapNodeTest extends PojoCollectionNodeTestCase<PojoMapNod
     }
 
     @Override
-    Class<PojoMapNode> pojoNodeType() {
-        return PojoMapNode.class;
+    Class<PojoNodeCollectionMap> pojoNodeType() {
+        return PojoNodeCollectionMap.class;
     }
 
     static class TestMutableParent {

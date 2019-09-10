@@ -17,12 +17,18 @@
 
 package walkingkooka.tree.pojo;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * The {@link List} holding all properties in an instance.
  */
-final class PojoNodeObjectChildrenList extends PojoNodeFixedChildrenList<PojoNodeObject> {
+final class PojoNodeObjectChildrenList extends PojoNodeChildrenList<PojoNodeObject> {
+
+    /**
+     * Lazily wrapped pojo nodes.
+     */
+    private final PojoNode[] nodes;
 
     static PojoNodeObjectChildrenList with(final PojoNodeObject parent) {
         return new PojoNodeObjectChildrenList(parent);
@@ -30,6 +36,20 @@ final class PojoNodeObjectChildrenList extends PojoNodeFixedChildrenList<PojoNod
 
     private PojoNodeObjectChildrenList(final PojoNodeObject parent) {
         super(parent);
+        this.nodes = new PojoNode[parent.childrenCount()];
+    }
+
+    /**
+     * Supports caching pojo wrappers for individual elements.
+     */
+    @Override
+    public final PojoNode get(final int index) {
+        PojoNode node = this.nodes[index];
+        if (null == node) {
+            node = this.replace(index);
+            this.nodes[index] = node;
+        }
+        return node;
     }
 
     @Override
@@ -53,5 +73,10 @@ final class PojoNodeObjectChildrenList extends PojoNodeFixedChildrenList<PojoNod
     @Override
     boolean isSameType(final Object other) {
         return other instanceof PojoNodeObjectChildrenList;
+    }
+
+    @Override
+    final void clearChildrenNodeCache() {
+        Arrays.fill(this.nodes, null);
     }
 }

@@ -25,21 +25,21 @@ import java.util.Map.Entry;
 
 /**
  * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link Map}.
- * Almost an identical copy of {@link PojoListNode} but uses the adapter {@link PojoMapNodeMapList}.
+ * Almost an identical copy of {@link PojoNodeCollectionList} but uses the adapter {@link PojoNodeCollectionMapList}.
  */
-final class PojoMapNode extends PojoCollectionNode {
+final class PojoNodeCollectionMap extends PojoNodeCollection {
 
-    static PojoMapNode with(final PojoName name,
-                            final Map<Object, Object> value,
-                            final int index,
-                            final PojoNodeContext context) {
-        return new PojoMapNode(name, value, index, context);
+    static PojoNodeCollectionMap with(final PojoName name,
+                                      final Map<Object, Object> value,
+                                      final int index,
+                                      final PojoNodeContext context) {
+        return new PojoNodeCollectionMap(name, value, index, context);
     }
 
-    private PojoMapNode(final PojoName name,
-                        final Map<Object, Object> value,
-                        final int index,
-                        final PojoNodeContext context) {
+    private PojoNodeCollectionMap(final PojoName name,
+                                  final Map<Object, Object> value,
+                                  final int index,
+                                  final PojoNodeContext context) {
         super(name, value, index, context);
     }
 
@@ -52,12 +52,12 @@ final class PojoMapNode extends PojoCollectionNode {
     @Override
     List<Object> valueAsList() {
         if (null == this.list) {
-            this.list = PojoMapNodeMapList.with(this.valueAsMap());
+            this.list = PojoNodeCollectionMapList.with(this.valueAsMap());
         }
         return this.list;
     }
 
-    private PojoMapNodeMapList list;
+    private PojoNodeCollectionMapList list;
 
     /**
      * Makes a copy of the values in the list {@link List} and creates a new wrapper, and ask its parent to update itself.
@@ -115,7 +115,7 @@ final class PojoMapNode extends PojoCollectionNode {
     }
 
     private PojoNode replace(final Map<Object, Object> values) {
-        return new PojoMapNode(this.name(),
+        return new PojoNodeCollectionMap(this.name(),
                 values,
                 this.index(),
                 this.context)

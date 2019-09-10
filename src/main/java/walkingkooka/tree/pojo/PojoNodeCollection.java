@@ -17,14 +17,12 @@
 
 package walkingkooka.tree.pojo;
 
-import java.util.Arrays;
-
 /**
  * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link java.util.Collection}.
  */
-abstract class PojoCollectionNode extends PojoArrayOrCollectionNode {
+abstract class PojoNodeCollection extends PojoNodeArrayOrCollection {
 
-    PojoCollectionNode(final PojoName name,
+    PojoNodeCollection(final PojoName name,
                        final Object value,
                        final int index,
                        final PojoNodeContext context) {

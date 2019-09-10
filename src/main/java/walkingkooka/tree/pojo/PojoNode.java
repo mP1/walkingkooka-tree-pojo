@@ -99,7 +99,7 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
                 break;
             }
             if (value instanceof List) {
-                wrapped = PojoListNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeCollectionList.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof long[]) {
@@ -107,7 +107,7 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
                 break;
             }
             if (value instanceof Map) {
-                wrapped = PojoMapNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeCollectionMap.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof Object[]) {
@@ -115,7 +115,7 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
                 break;
             }
             if (value instanceof Set) {
-                wrapped = PojoSetNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeCollectionSet.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof short[]) {

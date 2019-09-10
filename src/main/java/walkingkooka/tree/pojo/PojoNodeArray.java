@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * A base node for any primitive array.
  */
-abstract class PojoNodeArray extends PojoArrayOrCollectionNode {
+abstract class PojoNodeArray extends PojoNodeArrayOrCollection {
 
     PojoNodeArray(final PojoName name,
                   final Object value,
@@ -53,7 +53,7 @@ abstract class PojoNodeArray extends PojoArrayOrCollectionNode {
     abstract Object elementValue(final int index);
 
     @Override
-    final public PojoArrayOrCollectionNode removeChild(final int child) {
+    final public PojoNodeArrayOrCollection removeChild(final int child) {
         throw new UnsupportedOperationException();
     }
 }

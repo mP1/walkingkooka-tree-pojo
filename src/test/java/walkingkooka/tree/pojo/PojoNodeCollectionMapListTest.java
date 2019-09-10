@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public final class PojoMapNodeMapListTest extends PojoNodeListTestCase<PojoMapNodeMapList, Object> {
+public final class PojoNodeCollectionMapListTest extends PojoNodeListTestCase<PojoNodeCollectionMapList, Object> {
 
     @Override
     List<Object> components() {
@@ -50,11 +50,11 @@ public final class PojoMapNodeMapListTest extends PojoNodeListTestCase<PojoMapNo
             final Entry<Object, Object> entry = Cast.to(value);
             map.put(entry.getKey(), entry.getValue());
         }
-        return PojoMapNodeMapList.with(map);
+        return PojoNodeCollectionMapList.with(map);
     }
 
     @Override
-    public Class<PojoMapNodeMapList> type() {
-        return PojoMapNodeMapList.class;
+    public Class<PojoNodeCollectionMapList> type() {
+        return PojoNodeCollectionMapList.class;
     }
 }
