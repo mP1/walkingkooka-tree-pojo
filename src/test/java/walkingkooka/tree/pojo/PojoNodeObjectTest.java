@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, Object> {
+public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, Object> {
 
     private final static String STRING0 = "abc0";
     private final static String STRING1 = "def1";
@@ -46,21 +46,21 @@ public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, 
 
     @Test
     public void testCreateNodeUnknownProperty() {
-        final PojoObjectNode node = this.createPojoNode(new TestMutableLeaf(STRING0));
+        final PojoNodeObject node = this.createPojoNode(new TestMutableLeaf(STRING0));
         node.createNode(Z, STRING2);
     }
 
     @Test
     public void testSetChildrenUnknownPropertyFails() {
         assertThrows(IllegalArgumentException.class, () -> {
-            final PojoObjectNode node = this.createPojoNode(new TestMutableLeaf(STRING0));
+            final PojoNodeObject node = this.createPojoNode(new TestMutableLeaf(STRING0));
             node.setChildren(Lists.of(node.createNode(Z, STRING2)));
         });
     }
 
     @Test
     public void testSetChildrenUnknownProperty2Fails() {
-        final PojoObjectNode node = this.createPojoNode(new TestMutableLeaf(STRING0));
+        final PojoNodeObject node = this.createPojoNode(new TestMutableLeaf(STRING0));
         final List<PojoNode> children = Lists.array();
         children.addAll(node.children());
         children.add(node.createNode(Z, STRING2));
@@ -73,7 +73,7 @@ public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, 
     @Test
     public void testSetChildrenDifferentMutable() {
         final TestMutableLeaf value = new TestMutableLeaf(STRING0);
-        final PojoObjectNode node = this.createPojoNode(value);
+        final PojoNodeObject node = this.createPojoNode(value);
         final PojoNode node2 = node.setChildren(Lists.of(node.createNode(X, STRING1)));
 
         assertSame(node, node2);
@@ -85,7 +85,7 @@ public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, 
     @Test
     public void testSetChildrenDifferentMutable2() {
         final TestMutableLeaf value = new TestMutableLeaf(STRING0);
-        final PojoObjectNode node = this.createPojoNode(value);
+        final PojoNodeObject node = this.createPojoNode(value);
         final PojoNode node2 = node.setChildren(Lists.of(
                 node.createNode(X, STRING1)
         ));
@@ -99,7 +99,7 @@ public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, 
     @Test
     public void testSetChildrenWithParentDifferentMutable() {
         final TestMutableBranch parent = new TestMutableBranch(new TestMutableLeaf(STRING0), new TestMutableLeaf(STRING1));
-        final PojoObjectNode parentNode = this.createPojoNode(parent);
+        final PojoNodeObject parentNode = this.createPojoNode(parent);
         final PojoNode childNode = this.child(parentNode, Y);
 
         final PojoNode childNode2 = childNode.setChildren(Lists.of(
@@ -119,7 +119,7 @@ public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, 
         final TestImmutableLeaf child = new TestImmutableLeaf(STRING0);
         final TestImmutableBranch parent = new TestImmutableBranch(child, null);
 
-        final PojoObjectNode parentNode = this.createPojoNode(parent);
+        final PojoNodeObject parentNode = this.createPojoNode(parent);
         final PojoNode childNode = this.child(parentNode, Y);
 
         // set
@@ -149,7 +149,7 @@ public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, 
         final TestImmutableBranch parent = new TestImmutableBranch(child, null);
         final TestImmutableBranch grandParent = new TestImmutableBranch(null, parent);
 
-        final PojoObjectNode grandParentNode = this.createPojoNode(grandParent);
+        final PojoNodeObject grandParentNode = this.createPojoNode(grandParent);
         final PojoNode parentNode = this.child(grandParentNode, Z);
         final PojoNode childNode = this.child(parentNode, Y);
 
@@ -192,7 +192,7 @@ public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, 
     }
 
     @Override
-    PojoObjectNode createPojoNode() {
+    PojoNodeObject createPojoNode() {
         return this.createPojoNode(this.value());
     }
 
@@ -211,39 +211,39 @@ public final class PojoObjectNodeTest extends PojoNodeTestCase2<PojoObjectNode, 
         assertEquals(expected, actual);
     }
 
-    private PojoObjectNode createPojoNode(final Object value) {
+    private PojoNodeObject createPojoNode(final Object value) {
         return Cast.to(PojoNode.wrap(PojoName.property("root"),
                 value,
                 ReflectionPojoNodeContext.with()));
     }
 
     @Override
-    List<PojoNode> children(final PojoObjectNode firstNode) {
+    List<PojoNode> children(final PojoNodeObject firstNode) {
         return this.children0(firstNode, STRING0);
     }
 
     @Override
-    List<PojoNode> differentChildren(final PojoObjectNode firstNode) {
+    List<PojoNode> differentChildren(final PojoNodeObject firstNode) {
         return this.children0(firstNode, STRING2);
     }
 
     @Override
-    List<PojoNode> writableChildren(final PojoObjectNode firstNode) {
+    List<PojoNode> writableChildren(final PojoNodeObject firstNode) {
         return children0(firstNode, STRING0);
     }
 
     @Override
-    List<PojoNode> writableDifferentChildren(final PojoObjectNode firstNode) {
+    List<PojoNode> writableDifferentChildren(final PojoNodeObject firstNode) {
         return children0(firstNode, STRING2);
     }
 
-    private List<PojoNode> children0(final PojoObjectNode firstNode, final String x) {
+    private List<PojoNode> children0(final PojoNodeObject firstNode, final String x) {
         return Lists.of(firstNode.createNode(X, x));
     }
 
     @Override
-    protected Class<PojoObjectNode> pojoNodeType() {
-        return PojoObjectNode.class;
+    protected Class<PojoNodeObject> pojoNodeType() {
+        return PojoNodeObject.class;
     }
 
     static class TestImmutableLeaf {

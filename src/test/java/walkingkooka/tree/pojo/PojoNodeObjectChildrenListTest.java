@@ -20,11 +20,11 @@ package walkingkooka.tree.pojo;
 import java.util.List;
 import java.util.Objects;
 
-public final class PojoObjectNodeChildrenListTest extends PojoNodeListTestCase<PojoObjectNodeChildrenList, PojoNode> {
+public final class PojoNodeObjectChildrenListTest extends PojoNodeListTestCase<PojoNodeObjectChildrenList, PojoNode> {
 
     @Override
-    public Class<PojoObjectNodeChildrenList> type() {
-        return PojoObjectNodeChildrenList.class;
+    public Class<PojoNodeObjectChildrenList> type() {
+        return PojoNodeObjectChildrenList.class;
     }
 
     @Override
@@ -45,7 +45,7 @@ public final class PojoObjectNodeChildrenListTest extends PojoNodeListTestCase<P
 
     private List<PojoNode> list0(final String component0, final String component1) {
         return PojoNode.wrap(PojoName.property("root"),
-                new PojoObjectNodeChildrenListTest.TestBean(component0, component1),
+                new PojoNodeObjectChildrenListTest.TestBean(component0, component1),
                 ReflectionPojoNodeContext.with())
                 .children();
     }

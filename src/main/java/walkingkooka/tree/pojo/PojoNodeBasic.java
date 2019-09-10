@@ -21,13 +21,12 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.type.Classes;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
  * The {@link PojoNode} wrapper around an primitive type. Primitives have no children.
  */
-final class PojoBasicNode extends PojoNode {
+final class PojoNodeBasic extends PojoNode {
 
     static boolean isBasic(final Object value) {
         return null == value || isBasicType(value.getClass());
@@ -41,14 +40,14 @@ final class PojoBasicNode extends PojoNode {
                 Classes.wrapper(type).isPresent();
     }
 
-    static PojoBasicNode with(final PojoName name,
+    static PojoNodeBasic with(final PojoName name,
                               final Object value,
                               final int index,
                               final PojoNodeContext context) {
-        return new PojoBasicNode(name, value, index, context);
+        return new PojoNodeBasic(name, value, index, context);
     }
 
-    private PojoBasicNode(final PojoName name,
+    private PojoNodeBasic(final PojoName name,
                           final Object value,
                           final int index,
                           final PojoNodeContext context) {

@@ -23,25 +23,25 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link boolean[]}.
+ * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link double[]}.
  */
-final class PojoBooleanArrayNode extends PojoArrayNode {
+final class PojoNodeArrayDouble extends PojoNodeArray {
 
-    static PojoBooleanArrayNode with(final PojoName name,
-                                     final boolean[] value,
-                                     final int index,
-                                     final PojoNodeContext context) {
-        return new PojoBooleanArrayNode(name, value, index, context);
+    static PojoNodeArrayDouble with(final PojoName name,
+                                    final double[] value,
+                                    final int index,
+                                    final PojoNodeContext context) {
+        return new PojoNodeArrayDouble(name, value, index, context);
     }
 
-    private PojoBooleanArrayNode(final PojoName name,
-                                 final boolean[] value,
-                                 final int index,
-                                 final PojoNodeContext context) {
+    private PojoNodeArrayDouble(final PojoName name,
+                                final double[] value,
+                                final int index,
+                                final PojoNodeContext context) {
         super(name, value, index, context);
     }
 
-    private boolean[] valueAsBooleanArray() {
+    private double[] valueAsDoubleArray() {
         return Cast.to(this.value);
     }
 
@@ -49,11 +49,11 @@ final class PojoBooleanArrayNode extends PojoArrayNode {
 
     @Override
     final PojoNode replaceChildren(final List<PojoNode> children){
-        final boolean[] newChildren = new boolean[children.size()];
+        final double[] newChildren = new double[children.size()];
 
         int i = 0;
         for (PojoNode child : children) {
-            newChildren[i] = (boolean) child.value();
+            newChildren[i] = (double) child.value();
             i++;
         }
 
@@ -62,28 +62,28 @@ final class PojoBooleanArrayNode extends PojoArrayNode {
 
     @Override
     final PojoNode replaceChild(final PojoNode newChild) {
-        final boolean[] newChildren = new boolean[this.childrenCount()];
+        final double[] newChildren = new double[this.childrenCount()];
 
-        newChildren[newChild.index()] = (boolean) newChild.value();
+        newChildren[newChild.index()] = (double) newChild.value();
 
         return this.replace(newChildren);
     }
 
     @Override
     PojoNode replaceChildrenValues(final List<Object> values) {
-        final boolean[] newChildren = new boolean[values.size()];
+        final double[] newChildren = new double[values.size()];
 
         int i = 0;
         for (Object child : values) {
-            newChildren[i] = (boolean) child;
+            newChildren[i] = (double) child;
             i++;
         }
 
         return this.replace(newChildren);
     }
 
-    private PojoNode replace(final boolean[] values) {
-        return new PojoBooleanArrayNode(this.name(),
+    private PojoNode replace(final double[] values) {
+        return new PojoNodeArrayDouble(this.name(),
                 values,
                 this.index(),
                 this.context)
@@ -92,29 +92,29 @@ final class PojoBooleanArrayNode extends PojoArrayNode {
 
     @Override
     Object elementValue(final int index) {
-        return this.valueAsBooleanArray()[index];
+        return this.valueAsDoubleArray()[index];
     }
 
     @Override
     final int childrenCount() {
-        return this.valueAsBooleanArray().length;
+        return this.valueAsDoubleArray().length;
     }
 
     // Object...........................................................................................................
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(this.valueAsBooleanArray());
+        return Arrays.hashCode(this.valueAsDoubleArray());
     }
 
     @Override
-    boolean equals0(final PojoNode other){
-        final PojoBooleanArrayNode otherArray = Cast.to(other);
-        return Arrays.equals(this.valueAsBooleanArray(), otherArray.valueAsBooleanArray());
+    boolean equals0(final PojoNode other) {
+        final PojoNodeArrayDouble otherArray = Cast.to(other);
+        return Arrays.equals(this.valueAsDoubleArray(), otherArray.valueAsDoubleArray());
     }
 
     @Override
     final public String toString() {
-        return Arrays.toString(this.valueAsBooleanArray());
+        return Arrays.toString(this.valueAsDoubleArray());
     }
 }

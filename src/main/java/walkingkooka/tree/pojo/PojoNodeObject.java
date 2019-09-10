@@ -22,21 +22,20 @@ import walkingkooka.text.CharSequences;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * The {@link PojoNode} wrapper around an object (including primitive types) value.
  */
-final class PojoObjectNode extends PojoNode2 {
+final class PojoNodeObject extends PojoNode2 {
 
-    static PojoObjectNode with(final PojoName name,
+    static PojoNodeObject with(final PojoName name,
                                final Object value,
                                final int index,
                                final PojoNodeContext context) {
-        return new PojoObjectNode(name, value, index, context);
+        return new PojoNodeObject(name, value, index, context);
     }
 
-    private PojoObjectNode(final PojoName name,
+    private PojoNodeObject(final PojoName name,
                            final Object value,
                            final int index,
                            final PojoNodeContext context) {
@@ -46,13 +45,13 @@ final class PojoObjectNode extends PojoNode2 {
     // children ..................................................................................
 
     @Override
-    PojoObjectNodeChildrenList createChildrenList() {
-        return PojoObjectNodeChildrenList.with(this);
+    PojoNodeObjectChildrenList createChildrenList() {
+        return PojoNodeObjectChildrenList.with(this);
     }
 
     /**
      * Accepts all children, updating the properties of the value, support setters that return a new value.
-     * If the final value is different from the original a new {@link PojoObjectNode} is created and wrapped.
+     * If the final value is different from the original a new {@link PojoNodeObject} is created and wrapped.
      */
     @Override
     final PojoNode replaceChildren(final List<PojoNode> children) {
@@ -121,12 +120,12 @@ final class PojoObjectNode extends PojoNode2 {
     @Override
     public List<Object> childrenValues() {
         if (null == this.childrenValueList) {
-            this.childrenValueList = PojoObjectNodeChildrenValueList.with(this);
+            this.childrenValueList = PojoNodeObjectChildrenValueList.with(this);
         }
         return this.childrenValueList;
     }
 
-    private PojoObjectNodeChildrenValueList childrenValueList;
+    private PojoNodeObjectChildrenValueList childrenValueList;
 
     @Override
     PojoNode replaceChildrenValues(final List<Object> values) {
@@ -159,7 +158,7 @@ final class PojoObjectNode extends PojoNode2 {
     }
 
     @Override
-    final public PojoObjectNode removeChild(final int child) {
+    final public PojoNodeObject removeChild(final int child) {
         throw new UnsupportedOperationException();
     }
 

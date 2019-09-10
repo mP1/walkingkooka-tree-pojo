@@ -21,9 +21,9 @@ import java.util.List;
 /**
  * A base node for any primitive array.
  */
-abstract class PojoArrayNode extends PojoArrayOrCollectionNode {
+abstract class PojoNodeArray extends PojoArrayOrCollectionNode {
 
-    PojoArrayNode(final PojoName name,
+    PojoNodeArray(final PojoName name,
                   final Object value,
                   final int index,
                   final PojoNodeContext context) {
@@ -35,7 +35,7 @@ abstract class PojoArrayNode extends PojoArrayOrCollectionNode {
     @Override
     final List<Object> valueAsList() {
         if(null == this.valueAsList){
-            this.valueAsList = PojoArrayNodeChildrenValueList.with(this);
+            this.valueAsList = PojoNodeArrayChildrenValueList.with(this);
         }
         return this.valueAsList;
     }
@@ -48,7 +48,7 @@ abstract class PojoArrayNode extends PojoArrayOrCollectionNode {
     }
 
     /**
-     * Used by {@link PojoArrayNodeChildrenValueList} to fetch individual elements.
+     * Used by {@link PojoNodeArrayChildrenValueList} to fetch individual elements.
      */
     abstract Object elementValue(final int index);
 

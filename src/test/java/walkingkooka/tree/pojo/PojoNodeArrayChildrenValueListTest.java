@@ -20,11 +20,11 @@ import walkingkooka.collect.list.Lists;
 
 import java.util.List;
 
-public final class PojoArrayNodeChildrenValueListTest extends PojoNodeListTestCase<PojoArrayNodeChildrenValueList, Object> {
+public final class PojoNodeArrayChildrenValueListTest extends PojoNodeListTestCase<PojoNodeArrayChildrenValueList, Object> {
 
     @Override
-    public Class<PojoArrayNodeChildrenValueList> type() {
-        return PojoArrayNodeChildrenValueList.class;
+    public Class<PojoNodeArrayChildrenValueList> type() {
+        return PojoNodeArrayChildrenValueList.class;
     }
 
     @Override

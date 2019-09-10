@@ -28,17 +28,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class PojoFloatArrayNodeTest extends PojoArrayNodeTestCase<PojoFloatArrayNode, float[]> {
+public final class PojoNodeArrayCharTest extends PojoNodeArrayTestCase<PojoNodeArrayChar, char[]> {
 
-    private final static float ELEMENT0 = 1.5f;
-    private final static float ELEMENT1 = 2.5f;
-    private final static float ELEMENT2 = Float.MAX_VALUE;
+    private final static char ELEMENT0 = 'a';
+    private final static char ELEMENT1 = 'b';
+    private final static char ELEMENT2 = Character.MAX_VALUE;
 
     // children.......................................................................................................
 
     @Test
     public void testSetChildrenIncorrectIndiciesIgnored() {
-        final PojoFloatArrayNode node = this.createPojoNode();
+        final PojoNodeArrayChar node = this.createPojoNode();
         final PojoNode node2 = node.setChildren(Lists.of(node.createNode(PojoName.index(99), ELEMENT0)));
         assertNotSame(node, node2);
 
@@ -52,10 +52,10 @@ public final class PojoFloatArrayNodeTest extends PojoArrayNodeTestCase<PojoFloa
 
     @Test
     public void testSetChildrenValuesWithMutableParent() {
-        final float[] array = new float[]{ELEMENT0, ELEMENT1};
+        final char[] array = new char[]{ELEMENT0, ELEMENT1};
         final TestMutableParent parent = new TestMutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -77,10 +77,10 @@ public final class PojoFloatArrayNodeTest extends PojoArrayNodeTestCase<PojoFloa
 
     @Test
     public void testSetChildrenValuesWithImmutableParent() {
-        final float[] array = new float[]{ELEMENT0, ELEMENT1};
+        final char[] array = new char[]{ELEMENT0, ELEMENT1};
         final TestImmutableParent parent = new TestImmutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -102,17 +102,17 @@ public final class PojoFloatArrayNodeTest extends PojoArrayNodeTestCase<PojoFloa
 
     @Test
     public void testSetValueWithImmutableParent() {
-        final float[] array = new float[]{ELEMENT0, ELEMENT1};
+        final char[] array = new char[]{ELEMENT0, ELEMENT1};
         final TestImmutableParent parent = new TestImmutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
 
         final PojoNode childNode2 = parentNode2.children()
                 .get(0)
-                .setValue(new float[]{ELEMENT0, ELEMENT1, ELEMENT2});
+                .setValue(new char[]{ELEMENT0, ELEMENT1, ELEMENT2});
         assertNotSame(childNode, childNode2);
 
         this.childrenAndCheckNames(childNode2, INDEX0, INDEX1, INDEX2);
@@ -125,48 +125,58 @@ public final class PojoFloatArrayNodeTest extends PojoArrayNodeTestCase<PojoFloa
         this.childrenValuesCheck(childNode, ELEMENT0, ELEMENT1);
     }
 
-    @Override
-    PojoFloatArrayNode createEmptyPojoNode() {
-        return this.createPojoNode(new float[0]);
+    @Test
+    public void testEqualsDifferentValues() {
+        this.createPojoNode(new char[]{'z'});
+    }
+
+    @Test
+    public void testEqualsDifferentValues2() {
+        this.createPojoNode(new char[]{'a', 'b'});
     }
 
     @Override
-    PojoFloatArrayNode createPojoNode() {
+    PojoNodeArrayChar createEmptyPojoNode() {
+        return this.createPojoNode(new char[0]);
+    }
+
+    @Override
+    PojoNodeArrayChar createPojoNode() {
         return this.createPojoNode(this.value());
     }
 
     @Override
-    float[] value() {
-        return new float[]{ELEMENT0, ELEMENT1};
+    char[] value() {
+        return new char[]{ELEMENT0, ELEMENT1};
     }
 
     @Override
-    float[] differentValue() {
-        return new float[]{ELEMENT2};
+    char[] differentValue() {
+        return new char[]{ELEMENT2};
     }
 
     @Override
-    void checkValue(final float[] expected, final float[] actual) {
-        Assertions.assertArrayEquals(expected, actual, 0.1f);
+    void checkValue(final char[] expected, final char[] actual) {
+        Assertions.assertArrayEquals(expected, actual);
     }
 
-    private PojoFloatArrayNode createPojoNode(final float[] values) {
+    private PojoNodeArrayChar createPojoNode(final char[] values) {
         return Cast.to(PojoNode.wrap(ARRAY,
                 values,
                 ReflectionPojoNodeContext.with()));
     }
 
     @Override
-    List<PojoNode> children(final PojoFloatArrayNode firstNode) {
+    List<PojoNode> children(final PojoNodeArrayChar firstNode) {
         return this.children0(firstNode, ELEMENT0, ELEMENT1);
     }
 
     @Override
-    List<PojoNode> differentChildren(final PojoFloatArrayNode firstNode) {
+    List<PojoNode> differentChildren(final PojoNodeArrayChar firstNode) {
         return this.children0(firstNode, ELEMENT0);
     }
 
-    private List<PojoNode> children0(final PojoFloatArrayNode firstNode, final Object... values) {
+    private List<PojoNode> children0(final PojoNodeArrayChar firstNode, final Object... values) {
         final List<PojoNode> children = Lists.array();
         int i = 0;
         for (Object value : values) {
@@ -177,23 +187,23 @@ public final class PojoFloatArrayNodeTest extends PojoArrayNodeTestCase<PojoFloa
     }
 
     @Override
-    Class<PojoFloatArrayNode> pojoNodeType() {
-        return PojoFloatArrayNode.class;
+    Class<PojoNodeArrayChar> pojoNodeType() {
+        return PojoNodeArrayChar.class;
     }
 
     static class TestMutableParent {
 
-        TestMutableParent(final float[] array) {
+        TestMutableParent(final char[] array) {
             this.setArray(array);
         }
 
-        private float[] array;
+        private char[] array;
 
-        public float[] getArray() {
+        public char[] getArray() {
             return this.array;
         }
 
-        public void setArray(final float[] array) {
+        public void setArray(final char[] array) {
             this.array = array;
         }
 
@@ -219,17 +229,17 @@ public final class PojoFloatArrayNodeTest extends PojoArrayNodeTestCase<PojoFloa
 
     static class TestImmutableParent {
 
-        TestImmutableParent(final float[] array) {
+        TestImmutableParent(final char[] array) {
             this.array = array;
         }
 
-        private final float[] array;
+        private final char[] array;
 
-        public float[] getArray() {
+        public char[] getArray() {
             return this.array;
         }
 
-        public TestImmutableParent setArray(final float[] array) {
+        public TestImmutableParent setArray(final char[] array) {
             return Arrays.equals(this.array, array) ? this : new TestImmutableParent(array);
         }
 

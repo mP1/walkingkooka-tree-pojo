@@ -22,13 +22,13 @@ import java.util.List;
 /**
  * The {@link List} holding all properties in an instance.
  */
-final class PojoObjectNodeChildrenList extends PojoNodeFixedChildrenList<PojoObjectNode> {
+final class PojoNodeObjectChildrenList extends PojoNodeFixedChildrenList<PojoNodeObject> {
 
-    static PojoObjectNodeChildrenList with(final PojoObjectNode parent) {
-        return new PojoObjectNodeChildrenList(parent);
+    static PojoNodeObjectChildrenList with(final PojoNodeObject parent) {
+        return new PojoNodeObjectChildrenList(parent);
     }
 
-    private PojoObjectNodeChildrenList(final PojoObjectNode parent) {
+    private PojoNodeObjectChildrenList(final PojoNodeObject parent) {
         super(parent);
     }
 
@@ -52,6 +52,6 @@ final class PojoObjectNodeChildrenList extends PojoNodeFixedChildrenList<PojoObj
 
     @Override
     boolean isSameType(final Object other) {
-        return other instanceof PojoObjectNodeChildrenList;
+        return other instanceof PojoNodeObjectChildrenList;
     }
 }

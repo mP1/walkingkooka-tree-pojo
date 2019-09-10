@@ -14,6 +14,7 @@
  * limitations under the License.
  *
  */
+
 package walkingkooka.tree.pojo;
 
 import org.junit.jupiter.api.Assertions;
@@ -27,17 +28,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObjectArrayNode, Object[]> {
+public final class PojoNodeArrayByteTest extends PojoNodeArrayTestCase<PojoNodeArrayByte, byte[]> {
 
-    private final static String ELEMENT0 = "a1";
-    private final static String ELEMENT1 = null;
-    private final static String ELEMENT2 = "c3";
+    private final static byte ELEMENT0 = 1;
+    private final static byte ELEMENT1 = 2;
+    private final static byte ELEMENT2 = Byte.MAX_VALUE;
 
     // children.......................................................................................................
 
     @Test
     public void testSetChildrenIncorrectIndiciesIgnored() {
-        final PojoObjectArrayNode node = this.createPojoNode();
+        final PojoNodeArrayByte node = this.createPojoNode();
         final PojoNode node2 = node.setChildren(Lists.of(node.createNode(PojoName.index(99), ELEMENT0)));
         assertNotSame(node, node2);
 
@@ -51,10 +52,10 @@ public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObj
 
     @Test
     public void testSetChildrenValuesWithMutableParent() {
-        final String[] array = new String[]{ELEMENT0, ELEMENT1};
+        final byte[] array = new byte[]{ELEMENT0, ELEMENT1};
         final TestMutableParent parent = new TestMutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -76,10 +77,10 @@ public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObj
 
     @Test
     public void testSetChildrenValuesWithImmutableParent() {
-        final String[] array = new String[]{ELEMENT0, ELEMENT1};
+        final byte[] array = new byte[]{ELEMENT0, ELEMENT1};
         final TestImmutableParent parent = new TestImmutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -99,21 +100,19 @@ public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObj
         this.childrenValuesCheck(childNode, ELEMENT0, ELEMENT1);
     }
 
-    // setValue........................................................................................................
-
     @Test
     public void testSetValueWithImmutableParent() {
-        final String[] array = new String[]{ELEMENT0, ELEMENT1};
+        final byte[] array = new byte[]{ELEMENT0, ELEMENT1};
         final TestImmutableParent parent = new TestImmutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
 
         final PojoNode childNode2 = parentNode2.children()
                 .get(0)
-                .setValue(new String[]{ELEMENT0, ELEMENT1, ELEMENT2});
+                .setValue(new byte[]{ELEMENT0, ELEMENT1, ELEMENT2});
         assertNotSame(childNode, childNode2);
 
         this.childrenAndCheckNames(childNode2, INDEX0, INDEX1, INDEX2);
@@ -126,48 +125,58 @@ public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObj
         this.childrenValuesCheck(childNode, ELEMENT0, ELEMENT1);
     }
 
-    @Override
-    PojoObjectArrayNode createEmptyPojoNode() {
-        return this.createPojoNode(new String[0]);
+    @Test
+    public void testEqualsDifferentValues() {
+        this.createPojoNode(new byte[]{1});
+    }
+
+    @Test
+    public void testEqualsDifferentValues2() {
+        this.createPojoNode(new byte[]{1, 2});
     }
 
     @Override
-    PojoObjectArrayNode createPojoNode() {
+    PojoNodeArrayByte createEmptyPojoNode() {
+        return this.createPojoNode(new byte[0]);
+    }
+
+    @Override
+    PojoNodeArrayByte createPojoNode() {
         return this.createPojoNode(this.value());
     }
 
     @Override
-    String[] value() {
-        return new String[]{ELEMENT0, ELEMENT1};
+    byte[] value() {
+        return new byte[]{ELEMENT0, ELEMENT1};
     }
 
     @Override
-    Object[] differentValue() {
-        return new Object[]{ELEMENT2};
+    byte[] differentValue() {
+        return new byte[]{ELEMENT2};
     }
 
     @Override
-    void checkValue(final Object[] expected, final Object[] actual) {
+    void checkValue(final byte[] expected, final byte[] actual) {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-    private PojoObjectArrayNode createPojoNode(final String[] values) {
+    private PojoNodeArrayByte createPojoNode(final byte[] values) {
         return Cast.to(PojoNode.wrap(ARRAY,
                 values,
                 ReflectionPojoNodeContext.with()));
     }
 
     @Override
-    List<PojoNode> children(final PojoObjectArrayNode firstNode) {
+    List<PojoNode> children(final PojoNodeArrayByte firstNode) {
         return this.children0(firstNode, ELEMENT0, ELEMENT1);
     }
 
     @Override
-    List<PojoNode> differentChildren(final PojoObjectArrayNode firstNode) {
+    List<PojoNode> differentChildren(final PojoNodeArrayByte firstNode) {
         return this.children0(firstNode, ELEMENT0);
     }
 
-    private List<PojoNode> children0(final PojoObjectArrayNode firstNode, final Object... values) {
+    private List<PojoNode> children0(final PojoNodeArrayByte firstNode, final Object... values) {
         final List<PojoNode> children = Lists.array();
         int i = 0;
         for (Object value : values) {
@@ -178,23 +187,23 @@ public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObj
     }
 
     @Override
-    Class<PojoObjectArrayNode> pojoNodeType() {
-        return PojoObjectArrayNode.class;
+    Class<PojoNodeArrayByte> pojoNodeType() {
+        return PojoNodeArrayByte.class;
     }
 
     static class TestMutableParent {
 
-        TestMutableParent(final String[] array) {
+        TestMutableParent(final byte[] array) {
             this.setArray(array);
         }
 
-        private String[] array;
+        private byte[] array;
 
-        public String[] getArray() {
+        public byte[] getArray() {
             return this.array;
         }
 
-        public void setArray(final String[] array) {
+        public void setArray(final byte[] array) {
             this.array = array;
         }
 
@@ -220,17 +229,17 @@ public final class PojoObjectArrayNodeTest extends PojoArrayNodeTestCase<PojoObj
 
     static class TestImmutableParent {
 
-        TestImmutableParent(final String[] array) {
+        TestImmutableParent(final byte[] array) {
             this.array = array;
         }
 
-        private final String[] array;
+        private final byte[] array;
 
-        public String[] getArray() {
+        public byte[] getArray() {
             return this.array;
         }
 
-        public TestImmutableParent setArray(final String[] array) {
+        public TestImmutableParent setArray(final byte[] array) {
             return Arrays.equals(this.array, array) ? this : new TestImmutableParent(array);
         }
 

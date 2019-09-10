@@ -25,11 +25,11 @@ import walkingkooka.collect.map.Maps;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public final class PojoBasicNodeTest extends PojoNodeTestCase<PojoBasicNode, Integer> {
+public final class PojoNodeBasicTest extends PojoNodeTestCase<PojoNodeBasic, Integer> {
 
     @Test
     public void testNull() {
-        final PojoBasicNode node = this.createPojoNode(null);
+        final PojoNodeBasic node = this.createPojoNode(null);
         assertEquals(Maps.empty(), node.attributes());
     }
 
@@ -54,7 +54,7 @@ public final class PojoBasicNodeTest extends PojoNodeTestCase<PojoBasicNode, Int
     }
 
     private void childrenOf(final Object value) {
-        final PojoBasicNode node = this.createPojoNode(value);
+        final PojoNodeBasic node = this.createPojoNode(value);
         this.childrenAndCheckNames(node);
         this.parentMissingCheck(node);
     }
@@ -87,7 +87,7 @@ public final class PojoBasicNodeTest extends PojoNodeTestCase<PojoBasicNode, Int
     }
 
     @Override
-    PojoBasicNode createPojoNode() {
+    PojoNodeBasic createPojoNode() {
         return this.createPojoNode(this.value());
     }
 
@@ -106,14 +106,14 @@ public final class PojoBasicNodeTest extends PojoNodeTestCase<PojoBasicNode, Int
         assertEquals(expected, actual);
     }
 
-    private PojoBasicNode createPojoNode(final Object value) {
+    private PojoNodeBasic createPojoNode(final Object value) {
         return Cast.to(PojoNode.wrap(PojoName.property("root"),
                 value,
                 ReflectionPojoNodeContext.with()));
     }
 
     @Override
-    Class<PojoBasicNode> pojoNodeType() {
-        return PojoBasicNode.class;
+    Class<PojoNodeBasic> pojoNodeType() {
+        return PojoNodeBasic.class;
     }
 }

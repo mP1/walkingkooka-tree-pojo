@@ -20,7 +20,7 @@ package walkingkooka.tree.pojo;
 import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.Lists;
-import walkingkooka.tree.pojo.PojoObjectNodeTest.TestImmutableLeaf;
+import walkingkooka.tree.pojo.PojoNodeObjectTest.TestImmutableLeaf;
 
 import java.util.List;
 
@@ -58,7 +58,7 @@ public final class PojoListNodeTest extends PojoCollectionNodeTestCase<PojoListN
         final List<Object> list = Lists.of(ELEMENT0, ELEMENT1);
         final TestMutableParent parent = new TestMutableParent(list);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(LIST, list);
         final PojoNode childNode2 = childNode.setChildren(Lists.of(parentNode.createNode(PojoName.index(0), ELEMENT0),
                 parentNode.createNode(PojoName.index(1), ELEMENT1),
@@ -79,7 +79,7 @@ public final class PojoListNodeTest extends PojoCollectionNodeTestCase<PojoListN
                 new TestImmutableLeaf(STRING0),
                 new TestImmutableLeaf(STRING1));
         final TestImmutableParent parent = new TestImmutableParent(parentList);
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // list
 
@@ -105,7 +105,7 @@ public final class PojoListNodeTest extends PojoCollectionNodeTestCase<PojoListN
                 new TestMutableLeaf(STRING0),
                 new TestMutableLeaf(STRING1));
         final TestMutableParent parent = new TestMutableParent(parentList);
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // list
 
@@ -131,7 +131,7 @@ public final class PojoListNodeTest extends PojoCollectionNodeTestCase<PojoListN
     public void testSetChildrenValuesImmutableChildWithParent() {
         final List<Object> parentList = Lists.of(new TestImmutableLeaf(STRING0));
         final TestImmutableParent parent = new TestImmutableParent(parentList);
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // list
 
@@ -153,7 +153,7 @@ public final class PojoListNodeTest extends PojoCollectionNodeTestCase<PojoListN
     public void testSetChildrenValuesMutableChildWithParent() {
         final List<Object> parentList = Lists.of(new TestMutableLeaf(STRING0));
         final TestMutableParent parent = new TestMutableParent(parentList);
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // list
 
@@ -178,7 +178,7 @@ public final class PojoListNodeTest extends PojoCollectionNodeTestCase<PojoListN
         final List<Object> list = Lists.of(ELEMENT0, ELEMENT1);
         final TestMutableParent parent = new TestMutableParent(list);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(LIST, list);
         final PojoNode childNode2 = childNode.setValue(Lists.of(ELEMENT0, ELEMENT1, ELEMENT2));
         assertNotSame(childNode, childNode2);

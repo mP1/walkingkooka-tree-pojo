@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  */
-
 package walkingkooka.tree.pojo;
 
 import org.junit.jupiter.api.Assertions;
@@ -28,17 +27,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
-public final class PojoByteArrayNodeTest extends PojoArrayNodeTestCase<PojoByteArrayNode, byte[]> {
+public final class PojoNodeArrayShortTest extends PojoNodeArrayTestCase<PojoNodeArrayShort, short[]> {
 
-    private final static byte ELEMENT0 = 1;
-    private final static byte ELEMENT1 = 2;
-    private final static byte ELEMENT2 = Byte.MAX_VALUE;
+    private final static short ELEMENT0 = 1;
+    private final static short ELEMENT1 = 2;
+    private final static short ELEMENT2 = Short.MAX_VALUE;
 
     // children.......................................................................................................
 
     @Test
     public void testSetChildrenIncorrectIndiciesIgnored() {
-        final PojoByteArrayNode node = this.createPojoNode();
+        final PojoNodeArrayShort node = this.createPojoNode();
         final PojoNode node2 = node.setChildren(Lists.of(node.createNode(PojoName.index(99), ELEMENT0)));
         assertNotSame(node, node2);
 
@@ -52,10 +51,10 @@ public final class PojoByteArrayNodeTest extends PojoArrayNodeTestCase<PojoByteA
 
     @Test
     public void testSetChildrenValuesWithMutableParent() {
-        final byte[] array = new byte[]{ELEMENT0, ELEMENT1};
+        final short[] array = new short[]{ELEMENT0, ELEMENT1};
         final TestMutableParent parent = new TestMutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -77,10 +76,10 @@ public final class PojoByteArrayNodeTest extends PojoArrayNodeTestCase<PojoByteA
 
     @Test
     public void testSetChildrenValuesWithImmutableParent() {
-        final byte[] array = new byte[]{ELEMENT0, ELEMENT1};
+        final short[] array = new short[]{ELEMENT0, ELEMENT1};
         final TestImmutableParent parent = new TestImmutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
@@ -102,17 +101,17 @@ public final class PojoByteArrayNodeTest extends PojoArrayNodeTestCase<PojoByteA
 
     @Test
     public void testSetValueWithImmutableParent() {
-        final byte[] array = new byte[]{ELEMENT0, ELEMENT1};
+        final short[] array = new short[]{ELEMENT0, ELEMENT1};
         final TestImmutableParent parent = new TestImmutableParent(array);
 
-        final PojoNode parentNode = PojoObjectNode.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
+        final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
         final PojoNode childNode = parentNode.createNode(ARRAY, array);
         final PojoNode parentNode2 = parentNode.setChildren(Lists.of(childNode));
         assertSame(parentNode, parentNode2);
 
         final PojoNode childNode2 = parentNode2.children()
                 .get(0)
-                .setValue(new byte[]{ELEMENT0, ELEMENT1, ELEMENT2});
+                .setValue(new short[]{ELEMENT0, ELEMENT1, ELEMENT2});
         assertNotSame(childNode, childNode2);
 
         this.childrenAndCheckNames(childNode2, INDEX0, INDEX1, INDEX2);
@@ -125,58 +124,48 @@ public final class PojoByteArrayNodeTest extends PojoArrayNodeTestCase<PojoByteA
         this.childrenValuesCheck(childNode, ELEMENT0, ELEMENT1);
     }
 
-    @Test
-    public void testEqualsDifferentValues() {
-        this.createPojoNode(new byte[]{1});
-    }
-
-    @Test
-    public void testEqualsDifferentValues2() {
-        this.createPojoNode(new byte[]{1, 2});
+    @Override
+    PojoNodeArrayShort createEmptyPojoNode() {
+        return this.createPojoNode(new short[0]);
     }
 
     @Override
-    PojoByteArrayNode createEmptyPojoNode() {
-        return this.createPojoNode(new byte[0]);
-    }
-
-    @Override
-    PojoByteArrayNode createPojoNode() {
+    PojoNodeArrayShort createPojoNode() {
         return this.createPojoNode(this.value());
     }
 
     @Override
-    byte[] value() {
-        return new byte[]{ELEMENT0, ELEMENT1};
+    short[] value() {
+        return new short[]{ELEMENT0, ELEMENT1};
     }
 
     @Override
-    byte[] differentValue() {
-        return new byte[]{ELEMENT2};
+    short[] differentValue() {
+        return new short[]{ELEMENT2};
     }
 
     @Override
-    void checkValue(final byte[] expected, final byte[] actual) {
+    void checkValue(final short[] expected, final short[] actual) {
         Assertions.assertArrayEquals(expected, actual);
     }
 
-    private PojoByteArrayNode createPojoNode(final byte[] values) {
+    private PojoNodeArrayShort createPojoNode(final short[] values) {
         return Cast.to(PojoNode.wrap(ARRAY,
                 values,
                 ReflectionPojoNodeContext.with()));
     }
 
     @Override
-    List<PojoNode> children(final PojoByteArrayNode firstNode) {
+    List<PojoNode> children(final PojoNodeArrayShort firstNode) {
         return this.children0(firstNode, ELEMENT0, ELEMENT1);
     }
 
     @Override
-    List<PojoNode> differentChildren(final PojoByteArrayNode firstNode) {
+    List<PojoNode> differentChildren(final PojoNodeArrayShort firstNode) {
         return this.children0(firstNode, ELEMENT0);
     }
 
-    private List<PojoNode> children0(final PojoByteArrayNode firstNode, final Object... values) {
+    private List<PojoNode> children0(final PojoNodeArrayShort firstNode, final Object... values) {
         final List<PojoNode> children = Lists.array();
         int i = 0;
         for (Object value : values) {
@@ -187,23 +176,23 @@ public final class PojoByteArrayNodeTest extends PojoArrayNodeTestCase<PojoByteA
     }
 
     @Override
-    Class<PojoByteArrayNode> pojoNodeType() {
-        return PojoByteArrayNode.class;
+    Class<PojoNodeArrayShort> pojoNodeType() {
+        return PojoNodeArrayShort.class;
     }
 
     static class TestMutableParent {
 
-        TestMutableParent(final byte[] array) {
+        TestMutableParent(final short[] array) {
             this.setArray(array);
         }
 
-        private byte[] array;
+        private short[] array;
 
-        public byte[] getArray() {
+        public short[] getArray() {
             return this.array;
         }
 
-        public void setArray(final byte[] array) {
+        public void setArray(final short[] array) {
             this.array = array;
         }
 
@@ -229,17 +218,17 @@ public final class PojoByteArrayNodeTest extends PojoArrayNodeTestCase<PojoByteA
 
     static class TestImmutableParent {
 
-        TestImmutableParent(final byte[] array) {
+        TestImmutableParent(final short[] array) {
             this.array = array;
         }
 
-        private final byte[] array;
+        private final short[] array;
 
-        public byte[] getArray() {
+        public short[] getArray() {
             return this.array;
         }
 
-        public TestImmutableParent setArray(final byte[] array) {
+        public TestImmutableParent setArray(final short[] array) {
             return Arrays.equals(this.array, array) ? this : new TestImmutableParent(array);
         }
 

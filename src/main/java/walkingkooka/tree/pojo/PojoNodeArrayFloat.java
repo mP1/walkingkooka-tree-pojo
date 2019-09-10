@@ -23,37 +23,37 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link char[]}.
+ * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link float[]}.
  */
-final class PojoCharArrayNode extends PojoArrayNode {
+final class PojoNodeArrayFloat extends PojoNodeArray {
 
-    static PojoCharArrayNode with(final PojoName name,
-                                  final char[] value,
-                                  final int index,
-                                  final PojoNodeContext context) {
-        return new PojoCharArrayNode(name, value, index, context);
+    static PojoNodeArrayFloat with(final PojoName name,
+                                   final float[] value,
+                                   final int index,
+                                   final PojoNodeContext context) {
+        return new PojoNodeArrayFloat(name, value, index, context);
     }
 
-    private PojoCharArrayNode(final PojoName name,
-                              final char[] value,
-                              final int index,
-                              final PojoNodeContext context) {
+    private PojoNodeArrayFloat(final PojoName name,
+                               final float[] value,
+                               final int index,
+                               final PojoNodeContext context) {
         super(name, value, index, context);
     }
 
-    private char[] valueAsCharArray() {
+    private float[] asFloatArray() {
         return Cast.to(this.value);
     }
 
     // children ..................................................................................
 
     @Override
-    final PojoNode replaceChildren(final List<PojoNode> children){
-        final char[] newChildren = new char[children.size()];
+    final PojoNode replaceChildren(final List<PojoNode> children) {
+        final float[] newChildren = new float[children.size()];
 
         int i = 0;
         for (PojoNode child : children) {
-            newChildren[i] = (char) child.value();
+            newChildren[i] = (float) child.value();
             i++;
         }
 
@@ -62,28 +62,28 @@ final class PojoCharArrayNode extends PojoArrayNode {
 
     @Override
     final PojoNode replaceChild(final PojoNode newChild) {
-        final char[] newChildren = new char[this.childrenCount()];
+        final float[] newChildren = new float[this.childrenCount()];
 
-        newChildren[newChild.index()] = (char) newChild.value();
+        newChildren[newChild.index()] = (float) newChild.value();
 
         return this.replace(newChildren);
     }
 
     @Override
     PojoNode replaceChildrenValues(final List<Object> values) {
-        final char[] newChildren = new char[values.size()];
+        final float[] newChildren = new float[values.size()];
 
         int i = 0;
         for (Object child : values) {
-            newChildren[i] = (char) child;
+            newChildren[i] = (float) child;
             i++;
         }
 
         return this.replace(newChildren);
     }
 
-    private PojoNode replace(final char[] values) {
-        return new PojoCharArrayNode(this.name(),
+    private PojoNode replace(final float[] values) {
+        return new PojoNodeArrayFloat(this.name(),
                 values,
                 this.index(),
                 this.context)
@@ -92,29 +92,29 @@ final class PojoCharArrayNode extends PojoArrayNode {
 
     @Override
     Object elementValue(final int index) {
-        return this.valueAsCharArray()[index];
+        return this.asFloatArray()[index];
     }
 
     @Override
     final int childrenCount() {
-        return this.valueAsCharArray().length;
+        return this.asFloatArray().length;
     }
 
     // Object...........................................................................................................
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(this.valueAsCharArray());
+        return Arrays.hashCode(this.asFloatArray());
     }
 
     @Override
     boolean equals0(final PojoNode other) {
-        final PojoCharArrayNode otherArray = Cast.to(other);
-        return Arrays.equals(this.valueAsCharArray(), otherArray.valueAsCharArray());
+        final PojoNodeArrayFloat otherArray = Cast.to(other);
+        return Arrays.equals(this.asFloatArray(), otherArray.asFloatArray());
     }
 
     @Override
     final public String toString() {
-        return Arrays.toString(this.valueAsCharArray());
+        return Arrays.toString(this.asFloatArray());
     }
 }

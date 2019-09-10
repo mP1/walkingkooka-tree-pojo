@@ -23,25 +23,25 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link byte[]}.
+ * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link short[]}.
  */
-final class PojoByteArrayNode extends PojoArrayNode {
+final class PojoNodeArrayShort extends PojoNodeArray {
 
-    static PojoByteArrayNode with(final PojoName name,
-                                  final byte[] value,
-                                  final int index,
-                                  final PojoNodeContext context) {
-        return new PojoByteArrayNode(name, value, index, context);
+    static PojoNodeArrayShort with(final PojoName name,
+                                   final short[] value,
+                                   final int index,
+                                   final PojoNodeContext context) {
+        return new PojoNodeArrayShort(name, value, index, context);
     }
 
-    private PojoByteArrayNode(final PojoName name,
-                              final byte[] value,
-                              final int index,
-                              final PojoNodeContext context) {
+    private PojoNodeArrayShort(final PojoName name,
+                               final short[] value,
+                               final int index,
+                               final PojoNodeContext context) {
         super(name, value, index, context);
     }
 
-    private byte[] valueAsByteArray() {
+    private short[] valueAsShortArray() {
         return Cast.to(this.value);
     }
 
@@ -49,11 +49,11 @@ final class PojoByteArrayNode extends PojoArrayNode {
 
     @Override
     final PojoNode replaceChildren(final List<PojoNode> children){
-        final byte[] newChildren = new byte[children.size()];
+        final short[] newChildren = new short[children.size()];
 
         int i = 0;
         for (PojoNode child : children) {
-            newChildren[i] = (byte) child.value();
+            newChildren[i] = (short) child.value();
             i++;
         }
 
@@ -62,28 +62,28 @@ final class PojoByteArrayNode extends PojoArrayNode {
 
     @Override
     final PojoNode replaceChild(final PojoNode newChild) {
-        final byte[] newChildren = new byte[this.childrenCount()];
+        final short[] newChildren = new short[this.childrenCount()];
 
-        newChildren[newChild.index()] = (byte) newChild.value();
+        newChildren[newChild.index()] = (short) newChild.value();
 
         return this.replace(newChildren);
     }
 
     @Override
     PojoNode replaceChildrenValues(final List<Object> values) {
-        final byte[] newChildren = new byte[values.size()];
+        final short[] newChildren = new short[values.size()];
 
         int i = 0;
         for (Object child : values) {
-            newChildren[i] = (byte) child;
+            newChildren[i] = (short) child;
             i++;
         }
 
         return this.replace(newChildren);
     }
 
-    private PojoNode replace(final byte[] values) {
-        return new PojoByteArrayNode(this.name(),
+    private PojoNode replace(final short[] values) {
+        return new PojoNodeArrayShort(this.name(),
                 values,
                 this.index(),
                 this.context)
@@ -92,29 +92,29 @@ final class PojoByteArrayNode extends PojoArrayNode {
 
     @Override
     Object elementValue(final int index) {
-        return this.valueAsByteArray()[index];
+        return this.valueAsShortArray()[index];
     }
 
     @Override
     final int childrenCount() {
-        return this.valueAsByteArray().length;
+        return this.valueAsShortArray().length;
     }
 
     // Object...........................................................................................................
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(this.valueAsByteArray());
+        return Arrays.hashCode(this.valueAsShortArray());
     }
 
     @Override
     boolean equals0(final PojoNode other) {
-        final PojoByteArrayNode otherArray = Cast.to(other);
-        return Arrays.equals(this.valueAsByteArray(), otherArray.valueAsByteArray());
+        final PojoNodeArrayShort otherArray = Cast.to(other);
+        return Arrays.equals(this.valueAsShortArray(), otherArray.valueAsShortArray());
     }
 
     @Override
     final public String toString() {
-        return Arrays.toString(this.valueAsByteArray());
+        return Arrays.toString(this.valueAsShortArray());
     }
 }

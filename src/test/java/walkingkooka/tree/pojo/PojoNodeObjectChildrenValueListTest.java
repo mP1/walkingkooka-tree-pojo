@@ -21,7 +21,7 @@ import walkingkooka.collect.list.Lists;
 
 import java.util.List;
 
-public final class PojoObjectNodeChildrenValueListTest extends PojoNodeListTestCase<PojoObjectNodeChildrenValueList, Object> {
+public final class PojoNodeObjectChildrenValueListTest extends PojoNodeListTestCase<PojoNodeObjectChildrenValueList, Object> {
 
     @Override
     List<Object> createList(final List<Object> components) {
@@ -62,7 +62,7 @@ public final class PojoObjectNodeChildrenValueListTest extends PojoNodeListTestC
     }
 
     @Override
-    public Class<PojoObjectNodeChildrenValueList> type() {
-        return PojoObjectNodeChildrenValueList.class;
+    public Class<PojoNodeObjectChildrenValueList> type() {
+        return PojoNodeObjectChildrenValueList.class;
     }
 }

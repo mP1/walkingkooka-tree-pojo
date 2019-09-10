@@ -19,40 +19,49 @@ package walkingkooka.tree.pojo;
 
 import walkingkooka.collect.list.Lists;
 
+import java.util.List;
+
 /**
- * Readonly list view of {@link PojoObjectNode#childrenValues()}
+ * Readonly list view of {@link PojoNodeObject#childrenValues()}
  */
-final class PojoArrayNodeChildrenValueList extends PojoNodeList<PojoArrayNode, Object> {
+final class PojoNodeObjectChildrenValueList extends PojoNodeList<PojoNodeObject, Object> {
 
     static {
-        Lists.registerImmutableType(PojoArrayNodeChildrenValueList.class);
+        Lists.registerImmutableType(PojoNodeObjectChildrenValueList.class);
     }
 
-    static PojoArrayNodeChildrenValueList with(final PojoArrayNode parent) {
-        return new PojoArrayNodeChildrenValueList(parent);
+    static PojoNodeObjectChildrenValueList with(final PojoNodeObject parent) {
+        return new PojoNodeObjectChildrenValueList(parent);
     }
 
-    private PojoArrayNodeChildrenValueList(final PojoArrayNode parent) {
+    private PojoNodeObjectChildrenValueList(final PojoNodeObject parent) {
         super(parent);
     }
 
     @Override
-    public Object get(final int index) {
-        return this.parent.elementValue(index);
+    public Object get(int index) {
+        return this.properties().get(index).get(this.parent.value);
     }
 
     @Override
     public int size() {
-        return this.parent.childrenCount();
+        return this.properties().size();
+    }
+
+    private List<PojoProperty> properties() {
+        return this.parent.properties();
     }
 
     @Override
     boolean isSameType(final Object other) {
-        return other instanceof PojoArrayNodeChildrenValueList;
+        return other instanceof PojoNodeObjectChildrenValueList;
     }
 
+    /**
+     * Compare for equality using parent v parent.
+     */
     @Override
     boolean equals0(final PojoNodeList other) {
-        return this.parent.equals(other.parent);
+        return this.parent.value.equals(other.parent.value);
     }
 }
