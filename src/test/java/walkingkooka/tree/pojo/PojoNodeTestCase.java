@@ -145,6 +145,8 @@ public abstract class PojoNodeTestCase<N extends PojoNode, V> implements ClassTe
         return property.get();
     }
 
+    // ClassTesting.....................................................................................................
+
     @Override
     public final Class<PojoNode> type() {
         return Cast.to(this.pojoNodeType());
@@ -153,12 +155,19 @@ public abstract class PojoNodeTestCase<N extends PojoNode, V> implements ClassTe
     abstract Class<N> pojoNodeType();
 
     @Override
+    public final JavaVisibility typeVisibility() {
+        return JavaVisibility.PACKAGE_PRIVATE;
+    }
+
+    // TypeNameTesting..................................................................................................
+
+    @Override
     public final String typeNamePrefix() {
-        return "Pojo";
+        return "PojoNode";
     }
 
     @Override
-    public final JavaVisibility typeVisibility() {
-        return JavaVisibility.PACKAGE_PRIVATE;
+    public final String typeNameSuffix() {
+        return "";
     }
 }

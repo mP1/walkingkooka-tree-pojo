@@ -70,59 +70,59 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
                           final PojoNodeContext context) {
         PojoNode wrapped;
         for (; ; ) {
-            if (PojoBasicNode.isBasic(value)) {
-                wrapped = PojoBasicNode.with(name, value, index, context);
+            if (PojoNodeBasic.isBasic(value)) {
+                wrapped = PojoNodeBasic.with(name, value, index, context);
                 break;
             }
             if (value instanceof boolean[]) {
-                wrapped = PojoBooleanArrayNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeArrayBoolean.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof byte[]) {
-                wrapped = PojoByteArrayNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeArrayByte.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof char[]) {
-                wrapped = PojoCharArrayNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeArrayChar.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof double[]) {
-                wrapped = PojoDoubleArrayNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeArrayDouble.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof float[]) {
-                wrapped = PojoFloatArrayNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeArrayFloat.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof int[]) {
-                wrapped = PojoIntArrayNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeArrayInt.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof List) {
-                wrapped = PojoListNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeCollectionList.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof long[]) {
-                wrapped = PojoLongArrayNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeArrayLong.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof Map) {
-                wrapped = PojoMapNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeCollectionMap.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof Object[]) {
-                wrapped = PojoObjectArrayNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeArrayObject.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof Set) {
-                wrapped = PojoSetNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeCollectionSet.with(name, Cast.to(value), index, context);
                 break;
             }
             if (value instanceof short[]) {
-                wrapped = PojoShortArrayNode.with(name, Cast.to(value), index, context);
+                wrapped = PojoNodeArrayShort.with(name, Cast.to(value), index, context);
                 break;
             }
-            wrapped = PojoObjectNode.with(name, value, index, context);
+            wrapped = PojoNodeObject.with(name, value, index, context);
             break;
         }
 
@@ -310,7 +310,7 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
     abstract boolean equals0(final PojoNode other);
 
     /**
-     * The default equals for all sub classes except for wrappers around arrays, sub classes of {@link PojoArrayNode}
+     * The default equals for all sub classes except for wrappers around arrays, sub classes of {@link PojoNodeArray}
      */
     final boolean equals1(final PojoNode other) {
         return Objects.equals(this.value, other.value);
