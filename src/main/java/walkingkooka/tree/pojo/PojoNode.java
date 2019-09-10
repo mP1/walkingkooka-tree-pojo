@@ -188,16 +188,7 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
 
     private Optional<PojoNode> parent;
 
-    // children ..........................................................................................................
-
-    /**
-     * Finds the first child with the given name.
-     */
-    final Optional<PojoNode> child(final PojoName name) {
-        return this.children().stream()
-                .filter(p -> p.name().equals(name))
-                .findFirst();
-    }
+    // children ........................................................................................................
 
     /**
      * Sub classes must create a new copy of the parent and replace the identified child using its index or similar,
