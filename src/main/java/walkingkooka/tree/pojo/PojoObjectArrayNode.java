@@ -105,6 +105,13 @@ final class PojoObjectArrayNode extends PojoArrayNode {
         return this.valueAsArray().length;
     }
 
+    // Object...........................................................................................................
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(this.valueAsArray());
+    }
+
     @Override
     boolean equals0(final PojoNode other) {
         final PojoObjectArrayNode otherArray = Cast.to(other);

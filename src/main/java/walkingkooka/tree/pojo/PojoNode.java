@@ -309,12 +309,10 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
     // Object .........................................................................................................
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(this.value);
-    }
+    public abstract int hashCode();
 
     @Override
-    public boolean equals(final Object other) {
+    public final boolean equals(final Object other) {
         return other instanceof PojoNode && equals0(Cast.to(other));
     }
 

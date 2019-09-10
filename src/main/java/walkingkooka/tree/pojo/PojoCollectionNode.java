@@ -17,6 +17,8 @@
 
 package walkingkooka.tree.pojo;
 
+import java.util.Arrays;
+
 /**
  * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link java.util.Collection}.
  */
@@ -27,6 +29,13 @@ abstract class PojoCollectionNode extends PojoArrayOrCollectionNode {
                        final int index,
                        final PojoNodeContext context) {
         super(name, value, index, context);
+    }
+
+    // Object...........................................................................................................
+
+    @Override
+    public final int hashCode() {
+        return this.value.hashCode();
     }
 
     @Override

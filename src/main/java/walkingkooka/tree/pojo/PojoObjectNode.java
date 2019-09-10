@@ -22,6 +22,7 @@ import walkingkooka.text.CharSequences;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * The {@link PojoNode} wrapper around an object (including primitive types) value.
@@ -189,6 +190,13 @@ final class PojoObjectNode extends PojoNode2 {
     }
 
     private List<PojoProperty> properties;
+
+    // Object...........................................................................................................
+
+    @Override
+    public int hashCode() {
+        return this.value.hashCode();
+    }
 
     @Override
     boolean equals0(final PojoNode other) {

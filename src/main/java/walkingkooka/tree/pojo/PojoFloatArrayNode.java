@@ -41,7 +41,7 @@ final class PojoFloatArrayNode extends PojoArrayNode {
         super(name, value, index, context);
     }
 
-    private float[] privateAsFloatArray() {
+    private float[] asFloatArray() {
         return Cast.to(this.value);
     }
 
@@ -92,22 +92,29 @@ final class PojoFloatArrayNode extends PojoArrayNode {
 
     @Override
     Object elementValue(final int index) {
-        return this.privateAsFloatArray()[index];
+        return this.asFloatArray()[index];
     }
 
     @Override
     final int childrenCount() {
-        return this.privateAsFloatArray().length;
+        return this.asFloatArray().length;
+    }
+
+    // Object...........................................................................................................
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(this.asFloatArray());
     }
 
     @Override
     boolean equals0(final PojoNode other) {
         final PojoFloatArrayNode otherArray = Cast.to(other);
-        return Arrays.equals(this.privateAsFloatArray(), otherArray.privateAsFloatArray());
+        return Arrays.equals(this.asFloatArray(), otherArray.asFloatArray());
     }
 
     @Override
     final public String toString() {
-        return Arrays.toString(this.privateAsFloatArray());
+        return Arrays.toString(this.asFloatArray());
     }
 }

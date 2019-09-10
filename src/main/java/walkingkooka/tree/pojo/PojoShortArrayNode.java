@@ -100,6 +100,13 @@ final class PojoShortArrayNode extends PojoArrayNode {
         return this.valueAsShortArray().length;
     }
 
+    // Object...........................................................................................................
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(this.valueAsShortArray());
+    }
+
     @Override
     boolean equals0(final PojoNode other) {
         final PojoShortArrayNode otherArray = Cast.to(other);
