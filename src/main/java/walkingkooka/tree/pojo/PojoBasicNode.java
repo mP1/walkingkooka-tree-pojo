@@ -21,6 +21,7 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.type.Classes;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -109,6 +110,11 @@ final class PojoBasicNode extends PojoNode {
     @Override
     public PojoNode removeChild(final int child) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.value.hashCode();
     }
 
     @Override
