@@ -20,9 +20,9 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.collect.map.Maps;
-import walkingkooka.test.ClassTesting2;
+import walkingkooka.reflect.ClassTesting2;
+import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.tree.NodeTesting;
-import walkingkooka.type.JavaVisibility;
 
 import java.util.List;
 import java.util.Optional;

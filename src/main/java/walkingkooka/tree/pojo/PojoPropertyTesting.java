@@ -17,8 +17,8 @@
 
 package walkingkooka.tree.pojo;
 
-import walkingkooka.test.ToStringTesting;
-import walkingkooka.test.TypeNameTesting;
+import walkingkooka.ToStringTesting;
+import walkingkooka.reflect.TypeNameTesting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
