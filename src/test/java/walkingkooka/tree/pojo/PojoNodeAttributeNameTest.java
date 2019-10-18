@@ -18,9 +18,9 @@ package walkingkooka.tree.pojo;
 
 import org.junit.jupiter.api.Test;
 import walkingkooka.naming.NameTesting;
-import walkingkooka.test.ClassTesting2;
+import walkingkooka.reflect.ClassTesting2;
+import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.text.CaseSensitivity;
-import walkingkooka.type.JavaVisibility;
 
 public final class PojoNodeAttributeNameTest implements ClassTesting2<PojoNodeAttributeName>,
         NameTesting<PojoNodeAttributeName, PojoNodeAttributeName> {

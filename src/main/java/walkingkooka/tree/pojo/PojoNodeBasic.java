@@ -18,7 +18,7 @@
 package walkingkooka.tree.pojo;
 
 import walkingkooka.collect.list.Lists;
-import walkingkooka.type.Classes;
+import walkingkooka.reflect.Classes;
 
 import java.util.List;
 import java.util.Optional;

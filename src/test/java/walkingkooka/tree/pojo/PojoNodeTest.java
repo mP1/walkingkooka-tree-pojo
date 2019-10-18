@@ -19,10 +19,10 @@ package walkingkooka.tree.pojo;
 import org.junit.jupiter.api.Test;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.collect.set.Sets;
-import walkingkooka.test.ClassTesting2;
+import walkingkooka.reflect.ClassTesting2;
+import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.tree.select.NodeSelector;
 import walkingkooka.tree.select.NodeSelectorTesting;
-import walkingkooka.type.JavaVisibility;
 
 import java.util.List;
 import java.util.TreeSet;

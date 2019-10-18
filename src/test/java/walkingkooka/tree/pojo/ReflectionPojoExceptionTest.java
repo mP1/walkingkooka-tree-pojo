@@ -17,8 +17,8 @@
 
 package walkingkooka.tree.pojo;
 
-import walkingkooka.test.StandardThrowableTesting;
-import walkingkooka.type.JavaVisibility;
+import walkingkooka.reflect.JavaVisibility;
+import walkingkooka.reflect.StandardThrowableTesting;
 
 public final class ReflectionPojoExceptionTest implements StandardThrowableTesting<ReflectionPojoException> {
 
