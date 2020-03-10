@@ -26,6 +26,7 @@ import java.util.Map;
 /**
  * The {@link PojoNode} wrapper around an object (including primitive types) value.
  */
+@SuppressWarnings("lgtm[java/inconsistent-equals-and-hashcode]")
 final class PojoNodeObject extends PojoNode2 {
 
     static PojoNodeObject with(final PojoName name,
