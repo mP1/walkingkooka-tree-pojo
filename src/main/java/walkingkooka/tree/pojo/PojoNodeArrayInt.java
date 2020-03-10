@@ -25,6 +25,7 @@ import java.util.List;
 /**
  * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link int[]}.
  */
+@SuppressWarnings("lgtm[java/inconsistent-equals-and-hashcode]")
 final class PojoNodeArrayInt extends PojoNodeArray {
 
     static PojoNodeArrayInt with(final PojoName name,

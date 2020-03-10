@@ -20,6 +20,7 @@ package walkingkooka.tree.pojo;
 /**
  * A {@link walkingkooka.tree.Node} where each child is an element in the original {@link java.util.Collection}.
  */
+@SuppressWarnings("lgtm[java/inconsistent-equals-and-hashcode]")
 abstract class PojoNodeCollection extends PojoNodeArrayOrCollection {
 
     PojoNodeCollection(final PojoName name,

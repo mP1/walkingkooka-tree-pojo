@@ -26,6 +26,7 @@ import java.util.Optional;
 /**
  * The {@link PojoNode} wrapper around an primitive type. Primitives have no children.
  */
+@SuppressWarnings("lgtm[java/inconsistent-equals-and-hashcode]")
 final class PojoNodeBasic extends PojoNode {
 
     static boolean isBasic(final Object value) {
