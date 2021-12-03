@@ -20,8 +20,6 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public final class ReflectionMutableWritablePojoPropertyTest implements ClassTesting2<ReflectionMutableWritablePojoProperty>,
         PojoPropertyTesting<ReflectionMutableWritablePojoProperty> {
 
@@ -31,20 +29,20 @@ public final class ReflectionMutableWritablePojoPropertyTest implements ClassTes
 
     @Test
     public void testGet() {
-        assertEquals(STRING, this.createPojoProperty().get(new TestBean()));
+        this.checkEquals(STRING, this.createPojoProperty().get(new TestBean()));
     }
 
     @Test
     public void testSetSame() {
         final TestBean instance = new TestBean();
-        assertEquals(null, this.createPojoProperty().set(instance, STRING), "setter didnt return null");
+        this.checkEquals(null, this.createPojoProperty().set(instance, STRING), "setter didnt return null");
     }
 
     @Test
     public void testSetDifferent() {
         final TestBean instance = new TestBean();
-        assertEquals(null, this.createPojoProperty().set(instance, STRING2), "setter didnt return null");
-        assertEquals(STRING2, instance.x);
+        this.checkEquals(null, this.createPojoProperty().set(instance, STRING2), "setter didnt return null");
+        this.checkEquals(STRING2, instance.x);
     }
 
     @Test

@@ -28,8 +28,6 @@ import java.util.List;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public final class PojoNodeTest implements ClassTesting2<PojoNode>,
         NodeSelectorTesting<PojoNode, PojoName, PojoNodeAttributeName, Object> {
 
@@ -45,7 +43,7 @@ public final class PojoNodeTest implements ClassTesting2<PojoNode>,
                 bean,
                 ReflectionPojoNodeContext.with());
         final List<PojoNode> selected = this.selectorApplyAndCollect(node, selector);
-        assertEquals(Sets.of("1", "2", "3"),
+        this.checkEquals(Sets.of("1", "2", "3"),
                 selected.stream()
                         .map(n -> n.value())
                         .collect(Collectors.toCollection(TreeSet::new)));

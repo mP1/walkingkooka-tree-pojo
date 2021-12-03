@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -110,9 +109,9 @@ public final class PojoNodeCollectionMapTest extends PojoNodeCollectionTestCase<
         this.childrenValuesCheck(parentNode2, Lists.of(
                 Maps.<Object, Object>entry(KEY0, new TestImmutableLeaf(STRING2)),
                 ENTRY1));
-        assertEquals(map(
-                Maps.entry(KEY0, new TestImmutableLeaf(STRING2)),
-                ENTRY1),
+        this.checkEquals(map(
+                        Maps.entry(KEY0, new TestImmutableLeaf(STRING2)),
+                        ENTRY1),
                 parentNode2.value());
     }
 
@@ -144,9 +143,9 @@ public final class PojoNodeCollectionMapTest extends PojoNodeCollectionTestCase<
         this.childrenValuesCheck(parentNode2, Lists.of(
                 Maps.<Object, Object>entry(KEY0, new TestMutableLeaf(STRING2)),
                 ENTRY1));
-        assertEquals(map(
-                Maps.entry(KEY0, new TestMutableLeaf(STRING2)),
-                ENTRY1),
+        this.checkEquals(map(
+                        Maps.entry(KEY0, new TestMutableLeaf(STRING2)),
+                        ENTRY1),
                 parentNode2.value());
     }
 
@@ -180,9 +179,9 @@ public final class PojoNodeCollectionMapTest extends PojoNodeCollectionTestCase<
         this.childrenValuesCheck(parentNode2, Lists.of(
                 Maps.<Object, Object>entry(KEY0, new TestImmutableLeaf(STRING2)),
                 ENTRY1));
-        assertEquals(map(
-                Maps.entry(KEY0, new TestImmutableLeaf(STRING2)),
-                ENTRY1),
+        this.checkEquals(map(
+                        Maps.entry(KEY0, new TestImmutableLeaf(STRING2)),
+                        ENTRY1),
                 parentNode2.value());
     }
 
@@ -214,9 +213,9 @@ public final class PojoNodeCollectionMapTest extends PojoNodeCollectionTestCase<
         this.childrenValuesCheck(parentNode2, Lists.of(
                 Maps.<Object, Object>entry(KEY0, new TestMutableLeaf(STRING2)),
                 ENTRY1));
-        assertEquals(map(
-                Maps.entry(KEY0, new TestMutableLeaf(STRING2)),
-                ENTRY1),
+        this.checkEquals(map(
+                        Maps.entry(KEY0, new TestMutableLeaf(STRING2)),
+                        ENTRY1),
                 parentNode2.value());
     }
 

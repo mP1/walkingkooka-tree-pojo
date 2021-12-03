@@ -24,7 +24,6 @@ import walkingkooka.tree.pojo.PojoNodeObjectTest.TestImmutableLeaf;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -96,7 +95,7 @@ public final class PojoNodeCollectionListTest extends PojoNodeCollectionTestCase
         final PojoNode parentNode2 = childNode2.parentOrFail();
         assertNotSame(parentNode, parentNode2);
         this.childrenValuesCheck(parentNode2, Lists.of(children2));
-        assertEquals(new TestImmutableParent(children2), parentNode2.value(), "parentNode2.value");
+        this.checkEquals(new TestImmutableParent(children2), parentNode2.value(), "parentNode2.value");
     }
 
     @Test
@@ -122,7 +121,7 @@ public final class PojoNodeCollectionListTest extends PojoNodeCollectionTestCase
         final PojoNode parentNode2 = childNode2.parentOrFail();
         assertSame(parentNode, parentNode2);
         this.childrenValuesCheck(parentNode2, Lists.of(children2));
-        assertEquals(new TestMutableParent(children2), parentNode2.value(), "parentNode2.value");
+        this.checkEquals(new TestMutableParent(children2), parentNode2.value(), "parentNode2.value");
     }
 
     // childrenValues ....................................................................................................
@@ -146,7 +145,7 @@ public final class PojoNodeCollectionListTest extends PojoNodeCollectionTestCase
         final PojoNode parentNode2 = childNode2.parentOrFail();
         assertNotSame(parentNode, parentNode2);
         this.childrenValuesCheck(parentNode2, Lists.of(Lists.of(child2)));
-        assertEquals(new TestImmutableParent(Lists.of(child2)), parentNode2.value(), "parentNode2.value");
+        this.checkEquals(new TestImmutableParent(Lists.of(child2)), parentNode2.value(), "parentNode2.value");
     }
 
     @Test
@@ -168,7 +167,7 @@ public final class PojoNodeCollectionListTest extends PojoNodeCollectionTestCase
         final PojoNode parentNode2 = childNode2.parentOrFail();
         assertSame(parentNode, parentNode2);
         this.childrenValuesCheck(parentNode2, Lists.of(Lists.of(child2)));
-        assertEquals(new TestMutableParent(Lists.of(child2)), parentNode2.value(), "parentNode2.value");
+        this.checkEquals(new TestMutableParent(Lists.of(child2)), parentNode2.value(), "parentNode2.value");
     }
 
     // setValue........................................................................................................

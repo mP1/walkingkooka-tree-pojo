@@ -24,7 +24,6 @@ import walkingkooka.collect.list.Lists;
 import java.util.List;
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -134,11 +133,11 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
         final PojoNode parentNode2 = childNode2.parentOrFail();
         this.childrenValuesCheck(parentNode2, new TestImmutableLeaf(STRING2), null);
 
-        assertEquals(new TestImmutableBranch(new TestImmutableLeaf(STRING2), null),
+        this.checkEquals(new TestImmutableBranch(new TestImmutableLeaf(STRING2), null),
                 parentNode2.value(),
                 "parentNode2 after set");
 
-        assertEquals(new TestImmutableBranch(new TestImmutableLeaf(STRING0), null),
+        this.checkEquals(new TestImmutableBranch(new TestImmutableLeaf(STRING0), null),
                 parentNode.value(),
                 "original parentNode should remain unchanged");
     }
@@ -169,11 +168,11 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
         final TestImmutableBranch parent2 = new TestImmutableBranch(child2, null);
         final TestImmutableBranch grandParent2 = new TestImmutableBranch(null, parent2);
 
-        assertEquals(grandParent2,
+        this.checkEquals(grandParent2,
                 grandParentNode2.value(),
                 "parentNode2 after set");
 
-        assertEquals(grandParent,
+        this.checkEquals(grandParent,
                 grandParentNode.value(),
                 "original parentNode should remain unchanged");
     }
@@ -208,7 +207,7 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
 
     @Override
     final void checkValue(final Object expected, final Object actual) {
-        assertEquals(expected, actual);
+        this.checkEquals(expected, actual);
     }
 
     private PojoNodeObject createPojoNode(final Object value) {

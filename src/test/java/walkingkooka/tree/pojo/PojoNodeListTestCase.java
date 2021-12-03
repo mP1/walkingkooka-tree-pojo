@@ -25,9 +25,6 @@ import walkingkooka.reflect.JavaVisibility;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
 public abstract class PojoNodeListTestCase<L extends List<E>, E> implements ClassTesting2<L>,
         ListTesting2<L, E> {
 
@@ -38,18 +35,18 @@ public abstract class PojoNodeListTestCase<L extends List<E>, E> implements Clas
     @Test
     public final void testEqualListOfComponents() {
         final List<E> components = this.components();
-        assertEquals(this.createList(components), components);
+        this.checkEquals(this.createList(components), components);
     }
 
     @Test
     public final void testEqualListOfComponents2() {
         final List<E> components = this.components();
-        assertEquals(this.createList(components), new ArrayList<>(components));
+        this.checkEquals(this.createList(components), new ArrayList<>(components));
     }
 
     @Test
     public final void testEqualsDifferentListOfComponents() {
-        assertNotEquals(this.createList(this.components()), this.differentComponents());
+        this.checkNotEquals(this.createList(this.components()), this.differentComponents());
     }
 
     @Override
