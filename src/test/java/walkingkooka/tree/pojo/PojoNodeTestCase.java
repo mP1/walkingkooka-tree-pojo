@@ -29,7 +29,6 @@ import java.util.Optional;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -71,7 +70,7 @@ public abstract class PojoNodeTestCase<N extends PojoNode, V> implements ClassTe
     @Test
     public void testAttributes() {
         final N node = this.createPojoNode();
-        assertEquals(Maps.of(PojoNodeAttributeName.CLASS, node.value().getClass().getName()), node.attributes());
+        this.checkEquals(Maps.of(PojoNodeAttributeName.CLASS, node.value().getClass().getName()), node.attributes());
     }
 
     @Test
@@ -129,8 +128,8 @@ public abstract class PojoNodeTestCase<N extends PojoNode, V> implements ClassTe
 
     final void childrenAndCheckNames(final PojoNode node, final List<PojoName> properties) {
         final List<PojoNode> children = node.children();
-        assertEquals(properties.size(), children.size(), () -> "children count=" + children);
-        assertEquals(new TreeSet<PojoName>(properties),
+        this.checkEquals(properties.size(), children.size(), () -> "children count=" + children);
+        this.checkEquals(new TreeSet<PojoName>(properties),
                 children.stream().map(n -> n.name()).collect(Collectors.toCollection(TreeSet::new)),
                 () -> "properties of " + node + "=" + children);
         this.childrenCheck(node);
@@ -141,7 +140,7 @@ public abstract class PojoNodeTestCase<N extends PojoNode, V> implements ClassTe
                 .stream()
                 .filter(n -> n.name().equals(name))
                 .findFirst();
-        assertEquals(true, property.isPresent(), "Unable to find property with name " + name + " in " + node);
+        this.checkEquals(true, property.isPresent(), "Unable to find property with name " + name + " in " + node);
         return property.get();
     }
 

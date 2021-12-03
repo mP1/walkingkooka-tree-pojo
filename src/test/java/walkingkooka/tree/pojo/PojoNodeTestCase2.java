@@ -22,7 +22,6 @@ import walkingkooka.collect.list.Lists;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -133,10 +132,10 @@ public abstract class PojoNodeTestCase2<N extends PojoNode2, V> extends PojoNode
     }
 
     final void childrenValuesCheck(final PojoNode node, final List<?> values) {
-        assertEquals(values,
+        this.checkEquals(values,
                 node.childrenValues(),
                 "children values not equal to childrenValues()");
-        assertEquals(values,
+        this.checkEquals(values,
                 values(node.children()),
                 "children values not equal to values from children()");
     }

@@ -29,7 +29,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 public final class ReflectionPojoNodeContextTest implements ClassTesting2<ReflectionPojoNodeContext>,
@@ -122,7 +121,7 @@ public final class ReflectionPojoNodeContextTest implements ClassTesting2<Reflec
         final TestGetterAndSetter2 instance = new TestGetterAndSetter2();
         final TestGetterAndSetter2 result = this.setAndGetCheck(instance, X, STRING2);
         assertNotSame(instance, result);
-        assertEquals(STRING, instance.x, "original property was changed");
+        this.checkEquals(STRING, instance.x, "original property was changed");
     }
 
     // Get BooleanPrimitive
@@ -277,7 +276,7 @@ public final class ReflectionPojoNodeContextTest implements ClassTesting2<Reflec
     }
 
     private <T> void createAndCheck(final T collection, final Function<Class, T> creator, final Class<?> expected) {
-        assertEquals(expected, creator.apply(collection.getClass()).getClass());
+        this.checkEquals(expected, creator.apply(collection.getClass()).getClass());
     }
 
     // helpers......................................................................................

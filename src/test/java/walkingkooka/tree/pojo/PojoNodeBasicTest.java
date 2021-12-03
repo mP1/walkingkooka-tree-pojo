@@ -22,7 +22,6 @@ import walkingkooka.Cast;
 import walkingkooka.collect.list.Lists;
 import walkingkooka.collect.map.Maps;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class PojoNodeBasicTest extends PojoNodeTestCase<PojoNodeBasic, Integer> {
@@ -30,7 +29,7 @@ public final class PojoNodeBasicTest extends PojoNodeTestCase<PojoNodeBasic, Int
     @Test
     public void testNull() {
         final PojoNodeBasic node = this.createPojoNode(null);
-        assertEquals(Maps.empty(), node.attributes());
+        this.checkEquals(Maps.empty(), node.attributes());
     }
 
     @Test
@@ -103,7 +102,7 @@ public final class PojoNodeBasicTest extends PojoNodeTestCase<PojoNodeBasic, Int
 
     @Override
     void checkValue(final Integer expected, final Integer actual) {
-        assertEquals(expected, actual);
+        this.checkEquals(expected, actual);
     }
 
     private PojoNodeBasic createPojoNode(final Object value) {

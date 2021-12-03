@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class ReflectionReadOnlyPojoPropertyTest implements ClassTesting2<ReflectionReadOnlyPojoProperty>,
@@ -37,7 +36,7 @@ public final class ReflectionReadOnlyPojoPropertyTest implements ClassTesting2<R
 
     @Test
     public void testIsReadOnly() {
-        assertEquals(true, this.createPojoProperty().isReadOnly());
+        this.checkEquals(true, this.createPojoProperty().isReadOnly());
     }
 
     @Test

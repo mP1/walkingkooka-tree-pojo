@@ -20,7 +20,6 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -47,7 +46,7 @@ public final class ReflectionImmutableWritablePojoPropertyTest implements ClassT
         final TestBean instance = new TestBean(STRING);
         final TestBean result = (TestBean) this.setAndCheck(instance, STRING2);
         assertNotSame(instance, result);
-        assertEquals(STRING2, result.x);
+        this.checkEquals(STRING2, result.x);
     }
 
     @Test
