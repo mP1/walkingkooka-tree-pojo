@@ -34,7 +34,7 @@ public final class PojoName implements Name,
 
     static PojoName index(final int index) {
         if (index < 0) {
-            throw new IllegalArgumentException("Index " + index + " must not be negative");
+            throw new IndexOutOfBoundsException("Index " + index + " must not be negative");
         }
         return index < INDEX_CACHE_SIZE ? INDEX_CACHE[index] : new PojoName(index);
     }
