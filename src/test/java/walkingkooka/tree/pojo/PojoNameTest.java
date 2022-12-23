@@ -43,9 +43,10 @@ public final class PojoNameTest implements ClassTesting2<PojoName>,
 
     @Test
     public void testIndexInvalidFails() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            PojoName.index(-1);
-        });
+        assertThrows(
+                IndexOutOfBoundsException.class,
+                () -> PojoName.index(-1)
+        );
     }
 
     @Test
