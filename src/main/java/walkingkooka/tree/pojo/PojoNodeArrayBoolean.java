@@ -48,8 +48,8 @@ final class PojoNodeArrayBoolean extends PojoNodeArray {
 
     // children ..................................................................................
 
-    @Override
-    final PojoNode replaceChildren(final List<PojoNode> children){
+    @Override //
+    PojoNode replaceChildren(final List<PojoNode> children){
         final boolean[] newChildren = new boolean[children.size()];
 
         int i = 0;
@@ -61,8 +61,8 @@ final class PojoNodeArrayBoolean extends PojoNodeArray {
         return this.replace(newChildren);
     }
 
-    @Override
-    final PojoNode replaceChild(final PojoNode newChild) {
+    @Override //
+    PojoNode replaceChild(final PojoNode newChild) {
         final boolean[] newChildren = new boolean[this.childrenCount()];
 
         newChildren[newChild.index()] = (boolean) newChild.value();
@@ -70,7 +70,7 @@ final class PojoNodeArrayBoolean extends PojoNodeArray {
         return this.replace(newChildren);
     }
 
-    @Override
+    @Override//
     PojoNode replaceChildrenValues(final List<Object> values) {
         final boolean[] newChildren = new boolean[values.size()];
 
@@ -96,8 +96,7 @@ final class PojoNodeArrayBoolean extends PojoNodeArray {
         return this.valueAsBooleanArray()[index];
     }
 
-    @Override
-    final int childrenCount() {
+    @Override int childrenCount() {
         return this.valueAsBooleanArray().length;
     }
 
@@ -115,7 +114,7 @@ final class PojoNodeArrayBoolean extends PojoNodeArray {
     }
 
     @Override
-    final public String toString() {
+    public String toString() {
         return Arrays.toString(this.valueAsBooleanArray());
     }
 }

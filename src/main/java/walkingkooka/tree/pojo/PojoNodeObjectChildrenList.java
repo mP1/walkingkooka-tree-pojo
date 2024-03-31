@@ -43,7 +43,7 @@ final class PojoNodeObjectChildrenList extends PojoNodeChildrenList<PojoNodeObje
      * Supports caching pojo wrappers for individual elements.
      */
     @Override
-    public final PojoNode get(final int index) {
+    public PojoNode get(final int index) {
         PojoNode node = this.nodes[index];
         if (null == node) {
             node = this.replace(index);
@@ -75,8 +75,8 @@ final class PojoNodeObjectChildrenList extends PojoNodeChildrenList<PojoNodeObje
         return other instanceof PojoNodeObjectChildrenList;
     }
 
-    @Override
-    final void clearChildrenNodeCache() {
+    @Override //
+    void clearChildrenNodeCache() {
         Arrays.fill(this.nodes, null);
     }
 }

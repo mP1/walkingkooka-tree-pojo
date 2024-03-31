@@ -126,7 +126,7 @@ final class PojoNodeBasic extends PojoNode {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return this.toString0();
     }
 }

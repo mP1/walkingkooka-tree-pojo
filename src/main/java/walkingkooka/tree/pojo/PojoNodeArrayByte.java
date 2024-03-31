@@ -49,7 +49,7 @@ final class PojoNodeArrayByte extends PojoNodeArray {
     // children ..................................................................................
 
     @Override
-    final PojoNode replaceChildren(final List<PojoNode> children){
+    PojoNode replaceChildren(final List<PojoNode> children){
         final byte[] newChildren = new byte[children.size()];
 
         int i = 0;
@@ -62,7 +62,7 @@ final class PojoNodeArrayByte extends PojoNodeArray {
     }
 
     @Override
-    final PojoNode replaceChild(final PojoNode newChild) {
+    PojoNode replaceChild(final PojoNode newChild) {
         final byte[] newChildren = new byte[this.childrenCount()];
 
         newChildren[newChild.index()] = (byte) newChild.value();
@@ -97,7 +97,7 @@ final class PojoNodeArrayByte extends PojoNodeArray {
     }
 
     @Override
-    final int childrenCount() {
+    int childrenCount() {
         return this.valueAsByteArray().length;
     }
 
@@ -115,7 +115,7 @@ final class PojoNodeArrayByte extends PojoNodeArray {
     }
 
     @Override
-    final public String toString() {
+    public String toString() {
         return Arrays.toString(this.valueAsByteArray());
     }
 }

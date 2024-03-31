@@ -35,7 +35,7 @@ final class PojoNodeArrayOrCollectionChildrenList<P extends PojoNodeArrayOrColle
     }
 
     @Override
-    public final PojoNode get(final int index) {
+    public PojoNode get(final int index) {
         // expand list as necessary and lazily...
         final int size = this.parent.childrenCount() + 1;
         for (int i = index; i < size; i++) {

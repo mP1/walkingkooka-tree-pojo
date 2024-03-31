@@ -62,8 +62,8 @@ final class PojoNodeCollectionSet extends PojoNodeCollection {
     /**
      * Makes a copy of the values in the list {@link List} and creates a new wrapper, and ask its parent to update itself.
      */
-    @Override
-    final PojoNode replaceChildren(final List<PojoNode> children){
+    @Override //
+    PojoNode replaceChildren(final List<PojoNode> children){
         final Set<Object> copy = children.stream()
                 .map(child -> child.value())
                 .collect(Collectors.toCollection(() -> this.createSet()));
@@ -88,7 +88,7 @@ final class PojoNodeCollectionSet extends PojoNodeCollection {
     }
 
     @Override
-    public final List<Object> childrenValues() {
+    public List<Object> childrenValues() {
         return this.valueAsList();
     }
 
@@ -112,8 +112,7 @@ final class PojoNodeCollectionSet extends PojoNodeCollection {
                 .replaceChild(this.parent());
     }
 
-    @Override
-    final int childrenCount() {
+    @Override int childrenCount() {
         return this.valueAsSet().size();
     }
 }

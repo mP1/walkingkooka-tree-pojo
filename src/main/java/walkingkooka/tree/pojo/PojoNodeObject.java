@@ -55,7 +55,7 @@ final class PojoNodeObject extends PojoNode2 {
      * If the final value is different from the original a new {@link PojoNodeObject} is created and wrapped.
      */
     @Override
-    final PojoNode replaceChildren(final List<PojoNode> children) {
+    PojoNode replaceChildren(final List<PojoNode> children) {
         final Object before = this.value();
         Object current = before;
 
@@ -159,14 +159,14 @@ final class PojoNodeObject extends PojoNode2 {
     }
 
     @Override
-    final public PojoNodeObject removeChild(final int child) {
+    public PojoNodeObject removeChild(final int child) {
         throw new UnsupportedOperationException();
     }
 
     /**
      * Lazily fetches and caches all the pojo properties for this value.
      */
-    final Map<PojoName, PojoProperty> nameToProperties() {
+    Map<PojoName, PojoProperty> nameToProperties() {
         if (null == this.nameToProperties) {
             final Map<PojoName, PojoProperty> nameToProperties = Maps.ordered();
             for (PojoProperty property : this.properties()) {
@@ -182,7 +182,7 @@ final class PojoNodeObject extends PojoNode2 {
      */
     private Map<PojoName, PojoProperty> nameToProperties;
 
-    final List<PojoProperty> properties() {
+    List<PojoProperty> properties() {
         if (null == this.properties) {
             this.properties = context.properties(this.value.getClass());
         }
@@ -204,7 +204,7 @@ final class PojoNodeObject extends PojoNode2 {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return this.toString0();
     }
 }

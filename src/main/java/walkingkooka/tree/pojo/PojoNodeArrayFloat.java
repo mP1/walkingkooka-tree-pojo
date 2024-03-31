@@ -48,8 +48,8 @@ final class PojoNodeArrayFloat extends PojoNodeArray {
 
     // children ..................................................................................
 
-    @Override
-    final PojoNode replaceChildren(final List<PojoNode> children) {
+    @Override //
+    PojoNode replaceChildren(final List<PojoNode> children) {
         final float[] newChildren = new float[children.size()];
 
         int i = 0;
@@ -61,8 +61,8 @@ final class PojoNodeArrayFloat extends PojoNodeArray {
         return this.replace(newChildren);
     }
 
-    @Override
-    final PojoNode replaceChild(final PojoNode newChild) {
+    @Override //
+    PojoNode replaceChild(final PojoNode newChild) {
         final float[] newChildren = new float[this.childrenCount()];
 
         newChildren[newChild.index()] = (float) newChild.value();
@@ -70,7 +70,7 @@ final class PojoNodeArrayFloat extends PojoNodeArray {
         return this.replace(newChildren);
     }
 
-    @Override
+    @Override //
     PojoNode replaceChildrenValues(final List<Object> values) {
         final float[] newChildren = new float[values.size()];
 
@@ -96,8 +96,7 @@ final class PojoNodeArrayFloat extends PojoNodeArray {
         return this.asFloatArray()[index];
     }
 
-    @Override
-    final int childrenCount() {
+    @Override int childrenCount() {
         return this.asFloatArray().length;
     }
 
@@ -115,7 +114,7 @@ final class PojoNodeArrayFloat extends PojoNodeArray {
     }
 
     @Override
-    final public String toString() {
+    public String toString() {
         return Arrays.toString(this.asFloatArray());
     }
 }

@@ -48,8 +48,8 @@ final class PojoNodeArrayShort extends PojoNodeArray {
 
     // children ..................................................................................
 
-    @Override
-    final PojoNode replaceChildren(final List<PojoNode> children){
+    @Override //
+    PojoNode replaceChildren(final List<PojoNode> children){
         final short[] newChildren = new short[children.size()];
 
         int i = 0;
@@ -61,8 +61,8 @@ final class PojoNodeArrayShort extends PojoNodeArray {
         return this.replace(newChildren);
     }
 
-    @Override
-    final PojoNode replaceChild(final PojoNode newChild) {
+    @Override //
+    PojoNode replaceChild(final PojoNode newChild) {
         final short[] newChildren = new short[this.childrenCount()];
 
         newChildren[newChild.index()] = (short) newChild.value();
@@ -70,7 +70,7 @@ final class PojoNodeArrayShort extends PojoNodeArray {
         return this.replace(newChildren);
     }
 
-    @Override
+    @Override //
     PojoNode replaceChildrenValues(final List<Object> values) {
         final short[] newChildren = new short[values.size()];
 
@@ -96,8 +96,7 @@ final class PojoNodeArrayShort extends PojoNodeArray {
         return this.valueAsShortArray()[index];
     }
 
-    @Override
-    final int childrenCount() {
+    @Override int childrenCount() {
         return this.valueAsShortArray().length;
     }
 
@@ -115,7 +114,7 @@ final class PojoNodeArrayShort extends PojoNodeArray {
     }
 
     @Override
-    final public String toString() {
+    public String toString() {
         return Arrays.toString(this.valueAsShortArray());
     }
 }
