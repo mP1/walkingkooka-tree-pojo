@@ -52,7 +52,7 @@ final class PojoNodeArrayChildrenValueList extends PojoNodeList<PojoNodeArray, O
     }
 
     @Override
-    boolean equals0(final PojoNodeList other) {
+    boolean equals0(final PojoNodeList<?, ?> other) {
         return this.parent.equals(other.parent);
     }
 }

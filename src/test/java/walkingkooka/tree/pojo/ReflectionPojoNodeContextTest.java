@@ -275,7 +275,9 @@ public final class ReflectionPojoNodeContextTest implements ClassTesting2<Reflec
                 expected);
     }
 
-    private <T> void createAndCheck(final T collection, final Function<Class, T> creator, final Class<?> expected) {
+    private <T> void createAndCheck(final T collection,
+                                    final Function<Class<?>, T> creator,
+                                    final Class<?> expected) {
         this.checkEquals(expected, creator.apply(collection.getClass()).getClass());
     }
 

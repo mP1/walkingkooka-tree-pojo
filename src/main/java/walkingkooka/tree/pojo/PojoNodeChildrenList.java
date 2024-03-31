@@ -54,7 +54,7 @@ abstract class PojoNodeChildrenList<P extends PojoNode> extends PojoNodeList<P, 
      * Since the children list is just a view of the parent, test for equality using the parents.
      */
     @Override
-    final boolean equals0(final PojoNodeList other) {
+    final boolean equals0(final PojoNodeList<?, ?> other) {
         return this.parent.equals(other.parent);
     }
 }
