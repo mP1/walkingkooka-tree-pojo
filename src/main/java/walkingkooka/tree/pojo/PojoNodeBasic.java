@@ -21,6 +21,7 @@ import walkingkooka.collect.list.Lists;
 import walkingkooka.reflect.Classes;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -64,6 +65,8 @@ final class PojoNodeBasic extends PojoNode {
 
     @Override
     public PojoNode setChildren(final List<PojoNode> children) {
+        Objects.requireNonNull(children, "children");
+
         throw new UnsupportedOperationException();
     }
 

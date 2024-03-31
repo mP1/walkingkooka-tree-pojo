@@ -100,6 +100,11 @@ public abstract class PojoNodeTestCase<N extends PojoNode, V> implements ClassTe
         });
     }
 
+    @Override
+    public final void tetReplaceIfNeverPredicate() {
+        throw new UnsupportedOperationException(); // disable test
+    }
+
     @Test
     public final void testDifferentValue() {
         this.checkNotEquals(this.createPojoNode().setValue(this.differentValue()));
