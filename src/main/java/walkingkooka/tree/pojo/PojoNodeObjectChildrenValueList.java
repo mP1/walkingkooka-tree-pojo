@@ -61,7 +61,7 @@ final class PojoNodeObjectChildrenValueList extends PojoNodeList<PojoNodeObject,
      * Compare for equality using parent v parent.
      */
     @Override
-    boolean equals0(final PojoNodeList other) {
+    boolean equals0(final PojoNodeList<?, ?> other) {
         return this.parent.value.equals(other.parent.value);
     }
 }
