@@ -62,8 +62,8 @@ final class PojoNodeCollectionMap extends PojoNodeCollection {
     /**
      * Makes a copy of the values in the list {@link List} and creates a new wrapper, and ask its parent to update itself.
      */
-    @Override
-    final PojoNode replaceChildren(final List<PojoNode> children){
+    @Override //
+    PojoNode replaceChildren(final List<PojoNode> children){
         final Map<Object, Object> newChildren = this.createMap();
         for (PojoNode child : children) {
             final Entry<Object, Object> value = Cast.to(child.value());
@@ -94,7 +94,7 @@ final class PojoNodeCollectionMap extends PojoNodeCollection {
     }
 
     @Override
-    public final List<Object> childrenValues() {
+    public List<Object> childrenValues() {
         return this.valueAsList();
     }
 
@@ -122,8 +122,7 @@ final class PojoNodeCollectionMap extends PojoNodeCollection {
                 .replaceChild(this.parent());
     }
 
-    @Override
-    final int childrenCount() {
+    @Override int childrenCount() {
         return this.valueAsMap().size();
     }
 }
