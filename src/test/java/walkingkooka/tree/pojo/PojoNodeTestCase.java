@@ -101,7 +101,7 @@ public abstract class PojoNodeTestCase<N extends PojoNode, V> implements ClassTe
     }
 
     @Override
-    public final void tetReplaceIfNeverPredicate() {
+    public final void testReplaceIfNeverPredicate() {
         throw new UnsupportedOperationException(); // disable test
     }
 
