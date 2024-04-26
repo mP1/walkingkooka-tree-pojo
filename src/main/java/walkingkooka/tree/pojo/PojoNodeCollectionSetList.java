@@ -17,6 +17,7 @@
 
 package walkingkooka.tree.pojo;
 
+import walkingkooka.collect.list.ImmutableList;
 import walkingkooka.collect.list.Lists;
 
 import java.util.AbstractList;
@@ -28,7 +29,7 @@ import java.util.Set;
 /**
  * A read only {@link List} view of a {@link Set}
  */
-final class PojoNodeCollectionSetList extends AbstractList<Object> {
+final class PojoNodeCollectionSetList extends AbstractList<Object> implements ImmutableList<Object> {
 
     static {
         Lists.registerImmutableType(PojoNodeCollectionSetList.class);
@@ -116,5 +117,12 @@ final class PojoNodeCollectionSetList extends AbstractList<Object> {
     @Override
     public String toString() {
         return this.set.toString();
+    }
+
+    // ImmutableList....................................................................................................
+
+    @Override
+    public ImmutableList<Object> setElements(final List<Object> elements) {
+        return this.setElementsFailIfDifferent(elements);
     }
 }
