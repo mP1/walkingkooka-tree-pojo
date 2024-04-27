@@ -26,10 +26,6 @@ import java.util.List;
  */
 final class PojoNodeObjectChildrenValueList extends PojoNodeList<PojoNodeObject, Object> {
 
-    static {
-        Lists.registerImmutableType(PojoNodeObjectChildrenValueList.class);
-    }
-
     static PojoNodeObjectChildrenValueList with(final PojoNodeObject parent) {
         return new PojoNodeObjectChildrenValueList(parent);
     }
