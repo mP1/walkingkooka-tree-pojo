@@ -31,10 +31,6 @@ import java.util.Set;
  */
 final class PojoNodeCollectionSetList extends AbstractList<Object> implements ImmutableList<Object> {
 
-    static {
-        Lists.registerImmutableType(PojoNodeCollectionSetList.class);
-    }
-
     static PojoNodeCollectionSetList with(final Set<Object> set) {
         return new PojoNodeCollectionSetList(set);
     }

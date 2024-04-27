@@ -24,10 +24,6 @@ import walkingkooka.collect.list.Lists;
  */
 final class PojoNodeArrayChildrenValueList extends PojoNodeList<PojoNodeArray, Object> {
 
-    static {
-        Lists.registerImmutableType(PojoNodeArrayChildrenValueList.class);
-    }
-
     static PojoNodeArrayChildrenValueList with(final PojoNodeArray parent) {
         return new PojoNodeArrayChildrenValueList(parent);
     }

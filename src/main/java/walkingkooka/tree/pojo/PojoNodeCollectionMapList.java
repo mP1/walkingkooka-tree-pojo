@@ -32,10 +32,6 @@ import java.util.Map.Entry;
  */
 final class PojoNodeCollectionMapList extends AbstractList<Object> implements ImmutableList<Object> {
 
-    static {
-        Lists.registerImmutableType(PojoNodeCollectionMapList.class);
-    }
-
     static PojoNodeCollectionMapList with(final Map<Object, Object> map) {
         return new PojoNodeCollectionMapList(map);
     }
