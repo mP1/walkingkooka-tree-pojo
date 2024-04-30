@@ -19,6 +19,7 @@ package walkingkooka.tree.pojo;
 
 import walkingkooka.Cast;
 import walkingkooka.collect.list.ImmutableList;
+import walkingkooka.collect.list.ImmutableListDefaults;
 
 import java.util.AbstractList;
 import java.util.List;
@@ -26,7 +27,7 @@ import java.util.List;
 /**
  * Base for all {@link List} of children.
  */
-abstract class PojoNodeList<P extends PojoNode, E> extends AbstractList<E> implements ImmutableList<E> {
+abstract class PojoNodeList<P extends PojoNode, E> extends AbstractList<E> implements ImmutableListDefaults<ImmutableList<E>, E> {
 
     PojoNodeList(final P parent) {
         this.parent = parent;
