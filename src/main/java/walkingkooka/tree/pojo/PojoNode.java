@@ -22,7 +22,7 @@ import walkingkooka.Value;
 import walkingkooka.collect.map.Maps;
 import walkingkooka.tree.HasChildrenValues;
 import walkingkooka.tree.Node;
-import walkingkooka.tree.expression.FunctionExpressionName;
+import walkingkooka.tree.expression.ExpressionFunctionName;
 import walkingkooka.tree.select.NodeSelector;
 import walkingkooka.tree.select.parser.NodeSelectorExpressionParserToken;
 
@@ -346,10 +346,12 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
      * Creates a {@link NodeSelector} for {@link PojoNode} from a {@link NodeSelectorExpressionParserToken}.
      */
     public static NodeSelector<PojoNode, PojoName, PojoNodeAttributeName, Object> nodeSelectorExpressionParserToken(final NodeSelectorExpressionParserToken token,
-                                                                                                                    final Predicate<FunctionExpressionName> functions) {
-        return NodeSelector.parserToken(token,
+                                                                                                                    final Predicate<ExpressionFunctionName> functions) {
+        return NodeSelector.parserToken(
+                token,
                 n -> PojoName.property(n.value()),
                 functions,
-                PojoNode.class);
+                PojoNode.class
+        );
     }
 }
