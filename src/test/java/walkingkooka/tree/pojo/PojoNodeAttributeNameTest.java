@@ -41,7 +41,7 @@ public final class PojoNodeAttributeNameTest implements ClassTesting2<PojoNodeAt
     }
 
     @Override
-    public void testDifferentText() {
+    public void testEqualsDifferentText() {
         throw new UnsupportedOperationException();
     }
 
