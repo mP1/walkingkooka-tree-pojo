@@ -29,31 +29,31 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public final class PojoNodeTest implements ClassTesting2<PojoNode>,
-        NodeSelectorTesting<PojoNode, PojoName, PojoNodeAttributeName, Object> {
+    NodeSelectorTesting<PojoNode, PojoName, PojoNodeAttributeName, Object> {
 
     @Test
     public void testSelectorNodeByClassName() {
         final TestBean bean = new TestBean("1", "2", 99, "3");
 
         final NodeSelector<PojoNode, PojoName, PojoNodeAttributeName, Object> selector = PojoNode.absoluteNodeSelector()
-                .descendant()
-                .attributeValueEquals(PojoNodeAttributeName.CLASS, String.class.getName());
+            .descendant()
+            .attributeValueEquals(PojoNodeAttributeName.CLASS, String.class.getName());
 
         final PojoNode node = PojoNode.wrap(PojoName.property("TestBean"),
-                bean,
-                ReflectionPojoNodeContext.with());
+            bean,
+            ReflectionPojoNodeContext.with());
         final List<PojoNode> selected = this.selectorApplyAndCollect(node, selector);
         this.checkEquals(Sets.of("1", "2", "3"),
-                selected.stream()
-                        .map(n -> n.value())
-                        .collect(Collectors.toCollection(TreeSet::new)));
+            selected.stream()
+                .map(n -> n.value())
+                .collect(Collectors.toCollection(TreeSet::new)));
     }
 
     @Override
     public PojoNode createNode() {
         return PojoNode.wrap(PojoName.property("TestBean"),
-                new TestBean("1", "2", 99, "3"),
-                ReflectionPojoNodeContext.with());
+            new TestBean("1", "2", 99, "3"),
+            ReflectionPojoNodeContext.with());
     }
 
     @Override

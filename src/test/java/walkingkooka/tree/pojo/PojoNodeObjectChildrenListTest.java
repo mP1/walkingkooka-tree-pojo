@@ -40,14 +40,14 @@ public final class PojoNodeObjectChildrenListTest extends PojoNodeListTestCase<P
     @Override
     List<PojoNode> createList(final List<PojoNode> components) {
         return list0((String) components.get(0).value(),
-                (String) components.get(1).value());
+            (String) components.get(1).value());
     }
 
     private List<PojoNode> list0(final String component0, final String component1) {
         return PojoNode.wrap(PojoName.property("root"),
                 new PojoNodeObjectChildrenListTest.TestBean(component0, component1),
                 ReflectionPojoNodeContext.with())
-                .children();
+            .children();
     }
 
     static class TestBean {

@@ -113,9 +113,9 @@ final class PojoNodeObject extends PojoNode2 {
      */
     private PojoNode wrapIfDifferent(final Object before, final Object after) {
         return before.equals(after) ?
-                this.clearChildrenListCache() :
-                wrap0(this.name(), after, this.index(), this.context)
-                        .replaceChild(this.parent());
+            this.clearChildrenListCache() :
+            wrap0(this.name(), after, this.index(), this.context)
+                .replaceChild(this.parent());
     }
 
     @Override

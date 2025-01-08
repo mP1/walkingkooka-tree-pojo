@@ -62,8 +62,8 @@ final class PojoNodeObjectChildrenList extends PojoNodeChildrenList<PojoNodeObje
         final PojoProperty property = this.property(index);
 
         return this.replace0(property.name(),// the name of the property(field)
-                property.get(this.parent.value()),
-                index);
+            property.get(this.parent.value()),
+            index);
     }
 
     private PojoProperty property(final int index) {

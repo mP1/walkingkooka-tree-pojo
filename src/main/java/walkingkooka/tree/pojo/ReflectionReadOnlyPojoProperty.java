@@ -40,8 +40,8 @@ final class ReflectionReadOnlyPojoProperty extends ReflectionPojoProperty {
         final Object current = this.get(instance);
         if (!Objects.equals(value, current)) {
             throw new ReflectionPojoException("Unable to set(change) read-only property " + this.name().inQuotes() +
-                    " with different value " + CharSequences.quoteIfChars(value) +
-                    ", previous value: " + CharSequences.quoteIfChars(current));
+                " with different value " + CharSequences.quoteIfChars(value) +
+                ", previous value: " + CharSequences.quoteIfChars(current));
         }
         return null;
     }

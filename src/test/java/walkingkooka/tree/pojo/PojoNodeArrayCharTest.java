@@ -61,8 +61,8 @@ public final class PojoNodeArrayCharTest extends PojoNodeArrayTestCase<PojoNodeA
         assertSame(parentNode, parentNode2);
 
         final PojoNode childNode2 = parentNode2.children()
-                .get(0)
-                .setChildrenValues(Lists.of(ELEMENT0, ELEMENT1, ELEMENT2));
+            .get(0)
+            .setChildrenValues(Lists.of(ELEMENT0, ELEMENT1, ELEMENT2));
         assertNotSame(childNode, childNode2);
 
         this.childrenAndCheckNames(childNode2, INDEX0, INDEX1, INDEX2);
@@ -86,8 +86,8 @@ public final class PojoNodeArrayCharTest extends PojoNodeArrayTestCase<PojoNodeA
         assertSame(parentNode, parentNode2);
 
         final PojoNode childNode2 = parentNode2.children()
-                .get(0)
-                .setChildrenValues(Lists.of(ELEMENT0, ELEMENT1, ELEMENT2));
+            .get(0)
+            .setChildrenValues(Lists.of(ELEMENT0, ELEMENT1, ELEMENT2));
         assertNotSame(childNode, childNode2);
 
         this.childrenAndCheckNames(childNode2, INDEX0, INDEX1, INDEX2);
@@ -111,8 +111,8 @@ public final class PojoNodeArrayCharTest extends PojoNodeArrayTestCase<PojoNodeA
         assertSame(parentNode, parentNode2);
 
         final PojoNode childNode2 = parentNode2.children()
-                .get(0)
-                .setValue(new char[]{ELEMENT0, ELEMENT1, ELEMENT2});
+            .get(0)
+            .setValue(new char[]{ELEMENT0, ELEMENT1, ELEMENT2});
         assertNotSame(childNode, childNode2);
 
         this.childrenAndCheckNames(childNode2, INDEX0, INDEX1, INDEX2);
@@ -162,8 +162,8 @@ public final class PojoNodeArrayCharTest extends PojoNodeArrayTestCase<PojoNodeA
 
     private PojoNodeArrayChar createPojoNode(final char[] values) {
         return Cast.to(PojoNode.wrap(ARRAY,
-                values,
-                ReflectionPojoNodeContext.with()));
+            values,
+            ReflectionPojoNodeContext.with()));
     }
 
     @Override

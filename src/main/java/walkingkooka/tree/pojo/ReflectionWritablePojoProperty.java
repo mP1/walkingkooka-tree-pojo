@@ -28,8 +28,8 @@ abstract class ReflectionWritablePojoProperty extends ReflectionPojoProperty {
 
     static ReflectionWritablePojoProperty with(final PojoName name, final Method getter, final Method setter) {
         return isMutable(setter) ?
-                ReflectionMutableWritablePojoProperty.with(name, getter, setter) :
-                ReflectionImmutableWritablePojoProperty.with(name, getter, setter);
+            ReflectionMutableWritablePojoProperty.with(name, getter, setter) :
+            ReflectionImmutableWritablePojoProperty.with(name, getter, setter);
     }
 
     /**
@@ -55,8 +55,8 @@ abstract class ReflectionWritablePojoProperty extends ReflectionPojoProperty {
             return this.set0(instance, value);
         } catch (final Exception cause) {
             throw new ReflectionPojoException("Unable to set property " + this.name().inQuotes() + " (" + this.setter + ")" +
-                    " with " + (null == value ? null : value.getClass() + "=" + CharSequences.quoteIfChars(value)) +
-                    ", " + cause.getMessage(), cause);
+                " with " + (null == value ? null : value.getClass() + "=" + CharSequences.quoteIfChars(value)) +
+                ", " + cause.getMessage(), cause);
         }
     }
 

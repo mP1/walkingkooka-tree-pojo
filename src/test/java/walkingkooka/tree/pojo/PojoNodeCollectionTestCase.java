@@ -45,8 +45,7 @@ public abstract class PojoNodeCollectionTestCase<N extends PojoNodeArrayOrCollec
         this.childrenValuesCheck(node3, this.values(children3));
     }
 
-    @Override
-    final void checkValue(final V expected, final V actual) {
+    @Override final void checkValue(final V expected, final V actual) {
         this.checkEquals(expected, actual);
     }
 }

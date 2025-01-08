@@ -42,6 +42,6 @@ public final class PojoNodeArrayChildrenValueListTest extends PojoNodeListTestCa
         return PojoNode.wrap(PojoName.property("root"),
                 new boolean[]{(Boolean) components.get(0), (Boolean) components.get(1), (Boolean) components.get(2)},
                 ReflectionPojoNodeContext.with())
-                .childrenValues();
+            .childrenValues();
     }
 }

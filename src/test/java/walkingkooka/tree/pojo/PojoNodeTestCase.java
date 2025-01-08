@@ -34,7 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public abstract class PojoNodeTestCase<N extends PojoNode, V> implements ClassTesting2<PojoNode>,
-        NodeTesting<PojoNode, PojoName, PojoNodeAttributeName, Object> {
+    NodeTesting<PojoNode, PojoName, PojoNodeAttributeName, Object> {
 
     PojoNodeTestCase() {
         super();
@@ -135,16 +135,16 @@ public abstract class PojoNodeTestCase<N extends PojoNode, V> implements ClassTe
         final List<PojoNode> children = node.children();
         this.checkEquals(properties.size(), children.size(), () -> "children count=" + children);
         this.checkEquals(new TreeSet<PojoName>(properties),
-                children.stream().map(n -> n.name()).collect(Collectors.toCollection(TreeSet::new)),
-                () -> "properties of " + node + "=" + children);
+            children.stream().map(n -> n.name()).collect(Collectors.toCollection(TreeSet::new)),
+            () -> "properties of " + node + "=" + children);
         this.childrenCheck(node);
     }
 
     final PojoNode child(final PojoNode node, final PojoName name) {
         final Optional<PojoNode> property = node.children()
-                .stream()
-                .filter(n -> n.name().equals(name))
-                .findFirst();
+            .stream()
+            .filter(n -> n.name().equals(name))
+            .findFirst();
         this.checkEquals(true, property.isPresent(), "Unable to find property with name " + name + " in " + node);
         return property.get();
     }

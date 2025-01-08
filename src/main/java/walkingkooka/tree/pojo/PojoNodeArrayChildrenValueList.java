@@ -17,8 +17,6 @@
 
 package walkingkooka.tree.pojo;
 
-import walkingkooka.collect.list.Lists;
-
 /**
  * Readonly list view of {@link PojoNodeObject#childrenValues()}
  */

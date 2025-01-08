@@ -43,9 +43,9 @@ import java.util.function.Predicate;
  * Note that some types such as primitive and their wrappers, String and Class are considered basic types without any children.
  */
 public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttributeName, Object>,
-        HasChildrenValues<Object, PojoNode>,
-        Value<Object>,
-        Comparable<PojoNode> {
+    HasChildrenValues<Object, PojoNode>,
+    Value<Object>,
+    Comparable<PojoNode> {
 
     private final static Optional<PojoNode> NO_PARENT = Optional.empty();
 
@@ -202,11 +202,11 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
      */
     final PojoNode replaceChild(final Optional<PojoNode> previousParent) {
         return previousParent.isPresent() ?
-                previousParent.get()
-                        .replaceChild(this)
-                        .children()
-                        .get(this.index()) :
-                this;
+            previousParent.get()
+                .replaceChild(this)
+                .children()
+                .get(this.index()) :
+            this;
     }
 
     /**
@@ -246,8 +246,8 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
         if (null == this.attributes) {
             final Object value = this.value();
             this.attributes = null != value ?
-                    Maps.of(PojoNodeAttributeName.CLASS, value.getClass().getName()) :
-                    Maps.empty();
+                Maps.of(PojoNodeAttributeName.CLASS, value.getClass().getName()) :
+                Maps.empty();
         }
         return this.attributes;
     }
@@ -275,12 +275,12 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
      */
     public final PojoNode setValue(final Object value) {
         return Objects.deepEquals(this.value(), value) ?
-                this :
-                PojoNode.wrap0(this.name(),
-                        value,
-                        index(),
-                        this.context)
-                        .replaceChild(this.parent());
+            this :
+            PojoNode.wrap0(this.name(),
+                    value,
+                    index(),
+                    this.context)
+                .replaceChild(this.parent());
     }
 
     // Comparable ......................................................................................................
@@ -348,10 +348,10 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
     public static NodeSelector<PojoNode, PojoName, PojoNodeAttributeName, Object> nodeSelectorExpressionParserToken(final NodeSelectorExpressionParserToken token,
                                                                                                                     final Predicate<ExpressionFunctionName> functions) {
         return NodeSelector.parserToken(
-                token,
-                n -> PojoName.property(n.value()),
-                functions,
-                PojoNode.class
+            token,
+            n -> PojoName.property(n.value()),
+            functions,
+            PojoNode.class
         );
     }
 }

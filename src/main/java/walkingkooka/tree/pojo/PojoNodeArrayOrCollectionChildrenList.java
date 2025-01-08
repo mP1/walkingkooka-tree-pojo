@@ -71,8 +71,8 @@ final class PojoNodeArrayOrCollectionChildrenList<P extends PojoNodeArrayOrColle
     @Override
     PojoNode replace(final int index) {
         return this.replace0(PojoName.index(index),
-                this.elementValue(index),
-                index);
+            this.elementValue(index),
+            index);
     }
 
     @Override

@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 public final class ReflectionImmutableWritablePojoPropertyTest implements ClassTesting2<ReflectionImmutableWritablePojoProperty>,
-        PojoPropertyTesting<ReflectionImmutableWritablePojoProperty> {
+    PojoPropertyTesting<ReflectionImmutableWritablePojoProperty> {
 
     private final static PojoName X = PojoName.property("x");
     private final static String STRING = "abc1";
@@ -58,8 +58,8 @@ public final class ReflectionImmutableWritablePojoPropertyTest implements ClassT
     public ReflectionImmutableWritablePojoProperty createPojoProperty() {
         try {
             return ReflectionImmutableWritablePojoProperty.with(X,
-                    TestBean.class.getMethod("getX"),
-                    TestBean.class.getMethod("setX", String.class));
+                TestBean.class.getMethod("getX"),
+                TestBean.class.getMethod("setX", String.class));
         } catch (final Exception rethrow) {
             throw new Error(rethrow);
         }

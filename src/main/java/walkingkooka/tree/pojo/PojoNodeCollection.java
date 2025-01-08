@@ -37,8 +37,7 @@ abstract class PojoNodeCollection extends PojoNodeArrayOrCollection {
         return this.value.hashCode();
     }
 
-    @Override
-    final boolean equals0(final PojoNode other){
+    @Override final boolean equals0(final PojoNode other) {
         return this.equals1(other);
     }
 

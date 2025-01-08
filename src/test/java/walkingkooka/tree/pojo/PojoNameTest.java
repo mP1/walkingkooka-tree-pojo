@@ -25,7 +25,7 @@ import walkingkooka.text.CaseSensitivity;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class PojoNameTest implements ClassTesting2<PojoName>,
-        NameTesting2<PojoName, PojoName> {
+    NameTesting2<PojoName, PojoName> {
 
     private final static String PROPERTY = "abc";
 
@@ -44,8 +44,8 @@ public final class PojoNameTest implements ClassTesting2<PojoName>,
     @Test
     public void testIndexInvalidFails() {
         assertThrows(
-                IndexOutOfBoundsException.class,
-                () -> PojoName.index(-1)
+            IndexOutOfBoundsException.class,
+            () -> PojoName.index(-1)
         );
     }
 
@@ -93,8 +93,8 @@ public final class PojoNameTest implements ClassTesting2<PojoName>,
     @Override
     public String possibleValidChars(final int position) {
         return 0 == position ?
-                ASCII_LETTERS :
-                ASCII_LETTERS_DIGITS;
+            ASCII_LETTERS :
+            ASCII_LETTERS_DIGITS;
     }
 
     @Override

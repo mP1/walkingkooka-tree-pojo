@@ -85,10 +85,10 @@ final class PojoNodeArrayInt extends PojoNodeArray {
 
     private PojoNode replace(final int[] values) {
         return new PojoNodeArrayInt(this.name(),
-                values,
-                this.index(),
-                this.context)
-                .replaceChild(this.parent());
+            values,
+            this.index(),
+            this.context)
+            .replaceChild(this.parent());
     }
 
     @Override

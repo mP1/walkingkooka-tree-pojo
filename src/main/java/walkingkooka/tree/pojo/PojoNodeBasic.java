@@ -37,9 +37,9 @@ final class PojoNodeBasic extends PojoNode {
     // String and Class are considered basic and without properties.
     private static boolean isBasicType(final Class<?> type) {
         return type == Class.class ||
-                type == String.class ||
-                Classes.primitive(type).isPresent() ||
-                Classes.wrapper(type).isPresent();
+            type == String.class ||
+            Classes.primitive(type).isPresent() ||
+            Classes.wrapper(type).isPresent();
     }
 
     static PojoNodeBasic with(final PojoName name,

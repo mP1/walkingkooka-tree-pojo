@@ -133,11 +133,11 @@ public abstract class PojoNodeTestCase2<N extends PojoNode2, V> extends PojoNode
 
     final void childrenValuesCheck(final PojoNode node, final List<?> values) {
         this.checkEquals(values,
-                node.childrenValues(),
-                "children values not equal to childrenValues()");
+            node.childrenValues(),
+            "children values not equal to childrenValues()");
         this.checkEquals(values,
-                values(node.children()),
-                "children values not equal to values from children()");
+            values(node.children()),
+            "children values not equal to values from children()");
     }
 
     abstract List<PojoNode> writableChildren(final N firstNode);
@@ -166,7 +166,7 @@ public abstract class PojoNodeTestCase2<N extends PojoNode2, V> extends PojoNode
 
     final List<Object> values(final List<PojoNode> children) {
         return children.stream()
-                .map(n -> n.value())
-                .collect(Collectors.toList());
+            .map(n -> n.value())
+            .collect(Collectors.toList());
     }
 }

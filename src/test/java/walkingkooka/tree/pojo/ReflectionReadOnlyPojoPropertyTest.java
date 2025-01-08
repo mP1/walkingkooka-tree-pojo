@@ -24,7 +24,7 @@ import walkingkooka.reflect.JavaVisibility;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public final class ReflectionReadOnlyPojoPropertyTest implements ClassTesting2<ReflectionReadOnlyPojoProperty>,
-        PojoPropertyTesting<ReflectionReadOnlyPojoProperty> {
+    PojoPropertyTesting<ReflectionReadOnlyPojoProperty> {
 
     private final static PojoName X = PojoName.property("x");
     private final static String STRING = "abc1";

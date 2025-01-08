@@ -26,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Mixin interface to assist testing of {@link PojoProperty
  */
 public interface PojoPropertyTesting<P extends PojoProperty> extends ToStringTesting<P>,
-        TypeNameTesting<P> {
+    TypeNameTesting<P> {
 
     default void getAndCheck(final Object instance, final Object value) {
         this.getAndCheck(this.createPojoProperty(), instance, value);
