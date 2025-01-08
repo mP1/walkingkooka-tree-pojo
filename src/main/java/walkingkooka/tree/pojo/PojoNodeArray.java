@@ -32,9 +32,8 @@ abstract class PojoNodeArray extends PojoNodeArrayOrCollection {
 
     // children ..................................................................................
 
-    @Override
-    final List<Object> valueAsList() {
-        if(null == this.valueAsList){
+    @Override final List<Object> valueAsList() {
+        if (null == this.valueAsList) {
             this.valueAsList = PojoNodeArrayChildrenValueList.with(this);
         }
         return this.valueAsList;
@@ -52,8 +51,7 @@ abstract class PojoNodeArray extends PojoNodeArrayOrCollection {
      */
     abstract Object elementValue(final int index);
 
-    @Override
-    final public PojoNodeArrayOrCollection removeChild(final int child) {
+    @Override final public PojoNodeArrayOrCollection removeChild(final int child) {
         throw new UnsupportedOperationException();
     }
 }

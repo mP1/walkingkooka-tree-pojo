@@ -32,7 +32,7 @@ import java.util.function.Function;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 public final class ReflectionPojoNodeContextTest implements ClassTesting2<ReflectionPojoNodeContext>,
-        PojoNodeContextTesting<ReflectionPojoNodeContext> {
+    PojoNodeContextTesting<ReflectionPojoNodeContext> {
 
     private final static PojoName X = PojoName.property("x");
     private final static String STRING = "abc";
@@ -208,13 +208,13 @@ public final class ReflectionPojoNodeContextTest implements ClassTesting2<Reflec
 
     private void createListAndCheck(final List<Object> list) {
         this.createListAndCheck(list,
-                list.getClass());
+            list.getClass());
     }
 
     private void createListAndCheck(final List<Object> list, final Class<?> expected) {
         this.createAndCheck(list,
-                (c) -> this.createContext().createList(c),
-                expected);
+            (c) -> this.createContext().createList(c),
+            expected);
     }
 
     // createSet .........................................................................................
@@ -237,13 +237,13 @@ public final class ReflectionPojoNodeContextTest implements ClassTesting2<Reflec
 
     private void createSetAndCheck(final Set<Object> set) {
         this.createSetAndCheck(set,
-                set.getClass());
+            set.getClass());
     }
 
     private void createSetAndCheck(final Set<Object> set, final Class<?> expected) {
         this.createAndCheck(set,
-                (c) -> this.createContext().createSet(c),
-                expected);
+            (c) -> this.createContext().createSet(c),
+            expected);
     }
 
     // createMap...........................................................................................
@@ -266,13 +266,13 @@ public final class ReflectionPojoNodeContextTest implements ClassTesting2<Reflec
 
     private void createMapAndCheck(final Map<Object, Object> map) {
         this.createMapAndCheck(map,
-                map.getClass());
+            map.getClass());
     }
 
     private void createMapAndCheck(final Map<Object, Object> map, final Class<?> expected) {
         this.createAndCheck(map,
-                (c) -> this.createContext().createMap(c),
-                expected);
+            (c) -> this.createContext().createMap(c),
+            expected);
     }
 
     private <T> void createAndCheck(final T collection,

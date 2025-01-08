@@ -117,21 +117,21 @@ final class ReflectionPojoNodeContext implements PojoNodeContext {
                 if (type == Boolean.TYPE || type == Boolean.class) {
                     if (isPrefixed(methodName, "is")) {
                         findSetterAndSave(removePrefix(methodName, "is"),
-                                method,
-                                properties);
+                            method,
+                            properties);
                         break;
                     }
                 }
                 if (isPrefixed(methodName, "get")) {
                     findSetterAndSave(removePrefix(methodName, "get"),
-                            method,
-                            properties);
+                        method,
+                        properties);
                     break;
                 }
                 if (Character.isLowerCase(methodName.charAt(0))) {
                     findSetterAndSave(methodName,
-                            method,
-                            properties);
+                        method,
+                        properties);
                 }
                 break;
             }
@@ -142,8 +142,8 @@ final class ReflectionPojoNodeContext implements PojoNodeContext {
     private static boolean isPrefixed(final String name, final String prefix) {
         final int prefixLength = prefix.length();
         return name.length() >= prefixLength + 1 &&
-                name.startsWith(prefix) &&
-                Character.isUpperCase(name.charAt(prefixLength));
+            name.startsWith(prefix) &&
+            Character.isUpperCase(name.charAt(prefixLength));
     }
 
     private static String removePrefix(final String name, final String prefix) {
@@ -153,8 +153,8 @@ final class ReflectionPojoNodeContext implements PojoNodeContext {
 
     private static void findSetterAndSave(final String propertyName, final Method getter, final List<PojoProperty> properties) {
         properties.add(ReflectionPojoProperty.with(PojoName.property(propertyName),
-                getter,
-                setter(propertyName, getter)));
+            getter,
+            setter(propertyName, getter)));
     }
 
     private static Method setter(final String propertyName, final Method getter) {

@@ -20,7 +20,6 @@ import org.junit.jupiter.api.Test;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.ImmutableList;
 import walkingkooka.collect.list.ImmutableListTesting;
-import walkingkooka.collect.list.ListTesting2;
 import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
@@ -28,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PojoNodeListTestCase<L extends ImmutableList<E>, E> implements ClassTesting2<L>,
-        ImmutableListTesting<L, E> {
+    ImmutableListTesting<L, E> {
 
     PojoNodeListTestCase() {
         super();

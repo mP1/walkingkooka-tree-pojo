@@ -40,10 +40,10 @@ abstract class PojoNodeChildrenList<P extends PojoNode> extends PojoNodeList<P, 
 
     final PojoNode replace0(final PojoName name, final Object instance, final int index) {
         return PojoNode.wrap0(
-                name,
-                instance,
-                index,
-                this.parent.context).setParent(this.parentOptional);
+            name,
+            instance,
+            index,
+            this.parent.context).setParent(this.parentOptional);
     }
 
     final Optional<PojoNode> parentOptional;
@@ -53,8 +53,7 @@ abstract class PojoNodeChildrenList<P extends PojoNode> extends PojoNodeList<P, 
     /**
      * Since the children list is just a view of the parent, test for equality using the parents.
      */
-    @Override
-    final boolean equals0(final PojoNodeList<?, ?> other) {
+    @Override final boolean equals0(final PojoNodeList<?, ?> other) {
         return this.parent.equals(other.parent);
     }
 }

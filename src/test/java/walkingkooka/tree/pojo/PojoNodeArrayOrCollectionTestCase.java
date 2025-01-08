@@ -77,13 +77,11 @@ public abstract class PojoNodeArrayOrCollectionTestCase<N extends PojoNodeArrayO
 
     abstract N createEmptyPojoNode();
 
-    @Override
-    final List<PojoNode> writableChildren(final N firstNode) {
+    @Override final List<PojoNode> writableChildren(final N firstNode) {
         return this.children(firstNode);
     }
 
-    @Override
-    final List<PojoNode> writableDifferentChildren(final N firstNode) {
+    @Override final List<PojoNode> writableDifferentChildren(final N firstNode) {
         return this.differentChildren(firstNode);
     }
 }

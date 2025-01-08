@@ -23,7 +23,7 @@ import walkingkooka.reflect.JavaVisibility;
 import walkingkooka.text.CaseSensitivity;
 
 public final class PojoNodeAttributeNameTest implements ClassTesting2<PojoNodeAttributeName>,
-        NameTesting<PojoNodeAttributeName, PojoNodeAttributeName> {
+    NameTesting<PojoNodeAttributeName, PojoNodeAttributeName> {
 
     @Override
     public void testWith() {

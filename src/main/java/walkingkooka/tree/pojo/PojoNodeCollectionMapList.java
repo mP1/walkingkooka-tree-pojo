@@ -50,8 +50,8 @@ final class PojoNodeCollectionMapList extends AbstractList<Object> implements Im
         }
 
         return index < this.list.size() ?
-                this.list.get(index) :
-                this.fillListAndGet(index);
+            this.list.get(index) :
+            this.fillListAndGet(index);
     }
 
     private Object fillListAndGet(final int index) {

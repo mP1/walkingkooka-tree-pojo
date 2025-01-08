@@ -49,7 +49,7 @@ final class PojoNodeArrayByte extends PojoNodeArray {
     // children ..................................................................................
 
     @Override
-    PojoNode replaceChildren(final List<PojoNode> children){
+    PojoNode replaceChildren(final List<PojoNode> children) {
         final byte[] newChildren = new byte[children.size()];
 
         int i = 0;
@@ -85,10 +85,10 @@ final class PojoNodeArrayByte extends PojoNodeArray {
 
     private PojoNode replace(final byte[] values) {
         return new PojoNodeArrayByte(this.name(),
-                values,
-                this.index(),
-                this.context)
-                .replaceChild(this.parent());
+            values,
+            this.index(),
+            this.context)
+            .replaceChild(this.parent());
     }
 
     @Override

@@ -85,10 +85,10 @@ final class PojoNodeArrayFloat extends PojoNodeArray {
 
     private PojoNode replace(final float[] values) {
         return new PojoNodeArrayFloat(this.name(),
-                values,
-                this.index(),
-                this.context)
-                .replaceChild(this.parent());
+            values,
+            this.index(),
+            this.context)
+            .replaceChild(this.parent());
     }
 
     @Override

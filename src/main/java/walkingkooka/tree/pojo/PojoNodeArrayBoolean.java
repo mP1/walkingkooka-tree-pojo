@@ -49,7 +49,7 @@ final class PojoNodeArrayBoolean extends PojoNodeArray {
     // children ..................................................................................
 
     @Override //
-    PojoNode replaceChildren(final List<PojoNode> children){
+    PojoNode replaceChildren(final List<PojoNode> children) {
         final boolean[] newChildren = new boolean[children.size()];
 
         int i = 0;
@@ -85,10 +85,10 @@ final class PojoNodeArrayBoolean extends PojoNodeArray {
 
     private PojoNode replace(final boolean[] values) {
         return new PojoNodeArrayBoolean(this.name(),
-                values,
-                this.index(),
-                this.context)
-                .replaceChild(this.parent());
+            values,
+            this.index(),
+            this.context)
+            .replaceChild(this.parent());
     }
 
     @Override
@@ -108,7 +108,7 @@ final class PojoNodeArrayBoolean extends PojoNodeArray {
     }
 
     @Override
-    boolean equals0(final PojoNode other){
+    boolean equals0(final PojoNode other) {
         final PojoNodeArrayBoolean otherArray = Cast.to(other);
         return Arrays.equals(this.valueAsBooleanArray(), otherArray.valueAsBooleanArray());
     }

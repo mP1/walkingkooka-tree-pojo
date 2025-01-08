@@ -85,10 +85,10 @@ final class PojoNodeArrayChar extends PojoNodeArray {
 
     private PojoNode replace(final char[] values) {
         return new PojoNodeArrayChar(
-                this.name(),
-                values,
-                this.index(),
-                this.context
+            this.name(),
+            values,
+            this.index(),
+            this.context
         ).replaceChild(this.parent());
     }
 

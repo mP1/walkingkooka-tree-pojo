@@ -49,7 +49,7 @@ final class PojoNodeArrayLong extends PojoNodeArray {
     // children ..................................................................................
 
     @Override //
-    PojoNode replaceChildren(final List<PojoNode> children){
+    PojoNode replaceChildren(final List<PojoNode> children) {
         final long[] newChildren = new long[children.size()];
 
         int i = 0;
@@ -85,10 +85,10 @@ final class PojoNodeArrayLong extends PojoNodeArray {
 
     private PojoNode replace(final long[] values) {
         return new PojoNodeArrayLong(this.name(),
-                values,
-                this.index(),
-                this.context)
-                .replaceChild(this.parent());
+            values,
+            this.index(),
+            this.context)
+            .replaceChild(this.parent());
     }
 
     @Override

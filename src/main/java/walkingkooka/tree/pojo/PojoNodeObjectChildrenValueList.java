@@ -17,8 +17,6 @@
 
 package walkingkooka.tree.pojo;
 
-import walkingkooka.collect.list.Lists;
-
 import java.util.List;
 
 /**

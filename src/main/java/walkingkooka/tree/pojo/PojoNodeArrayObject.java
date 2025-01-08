@@ -90,10 +90,10 @@ final class PojoNodeArrayObject extends PojoNodeArray {
 
     private PojoNode replace(final Object[] values) {
         return new PojoNodeArrayObject(this.name(),
-                values,
-                this.index(),
-                this.context)
-                .replaceChild(this.parent());
+            values,
+            this.index(),
+            this.context)
+            .replaceChild(this.parent());
     }
 
     @Override

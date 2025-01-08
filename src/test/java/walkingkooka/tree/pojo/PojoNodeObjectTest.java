@@ -86,7 +86,7 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
         final TestMutableLeaf value = new TestMutableLeaf(STRING0);
         final PojoNodeObject node = this.createPojoNode(value);
         final PojoNode node2 = node.setChildren(Lists.of(
-                node.createNode(X, STRING1)
+            node.createNode(X, STRING1)
         ));
 
         assertSame(node, node2);
@@ -102,7 +102,7 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
         final PojoNode childNode = this.child(parentNode, Y);
 
         final PojoNode childNode2 = childNode.setChildren(Lists.of(
-                parentNode.createNode(X, STRING2)
+            parentNode.createNode(X, STRING2)
         ));
         assertSame(childNode, childNode2, childNode2.toString());
 
@@ -123,7 +123,7 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
 
         // set
         final PojoNode childNode2 = childNode.setChildren(Lists.of(
-                parentNode.createNode(X, STRING2)
+            parentNode.createNode(X, STRING2)
         ));
         assertNotSame(childNode, childNode2, childNode2.toString());
 
@@ -134,12 +134,12 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
         this.childrenValuesCheck(parentNode2, new TestImmutableLeaf(STRING2), null);
 
         this.checkEquals(new TestImmutableBranch(new TestImmutableLeaf(STRING2), null),
-                parentNode2.value(),
-                "parentNode2 after set");
+            parentNode2.value(),
+            "parentNode2 after set");
 
         this.checkEquals(new TestImmutableBranch(new TestImmutableLeaf(STRING0), null),
-                parentNode.value(),
-                "original parentNode should remain unchanged");
+            parentNode.value(),
+            "original parentNode should remain unchanged");
     }
 
     @Test
@@ -154,7 +154,7 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
 
         // set
         final PojoNode childNode2 = childNode.setChildren(Lists.of(
-                parentNode.createNode(X, STRING2)
+            parentNode.createNode(X, STRING2)
         ));
         assertNotSame(childNode, childNode2, childNode2.toString());
 
@@ -169,12 +169,12 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
         final TestImmutableBranch grandParent2 = new TestImmutableBranch(null, parent2);
 
         this.checkEquals(grandParent2,
-                grandParentNode2.value(),
-                "parentNode2 after set");
+            grandParentNode2.value(),
+            "parentNode2 after set");
 
         this.checkEquals(grandParent,
-                grandParentNode.value(),
-                "original parentNode should remain unchanged");
+            grandParentNode.value(),
+            "original parentNode should remain unchanged");
     }
 
     @Test
@@ -187,7 +187,7 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
     @Test
     public void testToString() {
         this.toStringAndCheck(this.createPojoNode(new TestMutableLeaf(STRING0)),
-                "x=" + STRING0);
+            "x=" + STRING0);
     }
 
     @Override
@@ -205,15 +205,14 @@ public final class PojoNodeObjectTest extends PojoNodeTestCase2<PojoNodeObject, 
         return new TestImmutableLeaf(STRING2);
     }
 
-    @Override
-    final void checkValue(final Object expected, final Object actual) {
+    @Override final void checkValue(final Object expected, final Object actual) {
         this.checkEquals(expected, actual);
     }
 
     private PojoNodeObject createPojoNode(final Object value) {
         return Cast.to(PojoNode.wrap(PojoName.property("root"),
-                value,
-                ReflectionPojoNodeContext.with()));
+            value,
+            ReflectionPojoNodeContext.with()));
     }
 
     @Override

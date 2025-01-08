@@ -75,8 +75,8 @@ public final class PojoNodeCollectionSetTest extends PojoNodeCollectionTestCase<
     @Test
     public void testSetChildrenImmutableChildWithParent() {
         final Set<Object> parentSet = set(
-                new TestImmutableLeaf(STRING0),
-                new TestImmutableLeaf(STRING1));
+            new TestImmutableLeaf(STRING0),
+            new TestImmutableLeaf(STRING1));
         final TestImmutableParent parent = new TestImmutableParent(parentSet);
         final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
@@ -88,8 +88,8 @@ public final class PojoNodeCollectionSetTest extends PojoNodeCollectionTestCase<
 
         final PojoNode childNode2 = childChildNode2.parentOrFail();
         final List<Object> children2 = Lists.of(
-                new TestImmutableLeaf(STRING2),
-                new TestImmutableLeaf(STRING1));
+            new TestImmutableLeaf(STRING2),
+            new TestImmutableLeaf(STRING1));
         this.childrenValuesCheck(childNode2, children2);
 
         final PojoNode parentNode2 = childNode2.parentOrFail();
@@ -101,8 +101,8 @@ public final class PojoNodeCollectionSetTest extends PojoNodeCollectionTestCase<
     @Test
     public void testSetChildrenMutableChildWithParent() {
         final Set<Object> parentSet = set(
-                new TestMutableLeaf(STRING0),
-                new TestMutableLeaf(STRING1));
+            new TestMutableLeaf(STRING0),
+            new TestMutableLeaf(STRING1));
         final TestMutableParent parent = new TestMutableParent(parentSet);
         final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
@@ -114,8 +114,8 @@ public final class PojoNodeCollectionSetTest extends PojoNodeCollectionTestCase<
 
         final PojoNode childNode2 = childChildNode2.parentOrFail();
         final List<Object> children2 = Lists.of(
-                new TestMutableLeaf(STRING2),
-                new TestMutableLeaf(STRING1));
+            new TestMutableLeaf(STRING2),
+            new TestMutableLeaf(STRING1));
         this.childrenValuesCheck(childNode2, children2);
 
         final PojoNode parentNode2 = childNode2.parentOrFail();
@@ -129,8 +129,8 @@ public final class PojoNodeCollectionSetTest extends PojoNodeCollectionTestCase<
     @Test
     public void testSetChildrenValuesImmutableChildWithParent() {
         final Set<Object> parentSet = set(
-                new TestImmutableLeaf(STRING0),
-                new TestImmutableLeaf(STRING1));
+            new TestImmutableLeaf(STRING0),
+            new TestImmutableLeaf(STRING1));
         final TestImmutableParent parent = new TestImmutableParent(parentSet);
         final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
@@ -142,8 +142,8 @@ public final class PojoNodeCollectionSetTest extends PojoNodeCollectionTestCase<
 
         final PojoNode childNode2 = childChildNode2.parentOrFail();
         final List<Object> children2 = Lists.of(
-                new TestImmutableLeaf(STRING2),
-                new TestImmutableLeaf(STRING1));
+            new TestImmutableLeaf(STRING2),
+            new TestImmutableLeaf(STRING1));
         this.childrenValuesCheck(childNode2, children2);
 
         final PojoNode parentNode2 = childNode2.parentOrFail();
@@ -155,8 +155,8 @@ public final class PojoNodeCollectionSetTest extends PojoNodeCollectionTestCase<
     @Test
     public void testSetChildrenValuesMutableChildWithParent() {
         final Set<Object> parentSet = set(
-                new TestMutableLeaf(STRING0),
-                new TestMutableLeaf(STRING1));
+            new TestMutableLeaf(STRING0),
+            new TestMutableLeaf(STRING1));
         final TestMutableParent parent = new TestMutableParent(parentSet);
         final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
@@ -168,8 +168,8 @@ public final class PojoNodeCollectionSetTest extends PojoNodeCollectionTestCase<
 
         final PojoNode childNode2 = childChildNode2.parentOrFail();
         final List<Object> children2 = Lists.of(
-                new TestMutableLeaf(STRING2),
-                new TestMutableLeaf(STRING1));
+            new TestMutableLeaf(STRING2),
+            new TestMutableLeaf(STRING1));
         this.childrenValuesCheck(childNode2, children2);
 
         final PojoNode parentNode2 = childNode2.parentOrFail();
@@ -220,8 +220,8 @@ public final class PojoNodeCollectionSetTest extends PojoNodeCollectionTestCase<
 
     private PojoNodeCollectionSet createPojoNode(final Set<Object> set) {
         return Cast.to(PojoNode.wrap(SET,
-                set,
-                ReflectionPojoNodeContext.with()));
+            set,
+            ReflectionPojoNodeContext.with()));
     }
 
     @Override

@@ -65,14 +65,13 @@ abstract class PojoNode2 extends PojoNode {
         copy.addAll(children);
 
         return this.children().equals(copy) ?
-                this :
-                this.replaceChildren(copy);
+            this :
+            this.replaceChildren(copy);
     }
 
     abstract PojoNode replaceChildren(final List<PojoNode> children);
 
-    @Override
-    final public PojoNode setChildrenValues(final List<Object> values){
+    @Override final public PojoNode setChildrenValues(final List<Object> values) {
         Objects.requireNonNull(values, "values");
 
         final List<Object> copy = Lists.array();

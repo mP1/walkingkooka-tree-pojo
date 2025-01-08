@@ -84,69 +84,69 @@ public final class PojoNodeCollectionMapTest extends PojoNodeCollectionTestCase<
     @Test
     public void testSetChildrenImmutableChildWithParent() {
         final Map<Object, Object> parentMap = map(
-                Maps.entry(KEY0, new TestImmutableLeaf(STRING0)),
-                ENTRY1);
+            Maps.entry(KEY0, new TestImmutableLeaf(STRING0)),
+            ENTRY1);
         final TestImmutableParent parent = new TestImmutableParent(parentMap);
         final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // map
 
         final PojoNode leafNode = childNode.children()
-                .get(0) //
-                .children().get(1); // entry.value = TestImmutableLeaf(ENTRY2)
+            .get(0) //
+            .children().get(1); // entry.value = TestImmutableLeaf(ENTRY2)
         final PojoNode leafNode2 = leafNode.setChildren(Lists.of(parentNode.createNode(X, STRING2)));
         assertNotSame(leafNode, leafNode2);
 
         final PojoNode childNode2 = leafNode2.parentOrFail();
         final List<Object> children2 = Lists.of(
-                KEY0,
-                new TestImmutableLeaf(STRING2));
+            KEY0,
+            new TestImmutableLeaf(STRING2));
         this.childrenValuesCheck(childNode2, children2);
 
         final PojoNode parentNode2 = childNode2.parentOrFail();
         assertNotSame(parentNode, parentNode2);
 
         this.childrenValuesCheck(parentNode2, Lists.of(
-                Maps.<Object, Object>entry(KEY0, new TestImmutableLeaf(STRING2)),
-                ENTRY1));
+            Maps.<Object, Object>entry(KEY0, new TestImmutableLeaf(STRING2)),
+            ENTRY1));
         this.checkEquals(map(
-                        Maps.entry(KEY0, new TestImmutableLeaf(STRING2)),
-                        ENTRY1),
-                parentNode2.value());
+                Maps.entry(KEY0, new TestImmutableLeaf(STRING2)),
+                ENTRY1),
+            parentNode2.value());
     }
 
     @Test
     public void testSetChildrenMutableChildWithParent() {
         final Map<Object, Object> parentMap = map(
-                Maps.entry(KEY0, new TestMutableLeaf(STRING0)),
-                ENTRY1);
+            Maps.entry(KEY0, new TestMutableLeaf(STRING0)),
+            ENTRY1);
         final TestMutableParent parent = new TestMutableParent(parentMap);
         final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // map
 
         final PojoNode leafNode = childNode.children()
-                .get(0) //
-                .children().get(1); // entry.value = TestMutableLeaf(ENTRY2)
+            .get(0) //
+            .children().get(1); // entry.value = TestMutableLeaf(ENTRY2)
         final PojoNode leafNode2 = leafNode.setChildren(Lists.of(parentNode.createNode(X, STRING2)));
         assertSame(leafNode, leafNode2);
 
         final PojoNode childNode2 = leafNode2.parentOrFail();
         final List<Object> children2 = Lists.of(
-                KEY0,
-                new TestMutableLeaf(STRING2));
+            KEY0,
+            new TestMutableLeaf(STRING2));
         this.childrenValuesCheck(childNode2, children2);
 
         final PojoNode parentNode2 = childNode2.parentOrFail();
         assertNotSame(parentNode, parentNode2);
 
         this.childrenValuesCheck(parentNode2, Lists.of(
-                Maps.<Object, Object>entry(KEY0, new TestMutableLeaf(STRING2)),
-                ENTRY1));
+            Maps.<Object, Object>entry(KEY0, new TestMutableLeaf(STRING2)),
+            ENTRY1));
         this.checkEquals(map(
-                        Maps.entry(KEY0, new TestMutableLeaf(STRING2)),
-                        ENTRY1),
-                parentNode2.value());
+                Maps.entry(KEY0, new TestMutableLeaf(STRING2)),
+                ENTRY1),
+            parentNode2.value());
     }
 
     // childrenValues ....................................................................................................
@@ -154,69 +154,69 @@ public final class PojoNodeCollectionMapTest extends PojoNodeCollectionTestCase<
     @Test
     public void testSetChildrenValuesImmutableChildWithParent() {
         final Map<Object, Object> parentMap = map(
-                Maps.entry(KEY0, new TestImmutableLeaf(STRING0)),
-                ENTRY1);
+            Maps.entry(KEY0, new TestImmutableLeaf(STRING0)),
+            ENTRY1);
         final TestImmutableParent parent = new TestImmutableParent(parentMap);
         final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // map
 
         final PojoNode leafNode = childNode.children()
-                .get(0) //
-                .children().get(1); // entry.value = TestImmutableLeaf(ENTRY2)
+            .get(0) //
+            .children().get(1); // entry.value = TestImmutableLeaf(ENTRY2)
         final PojoNode leafNode2 = leafNode.setChildrenValues(Lists.of(STRING2));
         assertNotSame(leafNode, leafNode2);
 
         final PojoNode childNode2 = leafNode2.parentOrFail();
         final List<Object> children2 = Lists.of(
-                KEY0,
-                new TestImmutableLeaf(STRING2));
+            KEY0,
+            new TestImmutableLeaf(STRING2));
         this.childrenValuesCheck(childNode2, children2);
 
         final PojoNode parentNode2 = childNode2.parentOrFail();
         assertNotSame(parentNode, parentNode2);
 
         this.childrenValuesCheck(parentNode2, Lists.of(
-                Maps.<Object, Object>entry(KEY0, new TestImmutableLeaf(STRING2)),
-                ENTRY1));
+            Maps.<Object, Object>entry(KEY0, new TestImmutableLeaf(STRING2)),
+            ENTRY1));
         this.checkEquals(map(
-                        Maps.entry(KEY0, new TestImmutableLeaf(STRING2)),
-                        ENTRY1),
-                parentNode2.value());
+                Maps.entry(KEY0, new TestImmutableLeaf(STRING2)),
+                ENTRY1),
+            parentNode2.value());
     }
 
     @Test
     public void testSetChildrenValuesMutableChildWithParent() {
         final Map<Object, Object> parentMap = map(
-                Maps.entry(KEY0, new TestMutableLeaf(STRING0)),
-                ENTRY1);
+            Maps.entry(KEY0, new TestMutableLeaf(STRING0)),
+            ENTRY1);
         final TestMutableParent parent = new TestMutableParent(parentMap);
         final PojoNode parentNode = PojoNodeObject.wrap(PARENT, parent, ReflectionPojoNodeContext.with());
 
         final PojoNode childNode = parentNode.children().get(0); // map
 
         final PojoNode leafNode = childNode.children()
-                .get(0) //
-                .children().get(1); // entry.value = TestMutableLeaf(ENTRY2)
+            .get(0) //
+            .children().get(1); // entry.value = TestMutableLeaf(ENTRY2)
         final PojoNode leafNode2 = leafNode.setChildrenValues(Lists.of(STRING2));
         assertSame(leafNode, leafNode2);
 
         final PojoNode childNode2 = leafNode2.parentOrFail();
         final List<Object> children2 = Lists.of(
-                KEY0,
-                new TestMutableLeaf(STRING2));
+            KEY0,
+            new TestMutableLeaf(STRING2));
         this.childrenValuesCheck(childNode2, children2);
 
         final PojoNode parentNode2 = childNode2.parentOrFail();
         assertNotSame(parentNode, parentNode2);
 
         this.childrenValuesCheck(parentNode2, Lists.of(
-                Maps.<Object, Object>entry(KEY0, new TestMutableLeaf(STRING2)),
-                ENTRY1));
+            Maps.<Object, Object>entry(KEY0, new TestMutableLeaf(STRING2)),
+            ENTRY1));
         this.checkEquals(map(
-                        Maps.entry(KEY0, new TestMutableLeaf(STRING2)),
-                        ENTRY1),
-                parentNode2.value());
+                Maps.entry(KEY0, new TestMutableLeaf(STRING2)),
+                ENTRY1),
+            parentNode2.value());
     }
 
     // setValue......................................................................................................
@@ -278,8 +278,8 @@ public final class PojoNodeCollectionMapTest extends PojoNodeCollectionTestCase<
 
     private PojoNodeCollectionMap createPojoNode(final Map<Object, Object> map) {
         return Cast.to(PojoNode.wrap(MAP,
-                map,
-                ReflectionPojoNodeContext.with()));
+            map,
+            ReflectionPojoNodeContext.with()));
     }
 
     @Override

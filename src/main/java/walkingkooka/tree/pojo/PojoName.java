@@ -28,7 +28,7 @@ import walkingkooka.text.CharSequences;
  * Holds the name of a node within the tree. The name will be either a field/property name or an index.
  */
 public final class PojoName implements Name,
-        Comparable<PojoName> {
+    Comparable<PojoName> {
 
     private final static int INDEX_CACHE_SIZE = 128;
 
@@ -56,14 +56,14 @@ public final class PojoName implements Name,
     }
 
     private final static CharPredicate INITIAL = CharPredicateBuilder.empty()
-            .or(Character::isJavaIdentifierStart)
-            .andNot(CharPredicates.asciiControl()) // necessary because nul is also valid java identifier
-            .build();
+        .or(Character::isJavaIdentifierStart)
+        .andNot(CharPredicates.asciiControl()) // necessary because nul is also valid java identifier
+        .build();
     private final static CharPredicate PART = CharPredicateBuilder.empty()
-            .or(Character::isJavaIdentifierPart)
-            .any("-")
-            .andNot(CharPredicates.asciiControl()) // necessary because nul is also valid java identifier
-            .build();
+        .or(Character::isJavaIdentifierPart)
+        .any("-")
+        .andNot(CharPredicates.asciiControl()) // necessary because nul is also valid java identifier
+        .build();
 
     private PojoName(final int index) {
         this(String.valueOf(index), index);
@@ -105,8 +105,8 @@ public final class PojoName implements Name,
     @Override
     public boolean equals(final Object other) {
         return this == other ||
-                other instanceof PojoName &&
-                        this.equals0(Cast.to(other));
+            other instanceof PojoName &&
+                this.equals0(Cast.to(other));
     }
 
     private boolean equals0(final PojoName other) {

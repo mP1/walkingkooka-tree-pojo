@@ -109,8 +109,8 @@ public interface PojoNodeContextTesting<C extends PojoNodeContext> extends Conte
     default void propertiesAndCheck(final Class<?> type,
                                     final String... names) {
         this.propertiesAndCheck(type, Arrays.stream(names)
-                .map(n -> PojoName.property(n))
-                .collect(Collectors.toCollection(TreeSet::new)));
+            .map(n -> PojoName.property(n))
+            .collect(Collectors.toCollection(TreeSet::new)));
     }
 
     default void propertiesAndCheck(final Class<?> type,
@@ -122,34 +122,34 @@ public interface PojoNodeContextTesting<C extends PojoNodeContext> extends Conte
                                     final Set<PojoName> names) {
         final List<PojoProperty> properties = this.properties(type);
         assertEquals(names,
-                properties.stream()
-                        .map(p -> p.name())
-                        .collect(Collectors.toCollection(TreeSet::new)),
-                () -> properties + " for " + type.getName());
+            properties.stream()
+                .map(p -> p.name())
+                .collect(Collectors.toCollection(TreeSet::new)),
+            () -> properties + " for " + type.getName());
     }
 
     default <T> void getAndCheck(final T instance,
                                  final PojoName name,
                                  final Object expected) {
         this.getAndCheck(instance,
-                this.property(instance, name),
-                expected);
+            this.property(instance, name),
+            expected);
     }
 
     default <T> void getAndCheck(final T instance,
                                  final PojoProperty property,
                                  final Object expected) {
         assertEquals(expected,
-                property.get(instance),
-                () -> "Failed to return correct value for " + property + " from " + instance);
+            property.get(instance),
+            () -> "Failed to return correct value for " + property + " from " + instance);
     }
 
     default <T> T setAndGetCheck(final T instance,
                                  final PojoName name,
                                  final Object value) {
         final T result = this.setAndCheck(instance,
-                this.property(instance, name),
-                value);
+            this.property(instance, name),
+            value);
         final T instance2 = null == result ? instance : result;
         this.getAndCheck(instance2, name, value);
         return instance2;
@@ -159,8 +159,8 @@ public interface PojoNodeContextTesting<C extends PojoNodeContext> extends Conte
                               final PojoName name,
                               final Object value) {
         return this.setAndCheck(instance,
-                this.property(instance, name),
-                value);
+            this.property(instance, name),
+            value);
     }
 
     default <T> T setAndCheck(final T instance,
@@ -173,9 +173,9 @@ public interface PojoNodeContextTesting<C extends PojoNodeContext> extends Conte
                                       final PojoName name) {
         final List<PojoProperty> properties = this.properties(instance.getClass());
         return properties.stream()
-                .filter(p -> p.name().equals(name))
-                .collect(Collectors.toList())
-                .iterator().next();
+            .filter(p -> p.name().equals(name))
+            .collect(Collectors.toList())
+            .iterator().next();
     }
 
     // TypeNameTesting.....................................................................................

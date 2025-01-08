@@ -58,8 +58,8 @@ final class PojoNodeCollectionList extends PojoNodeCollection {
     @Override //
     PojoNode replaceChildren(final List<PojoNode> children) {
         final List<Object> copy = children.stream()
-                .map(child -> child.value())
-                .collect(Collectors.toCollection(() -> this.createList()));
+            .map(child -> child.value())
+            .collect(Collectors.toCollection(() -> this.createList()));
 
         return this.replace(copy);
     }
@@ -100,10 +100,10 @@ final class PojoNodeCollectionList extends PojoNodeCollection {
 
     private PojoNode replace(final List<Object> values) {
         return new PojoNodeCollectionList(this.name(),
-                values,
-                this.index(),
-                this.context)
-                .replaceChild(this.parent());
+            values,
+            this.index(),
+            this.context)
+            .replaceChild(this.parent());
     }
 
     @Override int childrenCount() {

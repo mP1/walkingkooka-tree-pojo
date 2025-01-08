@@ -21,7 +21,7 @@ import walkingkooka.reflect.ClassTesting2;
 import walkingkooka.reflect.JavaVisibility;
 
 public final class ReflectionMutableWritablePojoPropertyTest implements ClassTesting2<ReflectionMutableWritablePojoProperty>,
-        PojoPropertyTesting<ReflectionMutableWritablePojoProperty> {
+    PojoPropertyTesting<ReflectionMutableWritablePojoProperty> {
 
     private final static PojoName X = PojoName.property("x");
     private final static String STRING = "abc1";
@@ -54,8 +54,8 @@ public final class ReflectionMutableWritablePojoPropertyTest implements ClassTes
     public ReflectionMutableWritablePojoProperty createPojoProperty() {
         try {
             return ReflectionMutableWritablePojoProperty.with(X,
-                    TestBean.class.getMethod("getX"),
-                    TestBean.class.getMethod("setX", String.class));
+                TestBean.class.getMethod("getX"),
+                TestBean.class.getMethod("setX", String.class));
         } catch (final Exception rethrow) {
             throw new Error(rethrow);
         }
