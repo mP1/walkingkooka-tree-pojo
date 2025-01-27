@@ -24,7 +24,7 @@ import walkingkooka.tree.HasChildrenValues;
 import walkingkooka.tree.Node;
 import walkingkooka.tree.expression.ExpressionFunctionName;
 import walkingkooka.tree.select.NodeSelector;
-import walkingkooka.tree.select.parser.NodeSelectorExpressionParserToken;
+import walkingkooka.tree.select.parser.ExpressionNodeSelectorParserToken;
 
 import java.util.List;
 import java.util.Map;
@@ -343,9 +343,9 @@ public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttri
     }
 
     /**
-     * Creates a {@link NodeSelector} for {@link PojoNode} from a {@link NodeSelectorExpressionParserToken}.
+     * Creates a {@link NodeSelector} for {@link PojoNode} from a {@link ExpressionNodeSelectorParserToken}.
      */
-    public static NodeSelector<PojoNode, PojoName, PojoNodeAttributeName, Object> nodeSelectorExpressionParserToken(final NodeSelectorExpressionParserToken token,
+    public static NodeSelector<PojoNode, PojoName, PojoNodeAttributeName, Object> nodeSelectorExpressionParserToken(final ExpressionNodeSelectorParserToken token,
                                                                                                                     final Predicate<ExpressionFunctionName> functions) {
         return NodeSelector.parserToken(
             token,
