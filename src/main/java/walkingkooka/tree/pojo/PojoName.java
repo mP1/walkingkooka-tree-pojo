@@ -50,9 +50,15 @@ public final class PojoName implements Name,
     }
 
     static PojoName property(final String name) {
-        CharPredicates.failIfNullOrEmptyOrInitialAndPartFalse(name, "name", INITIAL, PART);
-
-        return new PojoName(name, -1);
+        return new PojoName(
+            CharPredicates.failIfNullOrEmptyOrInitialAndPartFalse(
+                name,
+                "name",
+                INITIAL,
+                PART
+            ),
+            -1
+        );
     }
 
     private final static CharPredicate INITIAL = CharPredicateBuilder.empty()
