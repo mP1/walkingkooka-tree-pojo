@@ -61,6 +61,11 @@ abstract class PojoNodeList<P extends PojoNode, E> extends AbstractList<E> imple
     // ImmutableList....................................................................................................
 
     @Override
+    public void elementCheck(final Object element) {
+        // nop
+    }
+
+    @Override
     public final ImmutableList<E> setElements(final List<E> values) {
         return this.setElementsFailIfDifferent(values);
     }
