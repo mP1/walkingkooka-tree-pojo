@@ -117,7 +117,12 @@ final class PojoNodeCollectionMapList extends AbstractList<Object> implements Im
         return this.map.toString();
     }
 
-    // ImmutableList....................................................................................................
+    // ImmutableListDefaults............................................................................................
+
+    @Override
+    public void elementCheck(final Object element) {
+        // nop
+    }
 
     @Override
     public ImmutableList<Object> setElements(final List<Object> elements) {

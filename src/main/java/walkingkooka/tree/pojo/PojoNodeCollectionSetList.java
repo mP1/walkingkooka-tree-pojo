@@ -116,7 +116,12 @@ final class PojoNodeCollectionSetList extends AbstractList<Object> implements Im
         return this.set.toString();
     }
 
-    // ImmutableList....................................................................................................
+    // ImmutableListDefaults............................................................................................
+
+    @Override
+    public void elementCheck(final Object element) {
+        // nop
+    }
 
     @Override
     public ImmutableList<Object> setElements(final List<Object> elements) {
