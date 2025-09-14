@@ -22,6 +22,7 @@ import walkingkooka.collect.list.ImmutableListDefaults;
 import walkingkooka.collect.list.Lists;
 
 import java.util.AbstractList;
+import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
@@ -125,7 +126,7 @@ final class PojoNodeCollectionMapList extends AbstractList<Object> implements Im
     }
 
     @Override
-    public ImmutableList<Object> setElements(final List<Object> elements) {
+    public ImmutableList<Object> setElements(final Collection<Object> elements) {
         return this.setElementsFailIfDifferent(elements);
     }
 }
