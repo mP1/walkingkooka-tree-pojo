@@ -22,6 +22,7 @@ import walkingkooka.collect.list.ImmutableList;
 import walkingkooka.collect.list.ImmutableListDefaults;
 
 import java.util.AbstractList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -66,7 +67,7 @@ abstract class PojoNodeList<P extends PojoNode, E> extends AbstractList<E> imple
     }
 
     @Override
-    public final ImmutableList<E> setElements(final List<E> values) {
+    public final ImmutableList<E> setElements(final Collection<E> values) {
         return this.setElementsFailIfDifferent(values);
     }
 }
