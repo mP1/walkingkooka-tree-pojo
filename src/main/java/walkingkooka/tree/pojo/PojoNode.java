@@ -18,7 +18,7 @@
 package walkingkooka.tree.pojo;
 
 import walkingkooka.Cast;
-import walkingkooka.Value;
+import walkingkooka.HasValue;
 import walkingkooka.collect.map.Maps;
 import walkingkooka.tree.HasChildrenValues;
 import walkingkooka.tree.Node;
@@ -44,7 +44,7 @@ import java.util.function.Predicate;
  */
 public abstract class PojoNode implements Node<PojoNode, PojoName, PojoNodeAttributeName, Object>,
     HasChildrenValues<Object, PojoNode>,
-    Value<Object>,
+    HasValue<Object>,
     Comparable<PojoNode> {
 
     private final static Optional<PojoNode> NO_PARENT = Optional.empty();
