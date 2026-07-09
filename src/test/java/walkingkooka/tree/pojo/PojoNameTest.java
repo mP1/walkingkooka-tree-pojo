@@ -52,7 +52,10 @@ public final class PojoNameTest implements ClassTesting2<PojoName>,
     @Test
     public void testIndex() {
         final PojoName name = PojoName.index(123);
-        this.checkValue(name, "123");
+        this.valueAndCheck(
+            name,
+            "123"
+        );
     }
 
     @Override
