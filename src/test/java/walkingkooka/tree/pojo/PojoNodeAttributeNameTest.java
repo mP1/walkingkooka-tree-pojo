@@ -63,7 +63,8 @@ public final class PojoNodeAttributeNameTest implements ClassTesting2<PojoNodeAt
 
     @Override
     public String nameText() {
-        return PojoNodeAttributeName.CLASS.name();
+        return PojoNodeAttributeName.CLASS.name()
+            .value();
     }
 
     @Override
