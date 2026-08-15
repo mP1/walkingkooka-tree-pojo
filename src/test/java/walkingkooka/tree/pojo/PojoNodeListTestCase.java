@@ -33,6 +33,11 @@ public abstract class PojoNodeListTestCase<L extends ImmutableList<E>, E> implem
         super();
     }
 
+    @Override
+    public final void testReversed() {
+        throw new UnsupportedOperationException();
+    }
+
     @Test
     public final void testEqualListOfComponents() {
         final List<E> components = this.components();
