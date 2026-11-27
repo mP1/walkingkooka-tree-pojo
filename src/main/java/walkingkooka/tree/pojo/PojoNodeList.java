@@ -20,6 +20,7 @@ package walkingkooka.tree.pojo;
 import walkingkooka.Cast;
 import walkingkooka.collect.list.ImmutableList;
 import walkingkooka.collect.list.ImmutableListDefaults;
+import walkingkooka.collect.list.Lists;
 
 import java.util.AbstractList;
 import java.util.Collection;
@@ -35,6 +36,20 @@ abstract class PojoNodeList<P extends PojoNode, E> extends AbstractList<E> imple
     }
 
     final P parent;
+
+    @Override
+    public final ImmutableList<E> subList(final int from,
+                                          final int to) {
+        return 0 == from && this.size() == to ?
+            this :
+            Lists.immutable(
+                this.toList() // toList required to prevent StackOverflowError
+                    .subList(
+                        from,
+                        to
+                    )
+            );
+    }
 
     // Object .......................................................................................................
 
