@@ -129,4 +129,18 @@ final class PojoNodeCollectionMapList extends AbstractList<Object> implements Im
     public ImmutableList<Object> setElements(final Collection<Object> elements) {
         return this.setElementsFailIfDifferent(elements);
     }
+
+    @Override
+    public ImmutableList<Object> subList(final int from,
+                                         final int to) {
+        return 0 == from && this.size() == to ?
+            this :
+            Lists.immutable(
+                this.toList() // toList required to prevent StackOverflowError
+                    .subList(
+                        from,
+                        to
+                    )
+            );
+    }
 }
